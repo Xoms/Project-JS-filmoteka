@@ -1,5 +1,5 @@
 import debounce from 'lodash.debounce';
 
-import './sass/main.scss';
+import './css/styles.css';
 import 'basiclightbox/dist/basicLightbox.min.css';
 
