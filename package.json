@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "basiclightbox": "^5.0.3",
+    "bootstrap": "^4.5.3",
     "core-js": "^3.6.5",
     "handlebars": "^4.7.6",
     "lodash.debounce": "^4.0.8"

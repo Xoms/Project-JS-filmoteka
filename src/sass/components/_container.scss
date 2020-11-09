@@ -1,9 +1,9 @@
 .container {
   width: 320px;
-  padding: 0, 20px;
+  padding: 0 20px;
   @include for-size(tablet) {
     width: 768px;
-    padding: 0, 75px;
+    padding: 0 75px;
   }
   @include for-size(desktop) {
     width: 1024px;
