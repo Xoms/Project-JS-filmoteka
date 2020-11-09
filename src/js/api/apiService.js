@@ -36,7 +36,7 @@ const options = {
             .then(res => {
                 const imgArr = res.results.map( el => `${IMG_BASE_URL}w500${el.poster_path}`)
                 console.dir(res);
-                console.log(imgArr);
+                console.dir(imgArr);
                 return {movies: res, 'posters': imgArr}
             })
     }
@@ -68,10 +68,12 @@ const options = {
             .then(res => res.json())
             .then(res => {
                 const imgArr = res.results.map( el => `${IMG_BASE_URL}w500${el.poster_path}`)
-                console.dir(res);
+                console.dir(res, imgArr);
                 return {movies: res, 'posters': imgArr}
             })
     }
 }
  const api = new FilmotekaApi
  export default api
+
+ 
