@@ -1,4 +1,6 @@
 import main from './js/mainController';
-import './sass/main.scss';
-import 'basiclightbox/dist/basicLightbox.min.css';
+import * as basicLightbox from 'basiclightbox';
 import './js/search';
+import 'basicLightbox/dist/basicLightbox.min.css';
+import './sass/main.scss';
+
