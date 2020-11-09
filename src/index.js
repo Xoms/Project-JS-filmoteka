@@ -1,5 +1,6 @@
-import debounce from 'lodash.debounce';
-
-import './css/styles.css';
-import 'basiclightbox/dist/basicLightbox.min.css';
+import main from './js/mainController';
+import * as basicLightbox from 'basiclightbox';
+import './js/search';
+import 'basicLightbox/dist/basicLightbox.min.css';
+import './sass/main.scss';
 

@@ -31,12 +31,10 @@ const options = {
     }
 
     getTrends() { 
-        return fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&page=${this._page}&language=ru`, options)
+        return fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&page=${this._page}&language=en`, options)
             .then( res => res.json() )
             .then(res => {
                 const imgArr = res.results.map( el => `${IMG_BASE_URL}w500${el.poster_path}`)
-                console.dir(res);
-                console.dir(imgArr);
                 return {movies: res, 'posters': imgArr}
             })
     }
@@ -73,7 +71,9 @@ const options = {
             })
     }
 }
- const api = new FilmotekaApi
+ const api = new FilmotekaApi;
+
  export default api
 
- 
+ //api.getMoviesByQuery(query);
+ //api.getTrends()
