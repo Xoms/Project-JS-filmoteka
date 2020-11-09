@@ -1,78 +1,78 @@
-export default [    
+export default [
     {
       "id": 28,
-      "name": "боевик"
+      "name": "Action"
     },
     {
       "id": 12,
-      "name": "приключения"
+      "name": "Adventure"
     },
     {
       "id": 16,
-      "name": "мультфильм"
+      "name": "Animation"
     },
     {
       "id": 35,
-      "name": "комедия"
+      "name": "Comedy"
     },
     {
       "id": 80,
-      "name": "криминал"
+      "name": "Crime"
     },
     {
       "id": 99,
-      "name": "документальный"
+      "name": "Documentary"
     },
     {
       "id": 18,
-      "name": "драма"
+      "name": "Drama"
     },
     {
       "id": 10751,
-      "name": "семейный"
+      "name": "Family"
     },
     {
       "id": 14,
-      "name": "фэнтези"
+      "name": "Fantasy"
     },
     {
       "id": 36,
-      "name": "история"
+      "name": "History"
     },
     {
       "id": 27,
-      "name": "ужасы"
+      "name": "Horror"
     },
     {
       "id": 10402,
-      "name": "музыка"
+      "name": "Music"
     },
     {
       "id": 9648,
-      "name": "детектив"
+      "name": "Mystery"
     },
     {
       "id": 10749,
-      "name": "мелодрама"
+      "name": "Romance"
     },
     {
       "id": 878,
-      "name": "фантастика"
+      "name": "Science Fiction"
     },
     {
       "id": 10770,
-      "name": "телевизионный фильм"
+      "name": "TV Movie"
     },
     {
       "id": 53,
-      "name": "триллер"
+      "name": "Thriller"
     },
     {
       "id": 10752,
-      "name": "военный"
+      "name": "War"
     },
     {
       "id": 37,
-      "name": "вестерн"
+      "name": "Western"
     }
-]
+  ]
