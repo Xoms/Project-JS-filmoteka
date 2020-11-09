@@ -1,5 +1,6 @@
 import debounce from 'lodash.debounce';
 import api from './api/apiService';
+import render from './main.js';
 import genres from './api/genresDb';
 
 class MainController {
@@ -33,10 +34,7 @@ class MainController {
     }
 
     onLoad = () => {
-       api.getTrends()
-        .then(res => {
-            render(res.posters)
-        })
+       render();
     }
 
     onResize = (e)=>{
@@ -59,10 +57,7 @@ class MainController {
         localStorage.setItem('state', JSON.stringify(this.state))
     }
 
-    render(){
-        
-        //тут темплейт мейна
-    }
+  
     
 }
 
