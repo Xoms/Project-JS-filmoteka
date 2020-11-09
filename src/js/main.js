@@ -3,7 +3,7 @@ import main from '../partials/main.hbs'
 import genres from './api/genresDb.js';
 import refs from './refs.js';
 
-
+function render(){
 
 api.getTrends()
 .then(({movies, posters}) => {
@@ -32,4 +32,5 @@ api.getTrends()
 })
 .then(res => refs.ul.insertAdjacentHTML('beforeend', main(res)));
 
-
+}
+export default render
