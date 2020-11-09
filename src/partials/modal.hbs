@@ -1,0 +1,22 @@
+
+<h1 class="modal__title">{{title}}</h1>
+<img src="{{}}" alt="" class="modal__img">
+<ul class="modal_movie">
+  <li class="movie__items">Vote / Votes 
+    <span>{{vote_average}} / {{vote_count}}</span>
+    </li>
+  <li class="movie__items">Popularity 
+    <span>{{popularity}}</span>
+    </li>
+  <li class="movie__items">Original Title 
+    <span>{{original_title}}</span>
+    </li>
+  <li class="movie__items">Genre
+    {{#each}} 
+    <span>{{genre_ids}}</span>
+    {{/each}} 
+    </li>
+</ul>
+<h2 class="modal__title">About
+  <p>{{overview}}</p>
+  </h2>
