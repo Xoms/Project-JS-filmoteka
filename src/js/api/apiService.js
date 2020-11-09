@@ -35,10 +35,8 @@ const options = {
             .then( res => res.json() )
             .then(res => {
                 const imgArr = res.results.map( el => `${IMG_BASE_URL}w500${el.poster_path}`)
-                console.dir(res);
-                console.dir(imgArr);
                 return {movies: res, 'posters': imgArr}
-            })
+            }).then(res => console.log(res))
     }
     //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         //получает ответ в виде объекта с ключом movies, и массива адресов картинок posters,
@@ -76,4 +74,5 @@ const options = {
  const api = new FilmotekaApi
  export default api
 
- 
+ /*api.getMoviesByQuery(query)
+ /*api.getTrends()*/
