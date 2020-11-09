@@ -1,7 +1,4 @@
 
-const userInputField = document.querySelector(".input-search");
-const errorMessage = document.querySelector(".error-message");
-
 let query;
 
 userInputField.addEventListener("change", ()=>{  
