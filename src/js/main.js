@@ -4,7 +4,6 @@ import genres from './api/genresDb.js';
 import refs from './refs.js';
 
 
-
 api.getTrends()
 .then(({movies, posters}) => {
   const res = movies.results.map((el, i) => {

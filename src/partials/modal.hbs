@@ -1,6 +1,6 @@
 
 <h1 class="modal__title">{{title}}</h1>
-<img src="{{}}" alt="" class="modal__img">
+<img src="{{poster}}" alt="" class="modal__img">
 <ul class="modal_movie">
   <li class="movie__items">Vote / Votes 
     <span>{{vote_average}} / {{vote_count}}</span>
@@ -12,9 +12,7 @@
     <span>{{original_title}}</span>
     </li>
   <li class="movie__items">Genre
-    {{#each}} 
     <span>{{genre_ids}}</span>
-    {{/each}} 
     </li>
 </ul>
 <h2 class="modal__title">About

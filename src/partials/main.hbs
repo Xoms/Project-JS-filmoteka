@@ -3,9 +3,15 @@
 <li>
 
   <img src="{{poster}}" width="280" height="400">
-
+<div class="data" 
+data-voteAverage ="voteAverage" 
+data-voteCount ="voteCount"
+data-overview="overview"
+data-popularity="popularity"
+data-originalTitle="originalTitle"
+>
+</div>
   <h2>{{title}}</h2>
-  <p>| {{releaseDate}}</p>
+  <p>{{genres}} | {{releaseDate}}</p>
 </li>
 {{/each}}
-
