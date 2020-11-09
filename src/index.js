@@ -1,4 +1,5 @@
 import debounce from 'lodash.debounce';
+import './js/main.js'
 
 import './sass/main.scss';
 
