@@ -1,8 +1,13 @@
 .overlay {
   // margin: ;
+  padding-top: 20px;
+  padding-bottom: 40px;
   background-color: var(--white-text-color);
   font-weight: 500;
   line-height: 1.33;
+}
+.basicLightbox {
+  overflow: scroll;
 }
 .modal__img {
   width: 280px;
@@ -84,5 +89,12 @@ color: var(--color-text-modal-window);
 }
 .genres{
   margin-left: 5px;
+}
+.overview {
+  margin-bottom: 40px;
+}
+.button_items {
+  display: flex;
+  align-items: center;
 }
 
