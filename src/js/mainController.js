@@ -20,7 +20,7 @@ class MainController {
         window.addEventListener('load', this.onLoad);
         window.addEventListener('beforeunload', this.onClose);
         refs.ul.addEventListener('click', this.onModalOpen)
-        
+        console.log(refs.ul);
         this.getWidth();
         api.getTrends();
         this.state = JSON.parse(localStorage.getItem('state'))

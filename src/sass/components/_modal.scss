@@ -1,10 +1,15 @@
 .overlay {
-  // margin: ;
   padding-top: 20px;
   padding-bottom: 40px;
   background-color: var(--white-text-color);
+  font-weight: var(--main-font-weight);
+  transform: translateY(50%);
+
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
-  line-height: 1.33;
+  font-size: 12px;
+  line-height: 20px;
+
 }
 .basicLightbox {
   overflow: scroll;
@@ -89,12 +94,24 @@ color: var(--color-text-modal-window);
 }
 .genres{
   margin-left: 5px;
+  color: var(--black-text-color);
+}
+.about__title {
+  margin-bottom: 10px;
 }
 .overview {
   margin-bottom: 40px;
 }
-.button_items {
+.button__items {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-
+.button__items .btn {
+    width: 136px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+}
