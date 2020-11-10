@@ -5,6 +5,7 @@ import genres from './api/genresDb';
 import refs from './refs.js'
 import modalCard from '../partials/modal.hbs';
 import * as basicLightbox from 'basiclightbox';
+import 'basicLightbox/dist/basicLightbox.min.css'
 
 class MainController {
     infiniteScroll = true;

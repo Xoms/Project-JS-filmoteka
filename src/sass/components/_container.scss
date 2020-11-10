@@ -1,8 +1,9 @@
 .container {
   padding-left: 20px;
   padding-right: 20px;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
+  // margin-right: auto;
+  // margin-left: auto;
   @include for-size(tablet) {
     padding-left: 75px;
     padding-right: 75px;

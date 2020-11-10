@@ -32,22 +32,26 @@
 <img src="{{poster}}" alt="" class="modal__img">
 <h1 class="modal__title">{{title}}</h1>
   <ul class="modal__list">
-    <li class="modal__item"><p class="modal__item_title">Vote / Votes</p> 
+    <li class="modal__item">
+      <span class="modal__item_title">Vote / Votes</span> 
       <span class="item__data vote_averege">{{voteAverage}}</span>
-     /  <span class="item__data vote_count">{{voteCount}}</span>
+     /  <p class="item__data vote_count">{{voteCount}}</p>
       </li>
     <li class="modal__item"><p class="modal__item_title">Popularity</p>
       <span class="item__data popularity">{{popularity}}</span>
       </li>
-    <li class="modal__item"><p class="modal__item_title">Original Title </p>  
+    <li class="modal__item">
+      <p class="modal__item_title">Original Title </p>  
       <span class="item__data original">{{originalTitle}}</span>
       </li>
     <li class="modal__item genres__item">
       <span class="modal__item_title">Genre</span>
-
-        {{#each genres}}
-         <p class="genres">{{this}}</p>
-        {{/each}}
+    <ul>
+    {{#each genres}}
+             <li class="genres">{{this}}</li>
+            {{/each}}
+    </ul>
+        
       
      
       </li>
