@@ -62,7 +62,7 @@ const options = {
         */
 
     getMoviesByQuery(query){
-        return fetch(`${BASE_URL}search/multi?language=ru&query=${query}&page=${this._page}`, options)
+        return fetch(`${BASE_URL}search/movie?language=ru&query=${query}&page=${this._page}`, options) //change multi to movie
             .then(res => res.json())
             .then(res => {
                 const imgArr = res.results.map( el => `${IMG_BASE_URL}w500${el.poster_path}`)
