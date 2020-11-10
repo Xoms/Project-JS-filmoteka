@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f7f7f7;
+    background-color: var(--background-footer-color);
     height: 100px;
   }
   
@@ -31,19 +31,22 @@
   }
   
   .copyright {
-    fill: #656565;
+    color: #656565;
   }
   .vector {
-    fill: #ff6b08;
+    color:var(--accent-color);
   }
   .vector:hover {
-    fill: #ff0000;
+    color:var--red-text-color);
   }
   
   .footer__link {
-    color: blue;
+    color: rgba(0, 0, 0, 0.8);
     text-decoration: underline;
   }
   
+  .footer__link:hover {
+    fill: blue;
+  }
 
   // var(--background-main-color)
