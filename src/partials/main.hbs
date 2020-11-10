@@ -1,8 +1,9 @@
 
 {{#each this}}
-<li>
+
+  <li class="movie-list-item">
 <a href="#" class="movie__link">
-  <img src="{{poster}}" width="280" height="400">
+  <img src="{{poster}}" class="movie__image">
 <div class="data" 
 data-title="{{title}}"
 data-voteAverage ="{{voteAverage}}" 
@@ -15,7 +16,9 @@ data-poster="{{poster}}"
 >
 </div>
   <h2>{{title}}</h2>
+  
   <p>{{genres}} | {{releaseDate}}</p>
   </a>
 </li>
+
 {{/each}}
