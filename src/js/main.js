@@ -26,7 +26,6 @@ api.getTrends()
       })
     })
     obj.dataGenres = JSON.stringify(obj.genres);
-    console.log(obj);
 
     return obj;
   }) 
