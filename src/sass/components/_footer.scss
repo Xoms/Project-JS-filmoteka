@@ -36,13 +36,8 @@
     fill: #ff6b08;
   }
   .vector:hover {
-    fill: #ff0000;
+    color: #ff0000;
   }
-
-  // .vector:hover,
-  // .vector:focus {
-  //   fill: #ff0000;
-  // }
 
   .footer__link {
     color: rgba(0, 0, 0, 0.8);
@@ -50,10 +45,5 @@
   }
 
   .footer__link:hover {
-    fill: blue;
+    color: blue;
   }
-
-  // .footer__link:hover,
-  // .footer__link:focus {
-  //   fill: blue;
-  // }
