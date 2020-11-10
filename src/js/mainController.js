@@ -37,15 +37,15 @@ class MainController {
     let item = e.target.parentNode.querySelector('.data');
     // console.dir(item);
     const objPossibilities = {
-      title: item.dataset.title,
-      voteAverage: item.dataset.voteaverage,
-      voteCount: item.dataset.votecount,
-      overview: item.dataset.overview,
-      popularity: item.dataset.popularity,
-      originalTitle: item.dataset.originaltitle,
-      genres: JSON.parse(item.dataset.genres),
-      poster: item.dataset.poster,
-    };
+        "title" : item.dataset.title,
+        "voteAverage": item.dataset.voteaverage,
+        "voteCount" : item.dataset.votecount,
+        "overview" : item.dataset.overview,
+        "popularity" : item.dataset.popularity,
+        "originalTitle": item.dataset.originaltitle,
+        "genres" : JSON.parse(item.dataset.genres),
+        "poster" : item.dataset.poster
+    }
 
     localStorage.setItem('currentFilm', JSON.stringify(objPossibilities));
     const itemCard = modalCard(objPossibilities);
