@@ -31,13 +31,13 @@
   }
   
   .copyright {
-    color: #656565;
+    fill: #656565;
   }
   .vector {
-    color:var(--accent-color);
+    fill: #ff6b08;
   }
   .vector:hover {
-    color:var--red-text-color);
+    fill: #ff0000;
   }
   
   .footer__link {
