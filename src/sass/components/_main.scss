@@ -1,0 +1,25 @@
+// .movies {
+// display: flex;
+// }
+.movie-list-item {
+  width: calc(100% /1);
+  margin-right: 0;
+  @include for-size(tablet) { // min-width: 768
+    width: calc(100% / 2);
+  }
+ @include for-size(desktop) { // min-width: 1200
+    width: calc(100% / 3);
+  }
+}
+.movie__image {
+  display: block;
+  margin: 0 auto;
+  width: 280px;
+  height: 400px;
+  @include for-size(tablet) { // min-width: 768
+    width: 294px;
+  }
+ @include for-size(desktop) { // min-width: 1200
+    width: 270px;
+  }
+}
