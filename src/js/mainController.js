@@ -3,7 +3,7 @@ import api from './api/apiService';
 import render from './main.js';
 import genres from './api/genresDb';
 import refs from './refs.js'
-import modalCard from '../partials/modal.hbs'
+import modalCard from '../partials/modal.hbs';
 import * as basicLightbox from 'basiclightbox';
 
 class MainController {
@@ -41,7 +41,7 @@ class MainController {
             "overview" : item.dataset.overview,
             "popularity" : item.dataset.popularity,
             "originalTitle": item.dataset.originaltitle,
-            "genres" : item.dataset.genres,
+            "genres" : JSON.parse(item.dataset.genres),
             "poster" : item.dataset.poster
         }
         const itemCard = modalCard(objPossibilities);

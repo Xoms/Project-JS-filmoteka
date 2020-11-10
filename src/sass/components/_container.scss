@@ -1,9 +1,15 @@
 .container {
-  width: 320px;
-  padding: 0 20px;
+  box-sizing: border-box;
+  width: 320px;  
+      padding-right: 20px;
+      padding-left: 20px;
+
+
+
   @include for-size(tablet) {
     width: 768px;
-    padding: 0 75px;
+        padding-left: 75px;
+        padding-right: 75px;
   }
   @include for-size(desktop) {
     width: 1024px;

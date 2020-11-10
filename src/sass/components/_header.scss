@@ -1,10 +1,10 @@
-
 .header {
-
-  background-image: linear-gradient(to right,
-    rgba(0, 0, 0, 0.56),
-    rgba(0, 0, 0, 0.56)),
-  url(../images/bcg-mobile.jpg);
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url(../images/bcg-mobile.jpg);
   min-height: 230px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -46,17 +46,18 @@
 
  .logo-txt {
    display: none;
+   margin-left: 12px;
    font-weight: 500;
    font-size: 30px;
    line-height: 35px;
    color: var(--white-text-color);
 
    @include for-size(tablet) {
-     display: block;
+     display: inline-block;
    }
 
   @include for-size(tablet) {
-    display: block;
+    display: inline-block;
   }
 
  }
@@ -143,4 +144,32 @@
 
  .hidden{
   display: none;
- }
+}
+.header-library {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url(../images/bg-lbr-mobile.png);
+  @include for-size(tablet) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/bg-lbr-tablet.png);
+  }
+  @include for-size(desktop) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/bg-lbr-desctop.png);
+  }
+}
+.header-bottom-library {
+  text-align: center;
+  margin-top: 46px;
+}
