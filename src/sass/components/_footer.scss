@@ -14,9 +14,9 @@
 
     @include for-size(tablet) { // min-width: 768
       height: 77px;
+      font-size: 16px;
     }
   }
-
 
   .footer__text {
     display: flex;
@@ -41,7 +41,7 @@
     fill: #ff6b08;
   }
   .vector:hover {
-    color: #ff0000;
+    fill: #ff0000;
   }
 
   .footer__link {
