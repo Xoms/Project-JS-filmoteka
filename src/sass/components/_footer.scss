@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
   }
-  
+
   .footer__container {
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@
     background-color: var(--background-footer-color);
     height: 100px;
   }
-  
+
   .footer__text {
     display: flex;
     align-items: center;
@@ -22,14 +22,13 @@
     font-size: 14px;
     color: rgba(0, 0, 0, 0.8);
     line-height: 1,14 ;
-  
-  
+
     svg {
       width: 14px;
       height: 14px;
     }
   }
-  
+
   .copyright {
     fill: #656565;
   }
@@ -39,14 +38,13 @@
   .vector:hover {
     fill: #ff0000;
   }
-  
+
   .footer__link {
     color: rgba(0, 0, 0, 0.8);
     text-decoration: underline;
   }
-  
+
   .footer__link:hover {
     fill: blue;
   }
 
-  // var(--background-main-color)
