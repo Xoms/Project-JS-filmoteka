@@ -1,23 +1,15 @@
-
 {{#each this}}
 
-  <li class="movie-list-item">
-<a href="#" class="movie__link">
-  <img src="{{poster}}" class="movie__image">
-<div class="data" 
-data-title="{{title}}"
-data-voteAverage ="{{voteAverage}}" 
-data-voteCount ="{{voteCount}}"
-data-overview="{{overview}}"
-data-popularity="{{popularity}}"
-data-originalTitle="{{originalTitle}}"
-data-genres="{{genres}}"
-data-poster="{{poster}}"
->
-</div>
-  <h2>{{title}}</h2>
-  
-  <p>{{genres}} | {{releaseDate}}</p>
+<li class="movie-list-item">
+  <a href="#" class="movie__link">
+    <img src="{{poster}}" class="movie__image">
+    <div class="data" data-title="{{title}}" data-voteAverage="{{voteAverage}}" data-voteCount="{{voteCount}}"
+      data-overview="{{overview}}" data-popularity="{{popularity}}" data-originalTitle="{{originalTitle}}"
+      data-genres="{{genres}}" data-poster="{{poster}}">
+    </div>
+    <h2>{{title}}</h2>
+
+    <p>{{genres}} | {{releaseDate}}</p>
   </a>
 </li>
 
