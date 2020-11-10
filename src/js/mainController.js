@@ -7,6 +7,7 @@ import modalCard from '../partials/modal.hbs';
 import * as basicLightbox from 'basiclightbox';
 import toWatchedObj from './buttonWatched';
 import addToQueue from './buttonAddToQueue';
+import 'basicLightbox/dist/basicLightbox.min.css'
 
 class MainController {
   infiniteScroll = true;
