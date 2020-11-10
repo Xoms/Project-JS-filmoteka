@@ -2,7 +2,6 @@ import api from './api/apiService.js';
 import main from './main.js';
 import refs from './refs.js';
 import buttonLibrary from '../partials/header.hbs';
-const btn = document.querySelector('.queue-btn')
 
 
 const goToLibrary = function (e) {
@@ -13,11 +12,26 @@ const goToLibrary = function (e) {
   refs.libraryBtn.classList.add('is-active-btn');
   refs.headerContainer.insertAdjacentHTML('beforeend', buttonLibrary());
   refs.mainSection.textContent = '';
-  // const filmArr = JSON.parse(localStorage.getItem('toWatch'));
-
+  
+  const btnQueue = document.querySelector('.queue');
+  const btnWatched = document.querySelector('.watched');
+  console.log(btnQueue);
+  
+  const showWathed = function () {
+    const arrwatched = JSON.parse(localStorage.getItem('watchedList'));
+    btnWatched.classList.add('is-active');
+    btnQueue.classList.remove('is-active');
+  }
+  
+  const showQueue = function () {
+    const arrQueue = JSON.parse(localStorage.getItem('addToQueue')); 
+    btnQueue.classList.add('is-active');
+    btnWatched.classList.remove('is-active');
+  }
+  
+  btnQueue.addEventListener('click', showQueue);
+  btnWatched.addEventListener('click', showWathed);
 }
-// console.log(JSON.parse(localStorage.getItem('toWatch')));
-// console.log(api.getTrends());
-console.log(refs.mainSection);
-refs.libraryBtn.addEventListener('click', goToLibrary)
-// btn, orange, white
+
+refs.libraryBtn.addEventListener('click', goToLibrary);
+

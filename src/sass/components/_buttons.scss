@@ -1,40 +1,42 @@
 .btn {
-    width: 130px;
-    border-color: var(--white-text-color);
-    color: var(--white-text-color);
-    font-family: inherit;
-    height: 44px;
-    border: 1px solid var(--white-text-color);
-    border-radius: 5px;
-    text-transform: uppercase;
-    background-color: transparent;
-    transition: 0.3s;
-    outline: none;
-   }
-
-   .btn:not(:last-child) { 
-    margin-right: 19px;
-} 
-
-@media only screen and (min-width: 768px){
-   .btn {
-        width: 136px;
-    }
-    .btn:not(:last-child) { 
-        margin-right: 15px;
-    } 
-}
-   .btn:hover,
-   .btn:focus{
-    
-     background-color: var(--accent-color);
-    border-color: var(--accent-color);
-    color: white;
-   }
-   
-.btn-dark{
-    border-color: var(--black-text-color);
-    color: var(--black-text-color);
+  width: 130px;
+  border-color: var(--white-text-color);
+  color: var(--white-text-color);
+  font-family: inherit;
+  height: 44px;
+  border: 1px solid var(--white-text-color);
+  border-radius: 5px;
+  text-transform: uppercase;
+  background-color: transparent;
+  transition: 0.3s;
+  outline: none;
 }
 
+.btn:not(:last-child) {
+  margin-right: 19px;
+}
+
+@media only screen and (min-width: 768px) {
+  .btn {
+    width: 136px;
+  }
+  .btn:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+.btn:hover,
+.btn:focus {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: white;
+}
+
+.btn-dark {
+  border-color: var(--black-text-color);
+  color: var(--black-text-color);
+}
+
+.is-active {
+  background-color: var(--accent-color);
+}
 //На все кнопки достаточно добавить класс .btn, для кнопок в модалке добавить .btn и .btn-dark
