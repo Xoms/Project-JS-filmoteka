@@ -1,15 +1,26 @@
 .overlay {
-  // margin: ;
   padding-top: 20px;
   padding-bottom: 40px;
   background-color: var(--white-text-color);
+  font-weight: var(--main-font-weight);
+  transform: translateY(50%);
+
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
-  line-height: 1.33;
+  font-size: 12px;
+  line-height: 20px;
+
+  @include for-size (tablet) {
+    display: flex;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 }
 .basicLightbox {
   overflow: scroll;
 }
 .modal__img {
+  display: block;
   width: 280px;
   margin-bottom: 30px;
   border-radius: 5px;
@@ -54,6 +65,9 @@ color: var(--color-text-modal-window);
 .item__data {
   color: var(--black-text-color);
 }
+.modal__item_original {
+  display: flex;
+}
 .vote_averege,
 .vote_count,
 .popularity {
@@ -83,18 +97,43 @@ color: var(--color-text-modal-window);
 .about__title {
   text-transform: uppercase;
 }
+.original_text {
+  margin-right: 55px;
+  @include for-size (tablet) {
+    margin-right: 49px;
+  }
+}
 .genres__item {
   display: flex;
   flex-wrap: wrap;
 }
 .genres{
   margin-left: 5px;
+  color: var(--black-text-color);
+}
+.about__title {
+  margin-bottom: 10px;
 }
 .overview {
   margin-bottom: 40px;
+  font-weight: 600;
 }
 .button_items {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-
+.button_items .btn {
+    width: 136px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.33;
+}
+.modal__text {
+  @include for-size (tablet) {
+    margin-left: 30px;
+    width: 294px;
+  }
+}
