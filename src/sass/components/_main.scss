@@ -1,9 +1,7 @@
-.movies {
-display: flex;
-}
+// .movies {
+// display: flex;
+// }
 .movie-list-item {
-  // display: block;
-  // flex-wrap: wrap;
   width: calc(100% /1);
   margin-right: 0;
   @include for-size(tablet) { // min-width: 768
