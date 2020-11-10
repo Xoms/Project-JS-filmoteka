@@ -11,7 +11,12 @@
     align-items: center;
     background-color: var(--background-footer-color);
     height: 100px;
+
+    @include for-size(tablet) { // min-width: 768
+      height: 77px;
+    }
   }
+
 
   .footer__text {
     display: flex;
