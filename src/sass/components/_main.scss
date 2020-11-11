@@ -7,6 +7,7 @@ margin-right: -15px;
 margin-left: -15px;
 margin-top: 20;
 @include for-size(tablet) { 
+  // display: flex;
   margin-top: 60;
 }
 }
