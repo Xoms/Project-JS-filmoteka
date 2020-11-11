@@ -8,6 +8,7 @@ import * as basicLightbox from 'basiclightbox';
 import toWatchedObj from './buttonWatched';
 import addToQueue from './buttonAddToQueue';
 import 'basicLightbox/dist/basicLightbox.min.css'
+import paginationControl from './components/pagination.js';
 
 class MainController {
 
@@ -24,7 +25,7 @@ class MainController {
 
   onModalOpen = e => {
     e.preventDefault();
-    
+    console.log("onModalOpen");
     console.log(e.target.parentNode);
     if (e.target.parentNode.nodeName !== 'A') {
       return;
@@ -40,8 +41,8 @@ class MainController {
         "popularity" : item.dataset.popularity,
         "originalTitle": item.dataset.originaltitle,
         "genres" : JSON.parse(item.dataset.genres),
-        "poster" : item.dataset.poster
-    }
+        "poster" : item.dataset.poster,
+    };
 
     localStorage.setItem('currentFilm', JSON.stringify(objPossibilities));
     const itemCard = modalCard(objPossibilities);
@@ -60,9 +61,9 @@ class MainController {
   }
 
   onLoad = () => {
+    paginationControl.renderPagination();
     render(3);
   };
-
 
   onClose() {
     this.state.toWatch = this.toWatch;

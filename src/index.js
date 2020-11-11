@@ -6,7 +6,4 @@ import * as basicLightbox from 'basiclightbox';
 import 'basicLightbox/dist/basicLightbox.min.css';
 import './js/search';
 import './js/footer';
-import 'basicLightbox/dist/basicLightbox.min.css';
-import 'basicLightbox/dist/basicLightbox.min.css';
 import './sass/main.scss';
-

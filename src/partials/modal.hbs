@@ -1,37 +1,74 @@
-<div class="overlay container">
+<div class="overlay">
+<header class="header__modal">
+      <div class="container">
+        <div class="header-top">
+          <a href="./index.html" class="logo coin">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.82 2H4.18C2.97602 2 2 2.97602 2 4.18V19.82C2 21.024 2.97602 22 4.18 22H19.82C21.024 22 22 21.024 22 19.82V4.18C22 2.97602 21.024 2 19.82 2Z" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7 2V22" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 2V22" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2 12H22" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2 7H7" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2 17H7" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 17H22" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 7H22" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+            <span class="logo-txt">Filmoteka</span>
+          </a>
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a href="./index.html" class="nav-btn is-active-btn go-home">
+                  HOME
+                </a>              
+              </li>
+              <li class="nav-item">
+                <a href="./index.html" class="nav-btn go-lab">
+                  MY LIBRARY
+                </a>              
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
 
- <img src="{{poster}}" alt="" class="modal__img">
+<div class="movie_card container">
+  <img src="{{poster}}" alt="" class="modal__img">
 
- <div class="modal__text">
+  <div class="modal__text">
     <h1 class="modal__title">{{title}}</h1>
     <ul class="modal__list">
-      <li class="modal__item"><p class="modal__item_title">Vote / Votes</p> 
+      <li class="modal__item">
+        <p class="modal__item_title">Vote / Votes</p>
         <span class="item__data vote_averege">{{voteAverage}}</span>
-      /  <span class="item__data vote_count">{{voteCount}}</span>
-        </li>
-      <li class="modal__item"><p class="modal__item_title">Popularity</p>
+        / <span class="item__data vote_count">{{voteCount}}</span>
+      </li>
+      <li class="modal__item">
+        <p class="modal__item_title">Popularity</p>
         <span class="item__data popularity">{{popularity}}</span>
-        </li>
+      </li>
       <li class="modal__item modal__item_original">
         <p class="modal__item_title original_text">Original Title </p>
-          
+
         <span class="item__data original">{{originalTitle}}</span>
-        </li>
+      </li>
       <li class="modal__item genres__item">
         <span class="modal__item_title">Genre</span>
-<ul>
-    {{#each genres}}
-             <li class="genres">{{this}}</li>
-            {{/each}}
+        <ul class="genres_list" >
+          {{#each genres}}
+          <li class="genres">{{this}}</li>
+          {{/each}}
+        </ul>
+      </li>
     </ul>
-        </li>
-      </ul>
     <h2 class="about__title">About</h2>
-      <p class="overview">{{overview}}</p>
+    <p class="overview">{{overview}}</p>
 
-<div class="button_items">
-  <button class="btn btn-dark" id="watched">add to Watched</button>
-  <button class="btn btn-dark" id="queue">add to queue</button>
+    <div class="button_items">
+      <button class="btn btn-dark" id="watched">add to Watched</button>
+      <button class="btn btn-dark" id="queue">add to queue</button>
+    </div>
   </div>
- </div>
+</div>
 </div>
