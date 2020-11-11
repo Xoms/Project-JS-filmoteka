@@ -2,7 +2,7 @@
   padding-bottom: 40px;
   background-color: var(--white-text-color);
   font-weight: var(--main-font-weight);
-  // transform: translateY(14%);
+  transform: translateY(14%);
 
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -20,6 +20,7 @@
   // }
 }
 .movie_card {
+  padding-top: 20px;
   @include for-size (tablet) {
     display: flex;
     padding-top: 60px;
@@ -30,7 +31,7 @@
   overflow: scroll;
 }
 .header__modal {
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
    background-image:
     linear-gradient(
        to right,
@@ -56,6 +57,9 @@
        }
  
   }
+  // .modal-svg {
+  //   z-index: 10;
+  // }
 .modal__img {
   display: block;
   width: 100%;
@@ -96,7 +100,7 @@ color: var(--color-text-modal-window);
 }
 .modal__item_title {
   display: inline-block;
-  width: 90px;
+  width: 100px;
   margin-right: 40px;
 }
 .item__data {
@@ -134,10 +138,12 @@ color: var(--color-text-modal-window);
 .about__title {
   text-transform: uppercase;
 }
+.original {
+  display: block;
+}
 .original_text {
-  margin-right: 55px;
   @include for-size (tablet) {
-    margin-right: 49px;
+    // margin-right: 49px;
   }
 }
 .genres_list {
