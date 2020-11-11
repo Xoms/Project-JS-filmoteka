@@ -44,7 +44,7 @@ refs.userSearchForm.addEventListener("submit", e => {
           })
         })
         // sort by popularity descending
-        return allMoviesList.sort((m1, m2) => (m1.popularity < m2.popularity) ? 1 : -1);
+        return allMoviesList.sort((m1, m2) => (m1.voteAverage < m2.voteAverage) ? 1 : -1);
       })
       .then(moviesList => {
         if (moviesList.length > 0) {
@@ -54,6 +54,7 @@ refs.userSearchForm.addEventListener("submit", e => {
         }
       });
   } else {
+    refs.onNoResult.classList.add("hidden")
     refs.onInvalidSearch.classList.remove("hidden")
   }
 })
