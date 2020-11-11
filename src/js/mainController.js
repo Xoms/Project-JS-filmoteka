@@ -15,6 +15,7 @@ class MainController {
   state = {};
   toWatch = [];
   watched = [];
+
   constructor() {
     window.addEventListener('load', this.onLoad);
     window.addEventListener('beforeunload', this.onClose);
@@ -62,7 +63,8 @@ class MainController {
 
   onLoad = () => {
     paginationControl.renderPagination();
-    render(3);
+    api.ckeckPerPage(1);
+    render(1);
   };
 
   onClose() {
