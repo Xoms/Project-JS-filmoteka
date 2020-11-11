@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Project Filmoteka</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
   </head>
 
   <body>
@@ -43,13 +45,21 @@
             </svg>
           </span>
           </form>
-          <p class = "error-message hidden">Search result is not successful. Enter the correct movie name. Use only letters or numbers.</p>     
+          <p class = "error-message hidden" id = "invalid-search">Search result is not successful. Enter the correct movie name. Use only letters or numbers.</p>   
+          <p class = "error-message hidden" id = "no-result">Nothing was found. Try a different search term.</p>    
         </div>
       </div>
     </header>
     <main>
        <ul class="container movies">
        </ul>
+
+      <div class="pagination-container container">
+        <ul class="pagination">
+        </ul>
+      </div>
+       
+      
     </main>
 
     <footer>     
