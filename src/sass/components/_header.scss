@@ -36,10 +36,26 @@
    display: flex;
    text-decoration: none;
    align-items: center;
+   svg {
+   transition-property: background-color,
+   transform;
+   transition-duration: 500ms;
+   transition-timing-function: ease-in-out;
+  
+
+   /*  Задаём задержку перехода в пол секунды  */
+  //  transition-delay: 150ms;
+   }
+  
  }
 
  .logo:hover {
    text-decoration: none;
+   svg {
+transform: rotate(180deg);
+   }
+   
+   
  }
 
  .logo-img {

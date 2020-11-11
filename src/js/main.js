@@ -11,7 +11,7 @@ api.getTrends(viewPage)
   const res = movies.results.map((el, i) => {
     let obj = {};
     obj.title = el.title;
-    obj.releaseDate = el.release_date;
+    obj.releaseDate = Number.parseInt(el.release_date);
     obj.popularity = el.popularity;
     obj.voteAverage = el.vote_average;
     obj.voteCount = el.vote_count;
@@ -26,14 +26,13 @@ api.getTrends(viewPage)
         }
       })
     })
-     obj.genres = JSON.stringify(obj.genres);
+    obj.dataGenres = JSON.stringify(obj.genres);
 
-    // console.log(obj);  
     return obj;
   }) 
   return res;
 })
 .then(res => refs.ul.insertAdjacentHTML('beforeend', main(res)));
-
 }
+
 export default render
