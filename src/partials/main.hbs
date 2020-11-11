@@ -2,27 +2,26 @@
 
 <li class="movie-list-item">
 
-<a href="#" class="movie__link">
+  <a href="#" class="movie__link">
     <img src="{{poster}}" class="movie__image">
-  
-  <div class="data" 
-  data-title="{{title}}"
-  data-voteAverage ="{{voteAverage}}" 
-  data-voteCount ="{{voteCount}}"
-  data-overview="{{overview}}"
-  data-popularity="{{popularity}}"
-  data-originalTitle="{{originalTitle}}"
-  data-genres="{{dataGenres}}"
-  data-poster="{{poster}}"
-  >
-</div>
-  <h2 class="movie-description dark">{{title}}</h2>
 
-  {{#each genres}}          
-  <p class="movie-description light after">{{this}}</p>         
-  {{/each}}
-  <p class="movie-description light"> | {{releaseDate}}</p>
-  <p class="movie-description vote_averege">{{voteAverage}}</p>
+    <div class="data" data-title="{{title}}" data-voteAverage="{{voteAverage}}" data-voteCount="{{voteCount}}"
+      data-overview="{{overview}}" data-popularity="{{popularity}}" data-originalTitle="{{originalTitle}}"
+      data-genres="{{dataGenres}}" data-poster="{{poster}}">
+    </div>
+    <h2 class="movie-description dark">{{title}}</h2>
+
+    {{!-- <div class="data" data-title="{{title}}" data-voteAverage="{{voteAverage}}" data-voteCount="{{voteCount}}"
+      data-overview="{{overview}}" data-popularity="{{popularity}}" data-originalTitle="{{originalTitle}}"
+      data-genres="{{dataGenres}}" data-poster="{{poster}}">
+    </div>
+    <h2 class="movie-description dark">{{title}}</h2> --}}
+
+    {{#each genres}}
+    <p class="movie-description light after">{{this}}</p>
+    {{/each}}
+    <p class="movie-description light"> | {{releaseDate}}</p>
+    <p class="movie-description vote_averege">{{voteAverage}}</p>
 
   </a>
 </li>
