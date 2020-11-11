@@ -39,6 +39,7 @@ refs.userSearchForm.addEventListener("submit", e => {
               let genreName = genreSets ? genreSets.name : "";
               obj.genres.push(genreName);
             })
+            obj.dataGenres = JSON.stringify(obj.genres);
 
             allMoviesList.push(obj);
           })
