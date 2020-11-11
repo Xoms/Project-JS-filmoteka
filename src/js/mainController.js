@@ -21,7 +21,7 @@ class MainController {
 
     this.state = JSON.parse(localStorage.getItem('state'));
   }
-  
+
   onModalOpen = e => {
     e.preventDefault();
     
@@ -60,7 +60,7 @@ class MainController {
   }
 
   onLoad = () => {
-    render();
+    render(3);
   };
 
 
