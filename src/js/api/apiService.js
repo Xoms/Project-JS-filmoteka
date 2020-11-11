@@ -49,27 +49,32 @@ const options = {
 
     ckeckPerPage(viewPage){ //viewPage - страница пагинации
 
-        let startDiap = this._page * 20 - 20; //начало элементов ответа
-        let endDiap = this._page * 20; //конец элементов ответа
+        let startDiap = this._page * 20 - 20; //начало элементов текущего ответа
+        let endDiap = this._page * 20; //конец текущего элементов ответа
 
-        let factStart = viewPage * this.perPage - this.perPage; //Фактически отображаеме старт
+        let factStart = viewPage * this.perPage - this.perPage; //Фактически отображаемые старт
         let factEnd = viewPage * this.perPage; //последний из фактически отображаемых фильмов
-    
+        console.log("factStart =", factStart )
         console.log("factEnd = ", factEnd)
         console.log('viewPage = ', viewPage);
 
         //ниже рассчет нужной страницы запроса - если наших фильмов больше, чем в текущем запросе - 
         //то сделать еще запрос, чтоб достал страницу с нужными фильмами О_о 
-        let neededPage = 1;
+        let neededPageStart = 1;
+        let neededPageEnd = 1;
         if (factStart < startDiap) {
-            neededPage = Math.ceil(factStart / 20);
+            neededPageStart = Math.ceil(factStart / 20);
         } else if (factEnd >= endDiap) {
-            neededPage = Math.ceil(factEnd / 20);
+            neededPageEnd = Math.ceil(factEnd / 20);
         }
         
         
-        console.log('Needed_page: ', neededPage);
-        return (neededPage === this._page) 
+        //console.log('Needed_page: ', neededPage);
+        if (neededPageStart === neededPageEnd) {
+            //1 запрос
+        } else {
+            //2 запроса
+        }
             //true все ок, нужные фильмы есть в запросе
             //false тогда надо сделать еще 1 запрос т.к. нужные фильмы не вместились 
     }
