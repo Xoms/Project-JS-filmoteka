@@ -3,6 +3,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    min-width: 320px;
   }
 
   .footer__container {
@@ -14,11 +15,12 @@
 
     @include for-size(tablet) { // min-width: 768
       height: 77px;
-    }
+      }
   }
 
+
   .footer__text {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
     margin: 0;
@@ -29,6 +31,7 @@
 
     @include for-size(tablet) { // min-width: 768
       font-size: 16px;
+      display: flex;
     }
 
     svg {
