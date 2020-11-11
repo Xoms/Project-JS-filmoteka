@@ -2,6 +2,10 @@ body {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
+  padding-bottom: 100px; 
+  @include for-size(tablet){
+    padding-bottom: 77px;
+  }
 }
 a {
   text-decoration: none;

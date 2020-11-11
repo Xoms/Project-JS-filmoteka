@@ -83,6 +83,8 @@ const options = {
         let res = await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&page=${this._page}&language=en`, options)
             .then( res => res.json() )
             .then(res => {
+                console.log(Math.ceil(res.total_results / this.perPage));
+                localStorage.setItem('pagesToView', Math.ceil(res.total_results / this.perPage))
                 // if (ckeckPerPage(viewPage))
                 const imgArr = res.results.map( (el, i) => 
                     (el.poster_path) ? 
