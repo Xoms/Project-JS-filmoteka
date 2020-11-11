@@ -13,7 +13,8 @@ refs.userSearchForm.addEventListener("submit", e => {
 
   const validInputRegex = /^[a-zA-Z0-9а-яА-Я\s]+$/;
   if (userInput.match(validInputRegex)) {
-    refs.errorMessage.classList.add("hidden")
+    refs.onInvalidSearch.classList.add("hidden")
+    refs.onNoResult.classList.add("hidden")
     console.log(userInput);
     query = userInput; 
     
@@ -51,7 +52,7 @@ refs.userSearchForm.addEventListener("submit", e => {
         if (moviesList.length > 0) {
           renderCards(moviesList)
         } else { 
-          console.log("Niema takiego kina");
+          refs.onNoResult.classList.remove("hidden")
         }
       });
   } else {
