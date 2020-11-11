@@ -5,8 +5,6 @@ import api from '../api/apiService.js';
 class PaginationController {
     pagesToView = localStorage.getItem('pagesToView');
     perPage = localStorage.getItem('perPage');
-
-    
     width = window.screen.width;
     
     constructor() {
@@ -40,13 +38,14 @@ class PaginationController {
                 let currentActive = refs.pagination.querySelector(".active");
                 currentActive.classList.remove('active');
                 current.parentNode.classList.add('active');
-                api.ckeckPerPage()
+                
                 break;
         }
     }
 
-    renderDefault(){ //Страницы из дефолта
-
+    renderDefault(vPage){ //Страницы из дефолта
+        api.ckeckPerPage(vPage);
+        
     }
 
     renderSearch(){ //Страницы из поиска
