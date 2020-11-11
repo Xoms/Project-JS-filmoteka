@@ -10,7 +10,7 @@ const goToLibrary = function (e) {
   refs.headerLibrary.classList.add('header-library');
   refs.homeBtn.classList.remove('is-active-btn');
   refs.libraryBtn.classList.add('is-active-btn');
-  refs.headerContainer.insertAdjacentHTML('beforeend', buttonLibrary());
+  document.querySelector('.queue') ? '' : refs.headerContainer.insertAdjacentHTML('beforeend', buttonLibrary());
   refs.mainSection.textContent = '';
   
   const btnQueue = document.querySelector('.queue');
