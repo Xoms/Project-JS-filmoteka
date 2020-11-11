@@ -51,10 +51,10 @@ refs.userSearchForm.addEventListener("submit", e => {
         if (moviesList.length > 0) {
           renderCards(moviesList)
         } else { 
-          console.log("Niema takiego kina");
+          refs.onNoResult.classList.remove("hidden")
         }
       });
   } else {
-    refs.errorMessage.classList.remove("hidden")
+    refs.onInvalidSearch.classList.remove("hidden")
   }
 })
