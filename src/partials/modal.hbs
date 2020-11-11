@@ -1,62 +1,37 @@
-{{!-- <div class="overlay container">
-
-<img src="{{poster}}" alt="" class="modal__img">
-<h1 class="modal__title">{{title}}</h1>
-  <div class="modal_list">
-   <div class="test">
-      <span class="modal__item">Vote / Votes 
-      </span>
-    <span class="modal__item">Popularity 
-      </span>
-    <span class="modal__item">Original Title   
-           </span>
-    <span class="modal__item">Genre
-      </span>
-   </div>
-      <div class="modal__data">
-       <span class="item__data vote_averege">{{voteAverage}}</span>
-     /  <span class="item__data vote_count">{{voteCount}}</span>
-       <span class="item__data popularity">{{popularity}}</span>
-        <span class="item__data original">{{originalTitle}}</span>
-        
-         <span class="item__data">{{genres}}</span>
-         </div>
-  </div>
-<h2 class="about__title">About</h2>
-  <p class="overview">{{overview}}</p>
-  
-</div> --}}
-
 <div class="overlay container">
 
-<img src="{{poster}}" alt="" class="modal__img">
-<h1 class="modal__title">{{title}}</h1>
-  <ul class="modal__list">
-    <li class="modal__item"><p class="modal__item_title">Vote / Votes</p> 
-      <span class="item__data vote_averege">{{voteAverage}}</span>
-     /  <span class="item__data vote_count">{{voteCount}}</span>
-      </li>
-    <li class="modal__item"><p class="modal__item_title">Popularity</p>
-      <span class="item__data popularity">{{popularity}}</span>
-      </li>
-    <li class="modal__item"><p class="modal__item_title">Original Title </p>  
-      <span class="item__data original">{{originalTitle}}</span>
-      </li>
-    <li class="modal__item genres__item">
-      <span class="modal__item_title">Genre</span>
+ <img src="{{poster}}" alt="" class="modal__img">
 
-        {{#each genres}}
-         <p class="genres">{{this}}</p>
-        {{/each}}
-      
-     
-      </li>
-  </ul>
-<h2 class="about__title">About</h2>
-  <p class="overview">{{overview}}</p>
+ <div class="modal__text">
+    <h1 class="modal__title">{{title}}</h1>
+    <ul class="modal__list">
+      <li class="modal__item"><p class="modal__item_title">Vote / Votes</p> 
+        <span class="item__data vote_averege">{{voteAverage}}</span>
+      /  <span class="item__data vote_count">{{voteCount}}</span>
+        </li>
+      <li class="modal__item"><p class="modal__item_title">Popularity</p>
+        <span class="item__data popularity">{{popularity}}</span>
+        </li>
+      <li class="modal__item modal__item_original">
+        <p class="modal__item_title original_text">Original Title </p>
+          
+        <span class="item__data original">{{originalTitle}}</span>
+        </li>
+      <li class="modal__item genres__item">
+        <span class="modal__item_title">Genre</span>
+<ul>
+    {{#each genres}}
+             <li class="genres">{{this}}</li>
+            {{/each}}
+    </ul>
+        </li>
+      </ul>
+    <h2 class="about__title">About</h2>
+      <p class="overview">{{overview}}</p>
 
 <div class="button_items">
-  <button class="btn btn-dark">add to Watched</button>
-  <button class="btn btn-dark">add to queue</button>
+  <button class="btn btn-dark" id="watched">add to Watched</button>
+  <button class="btn btn-dark" id="queue">add to queue</button>
   </div>
+ </div>
 </div>
