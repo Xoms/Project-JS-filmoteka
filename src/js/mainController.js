@@ -10,23 +10,18 @@ import addToQueue from './buttonAddToQueue';
 import 'basicLightbox/dist/basicLightbox.min.css'
 
 class MainController {
-  infiniteScroll = true;
-  perPage = 5;
-  wth = 320;
 
   state = {};
   toWatch = [];
   watched = [];
   constructor() {
-    window.addEventListener('resize', debounce(this.onResize, 500));
     window.addEventListener('load', this.onLoad);
     window.addEventListener('beforeunload', this.onClose);
     refs.ul.addEventListener('click', this.onModalOpen);
 
-    this.getWidth();
-    api.getTrends();
     this.state = JSON.parse(localStorage.getItem('state'));
   }
+  
   onModalOpen = e => {
     e.preventDefault();
     
@@ -63,27 +58,11 @@ class MainController {
   getState() {
     this.state = JSON.parse(localStorage.getItem('state'));
   }
-  getWidth() {
-    // this.wth = document.screen.width;
-  }
 
   onLoad = () => {
     render();
   };
 
-  onResize = e => {
-    this.wth = window.screen.width;
-    if (this.wth < 768) {
-      this.perPage = 5;
-      this.infiniteScroll = true;
-    } else if (this.wth < 1024 && wth > 768) {
-      this.perPage = 8;
-      this.infiniteScroll = false;
-    } else if (this.wth >= 1024) {
-      this.perPage = 9;
-      this.infiniteScroll = false;
-    }
-  };
 
   onClose() {
     this.state.toWatch = this.toWatch;
