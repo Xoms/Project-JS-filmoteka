@@ -1,5 +1,5 @@
 import api from './api/apiService.js';
-import main from './main.js';
+import main from '../partials/main.hbs';
 import refs from './refs.js';
 import buttonLibrary from '../partials/header.hbs';
 
@@ -15,18 +15,21 @@ const goToLibrary = function (e) {
   
   const btnQueue = document.querySelector('.queue');
   const btnWatched = document.querySelector('.watched');
-  console.log(btnQueue);
+  
   
   const showWathed = function () {
-    const arrwatched = JSON.parse(localStorage.getItem('watchedList'));
+    const arrWatched = JSON.parse(localStorage.getItem('watchedList'));
     btnWatched.classList.add('is-active');
     btnQueue.classList.remove('is-active');
+    refs.mainSection.innerHTML = main(arrWatched);
+    
   }
   
   const showQueue = function () {
     const arrQueue = JSON.parse(localStorage.getItem('addToQueue')); 
     btnQueue.classList.add('is-active');
     btnWatched.classList.remove('is-active');
+    refs.mainSection.innerHTML = main(arrQueue);
   }
   
   btnQueue.addEventListener('click', showQueue);

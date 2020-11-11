@@ -7,6 +7,6 @@ export default {
   libraryBtn: document.querySelector('.go-lab'),
   homeBtn: document.querySelector('.go-home'),
   headerContainer: document.querySelector('.container'),
-  mainSection: document.querySelector('main'),
+  mainSection: document.querySelector('.movies'),
   
 }
