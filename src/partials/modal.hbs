@@ -1,0 +1,37 @@
+<div class="overlay container">
+
+ <img src="{{poster}}" alt="" class="modal__img">
+
+ <div class="modal__text">
+    <h1 class="modal__title">{{title}}</h1>
+    <ul class="modal__list">
+      <li class="modal__item"><p class="modal__item_title">Vote / Votes</p> 
+        <span class="item__data vote_averege">{{voteAverage}}</span>
+      /  <span class="item__data vote_count">{{voteCount}}</span>
+        </li>
+      <li class="modal__item"><p class="modal__item_title">Popularity</p>
+        <span class="item__data popularity">{{popularity}}</span>
+        </li>
+      <li class="modal__item modal__item_original">
+        <p class="modal__item_title original_text">Original Title </p>
+          
+        <span class="item__data original">{{originalTitle}}</span>
+        </li>
+      <li class="modal__item genres__item">
+        <span class="modal__item_title">Genre</span>
+<ul>
+    {{#each genres}}
+             <li class="genres">{{this}}</li>
+            {{/each}}
+    </ul>
+        </li>
+      </ul>
+    <h2 class="about__title">About</h2>
+      <p class="overview">{{overview}}</p>
+
+<div class="button_items">
+  <button class="btn btn-dark" id="watched">add to Watched</button>
+  <button class="btn btn-dark" id="queue">add to queue</button>
+  </div>
+ </div>
+</div>

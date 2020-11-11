@@ -1,0 +1,139 @@
+.overlay {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  background-color: var(--white-text-color);
+  font-weight: var(--main-font-weight);
+  transform: translateY(50%);
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+
+  @include for-size (tablet) {
+    display: flex;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+.basicLightbox {
+  overflow: scroll;
+}
+.modal__img {
+  display: block;
+  width: 280px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+
+  @include for-size (tablet) {
+    width: 294px;
+    margin-bottom: 38px;
+  }
+  @include for-size (desktop) {
+    width: 426px;
+    margin-bottom: 0;
+  }
+}
+.modal__title {
+  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 1.15;
+
+  margin-bottom: 20px;
+
+  color: var(--black-text-color);
+
+  @include for-size(tablet) {
+    font-size: 30px;
+    line-height: 1.167;
+  }
+}
+.modal__list {
+  margin-bottom: 20px;
+}
+.modal__item {
+color: var(--color-text-modal-window);
+}
+.modal__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+.modal__item_title {
+  display: inline-block;
+  width: 90px;
+  margin-right: 40px;
+}
+.item__data {
+  color: var(--black-text-color);
+}
+.modal__item_original {
+  display: flex;
+}
+.vote_averege,
+.vote_count,
+.popularity {
+  line-height: 1.167;
+}
+.vote_averege,
+.vote_count {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 1px;
+  padding-bottom: 1px;
+  min-width: 36px;
+  height: 16px;
+
+  border-radius: 5px;
+}
+.vote_averege {
+  color: var(--white-text-color);
+  background: var( --accent-color);
+}
+.vote_count {
+  background: var(--background-footer-color);
+}
+.original,
+.about__title {
+  text-transform: uppercase;
+}
+.original_text {
+  margin-right: 55px;
+  @include for-size (tablet) {
+    margin-right: 49px;
+  }
+}
+.genres__item {
+  display: flex;
+  flex-wrap: wrap;
+}
+.genres{
+  margin-left: 5px;
+  color: var(--black-text-color);
+}
+.about__title {
+  margin-bottom: 10px;
+}
+.overview {
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+.button_items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button_items .btn {
+    width: 136px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.33;
+}
+.modal__text {
+  @include for-size (tablet) {
+    margin-left: 30px;
+    width: 294px;
+  }
+}

@@ -1,0 +1,28 @@
+@mixin for-size($range) {
+  $mobile: 320px;
+  $tablet: 768px;
+  $desktop: 1024px;
+  @if $range == phone-only {
+    //max-width: 480 - 1 = 479
+    // @media (max-width: #{$mobile - 1}) {
+    //   @content;
+    // }
+  } @else if $range == tablet {
+    // min-width: 768
+    @media (min-width: $tablet) {
+      @content;
+    }
+  } @else if $range == desktop {
+    // min-width: 1200
+    @media (min-width: $desktop) {
+      @content;
+    }
+  }
+}
+
+// @include for-size(tablet) { // min-width: 768
+//     padding: 20px;
+//   }
+//  @include for-size(desktop) { // min-width: 1200
+//     padding: 20px;
+//   }
