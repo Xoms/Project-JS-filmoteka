@@ -31,14 +31,17 @@ const options = {
 
         if (this.width < 768){
             this.perPage = 5;
+            localStorage.setItem('perPage', this.perPage);
             this.infiniteScroll = true;
 
         } else if (this.width < 1024 && this.width > 768){
             this.perPage = 8;
+            localStorage.setItem('perPage', this.perPage);
             this.infiniteScroll = false;
 
         } else if (this.width >= 1024) {
             this.perPage = 9;
+            
             this.infiniteScroll = false
         }
 
@@ -55,7 +58,7 @@ const options = {
         console.log("factEnd = ", factEnd)
         console.log('viewPage = ', viewPage);
 
-        //ниже рассчет нужной страницы запроса - если наши фильмов больше, чем в текущем запросе - 
+        //ниже рассчет нужной страницы запроса - если наших фильмов больше, чем в текущем запросе - 
         //то сделать еще запрос, чтоб достал страницу с нужными фильмами О_о 
         let neededPage = 1;
         if (factStart < startDiap) {
@@ -145,6 +148,7 @@ const options = {
 
         }
         console.log(resultsArr);
+        return resultsArr;
     }
 }
  const api = new FilmotekaApi;

@@ -9,6 +9,7 @@ export default {
   homeBtn: document.querySelector('.go-home'),
   headerContainer: document.querySelector('.container'),
   mainSection: document.querySelector('main'),
-  pagination: document.querySelector('.pagination')
+  pagination: document.querySelector('.pagination'),
+  mainSection: document.querySelector('.movies'),
   
 }
