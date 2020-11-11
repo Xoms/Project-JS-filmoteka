@@ -1,6 +1,7 @@
 import paginationTpl from '../../partials/pagination.hbs';
 import refs from '../refs.js';
 import api from '../api/apiService.js';
+import render from '../main.js';
 
 class PaginationController {
     pagesToView = localStorage.getItem('pagesToView');
@@ -39,13 +40,16 @@ class PaginationController {
                 currentActive.classList.remove('active');
                 current.parentNode.classList.add('active');
                 
+                this.renderDefault(current.dataset.content)
                 break;
         }
     }
 
     renderDefault(vPage){ //Страницы из дефолта
         api.ckeckPerPage(vPage);
+        render(vPage);
         
+
     }
 
     renderSearch(){ //Страницы из поиска
