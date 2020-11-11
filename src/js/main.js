@@ -3,10 +3,11 @@ import main from '../partials/main.hbs'
 import genres from './api/genresDb.js';
 import refs from './refs.js';
 
-function render(){
+function render(viewPage){
 
-api.getTrends()
+api.getTrends(viewPage)
 .then(({movies, posters}) => {
+  //console.log(movies, posters)
   const res = movies.results.map((el, i) => {
     let obj = {};
     obj.title = el.title;
@@ -25,7 +26,7 @@ api.getTrends()
         }
       })
     })
-    // obj.genres = JSON.stringify(obj.genres);
+     obj.genres = JSON.stringify(obj.genres);
 
     // console.log(obj);  
     return obj;

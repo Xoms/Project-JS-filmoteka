@@ -18,6 +18,6 @@ const goToLibrary = function (e) {
 }
 // console.log(JSON.parse(localStorage.getItem('toWatch')));
 // console.log(api.getTrends());
-console.log(refs.mainSection);
+//console.log(refs.mainSection);
 refs.libraryBtn.addEventListener('click', goToLibrary)
 // btn, orange, white
