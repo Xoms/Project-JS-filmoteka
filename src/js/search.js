@@ -1,8 +1,6 @@
-import debounce from "lodash.debounce"
 import refs from "./refs.js"
 import genresMap from "./api/genresDb"
 import api from "./api/apiService"
-import main from "../partials/main.hbs"
 import renderCards from "./render"
 
 let query;
@@ -13,7 +11,8 @@ refs.userSearchForm.addEventListener("submit", e => {
 
   const validInputRegex = /^[a-zA-Z0-9а-яА-Я\s]+$/;
   if (userInput.match(validInputRegex)) {
-    refs.errorMessage.classList.add("hidden")
+    refs.onInvalidSearch.classList.add("hidden")
+    refs.onNoResult.classList.add("hidden")
     console.log(userInput);
     query = userInput; 
     
