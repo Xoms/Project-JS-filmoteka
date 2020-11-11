@@ -44,7 +44,7 @@ class MainController {
         "genres" : JSON.parse(item.dataset.genres),
         "poster" : item.dataset.poster,
     };
-
+    console.log(typeof objPossibilities.genres);
     localStorage.setItem('currentFilm', JSON.stringify(objPossibilities));
     const itemCard = modalCard(objPossibilities);
     const instanceBox = basicLightbox.create(itemCard).show();
