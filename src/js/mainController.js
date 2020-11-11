@@ -8,6 +8,7 @@ import * as basicLightbox from 'basiclightbox';
 import toWatchedObj from './buttonWatched';
 import addToQueue from './buttonAddToQueue';
 import 'basicLightbox/dist/basicLightbox.min.css'
+import paginationControl from './components/pagination.js';
 
 class MainController {
 
@@ -60,6 +61,7 @@ class MainController {
   }
 
   onLoad = () => {
+    paginationControl.renderPagination();
     render(3);
   };
 
