@@ -1,17 +1,29 @@
- <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
+     <li class="page-item disabled">
+      <a class="page-link" href="#" aria-label="First" data-content="First" disabled="true">
+        <span aria-hidden="true">&laquo;&laquo;</span>
+        <span class="sr-only">First</span>
+      </a>
+    </li>
+    <li class="page-item disabled">
+      <a class="page-link" href="#" aria-label="Previous" data-content="Prev" disabled="true">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    {{#each pages}}
-    <li class="page-item"><a class="page-link" href="#">{{this}}</a></li>
-    {{/each}}
+    
+    <li class="page-item active "><a class="page-link" data-content="1" data-page="1" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" data-content="2" data-page="2" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" data-content="3" data-page="3" href="#">3</a></li>
+
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
+      <a class="page-link" href="#" data-content="Next" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
     </li>
-  </ul>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Last" data-content="Last">
+        <span aria-hidden="true">&raquo;&raquo;</span>
+        <span class="sr-only">Last</span>
+      </a>
+    </li>
