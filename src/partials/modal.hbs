@@ -1,5 +1,33 @@
-<div class="overlay container">
+<div class="overlay">
+<header class="header__modal">
+      <div class="container">
+        <div class="header-top">
+          <a href="./index.html" class="logo coin">
+            <svg width="24" height="24">
+              <use href="./images/sprite.svg#film"/>
+            </svg>
+            <span class="logo-txt">Filmoteka</span>
+          </a>
 
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a href="./index.html" class="nav-btn is-active-btn go-home">
+                  HOME
+                </a>              
+              </li>
+              <li class="nav-item">
+                <a href="./index.html" class="nav-btn go-lab">
+                  MY LIBRARY
+                </a>              
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+<div class="movie_card container">
   <img src="{{poster}}" alt="" class="modal__img">
 
   <div class="modal__text">
@@ -21,7 +49,7 @@
       </li>
       <li class="modal__item genres__item">
         <span class="modal__item_title">Genre</span>
-        <ul>
+        <ul class="genres_list" >
           {{#each genres}}
           <li class="genres">{{this}}</li>
           {{/each}}
@@ -36,4 +64,5 @@
       <button class="btn btn-dark" id="queue">add to queue</button>
     </div>
   </div>
+</div>
 </div>
