@@ -143,6 +143,7 @@ const options = {
 
         }
         console.log(resultsArr);
+        return resultsArr;
     }
 }
  const api = new FilmotekaApi;
