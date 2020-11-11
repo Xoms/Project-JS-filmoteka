@@ -7,6 +7,28 @@
   font-size: 12px;
   line-height: 20px;
 }
+
+// .close-button {
+//   position: absolute;
+//   top: 8px;
+//   right: 8px;
+
+//   width: 30px;
+//   height: 30px;
+//   padding: 3px;
+
+//   border: 1px solid rgba(0, 0, 0, 0.1);
+//   border-radius: 50%;
+//   cursor: pointer;
+
+//   fill: #000000;
+//   background-color: var(--white-text-color);
+// &:hover,
+// &:focus {
+//   fill: var(--accent-color);
+//   }
+// }
+
 .movie_card {
   padding-top: 20px;
   padding-bottom: 40px;
@@ -56,7 +78,6 @@
 @include for-size (tablet) {
   width: 294px;
 }
-
     @include for-size (desktop) {
       width: 426px;
     }
@@ -69,11 +90,10 @@
 
   @include for-size (tablet) {
     max-height: 416px;
-    margin-bottom: 38px;
+    margin-bottom: 0;
   }
   @include for-size (desktop) {
     max-height: 514px;
-    margin-bottom: 0;
   }
 }
 .modal__title {
@@ -101,7 +121,7 @@ color: var(--color-text-modal-window);
 }
 .modal__item_title {
   display: inline-block;
-  width: 100px;
+  width: 80px;
   margin-right: 40px;
 }
 .item__data {
@@ -141,19 +161,17 @@ color: var(--color-text-modal-window);
 }
 .original {
   display: block;
+  width: 160px;
 }
 .original_text {
-  @include for-size (tablet) {
-    // margin-right: 49px;
-  }
+margin-right: 44px;
 }
 .genres_list {
   display: block;
-  width: 151px;
+  width: 160px;
 }
 .genres__item {
   display: flex;
-  flex-wrap: wrap;
 }
 .genres{
   display: inline;
