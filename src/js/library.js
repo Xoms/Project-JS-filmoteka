@@ -15,7 +15,7 @@ const goToLibrary = function (e) {
   
   const btnQueue = document.querySelector('.queue');
   const btnWatched = document.querySelector('.watched');
-  
+  btnWatched.classList.add('is-active');
   
   const showWathed = function () {
     const arrWatched = JSON.parse(localStorage.getItem('watchedList'));
@@ -25,13 +25,10 @@ const goToLibrary = function (e) {
     refs.mainSection.innerHTML = main(arrWatched);
     
   }
-  
+  showWathed();
   const showQueue = function () {
     const arrQueue = JSON.parse(localStorage.getItem('addToQueue'));
-    
-    arrQueue.map(el => el.dataGenres = JSON.stringify(el.genres));
-    
-    
+    arrQueue.map(el => el.dataGenres = JSON.stringify(el.genres));  
     btnQueue.classList.add('is-active');
     btnWatched.classList.remove('is-active');
     refs.mainSection.innerHTML = main(arrQueue);
