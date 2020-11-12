@@ -1,5 +1,5 @@
 .footer {
-  // position: fixed;
+  //  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
@@ -55,8 +55,11 @@
 .footer__link {
   color: rgba(0, 0, 0, 0.8);
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .footer__link:hover {
   color: blue;
 }
+//---------------------------------------------------------------------
+
