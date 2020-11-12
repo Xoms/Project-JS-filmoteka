@@ -5,6 +5,7 @@ import renderCards from "./renderCards"
 import renderFilters from "./renderFilters"
 import getAllUniqueMoviesGenres from "./filterByGenre"
 import pagination from "./components/pagination"
+import ioController from './components/infiniteScroll';
 
 let query;
 
@@ -62,6 +63,10 @@ refs.userSearchForm.addEventListener("submit", e => {
 
           const allUniqueMoviesGenres = getAllUniqueMoviesGenres(moviesList)
           renderFilters(allUniqueMoviesGenres)
+          if(api.width < 768) {
+            ioController.searchList = moviesList;
+            ioController.createObserver(); //если мобилка - создаст инфинит скролл
+          }
         } else { 
           refs.onNoResult.classList.remove("hidden")
         }
@@ -89,6 +94,10 @@ refs.genresSelect.addEventListener("change", e => {
     localStorage.setItem('filteredSearchResults', JSON.stringify(moviesToRender))
   }
 
-  renderCards(moviesToRender);
+  pagination.searchList = moviesToRender;
+  pagination.renderSearch(1);
+
+  console.log("this is", moviesToRender);
+  pagination.renderPagination();
   // renderPagination(moviesToRender);
 })

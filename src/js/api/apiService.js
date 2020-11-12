@@ -1,5 +1,7 @@
 import GENRES from './genresDb.js';
 import debounce from 'lodash.debounce';
+import ioController from '../components/infiniteScroll';
+
 const API_KEY_V3 = '1c82be463eec2d8b6de50f5ad36006eb'; //на всякий случай - ключ в строку если добавлять, а так везде тулим options (v4 key)
 const API_KEY_V4 = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYzgyYmU0NjNlZWMyZDhiNmRlNTBmNWFkMzYwMDZlYiIsInN1YiI6IjVmOWZiYTFmY2EwZTE3MDAzYjRkZTljNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pioIw9ZjnLVCSLXXsSHDarKErsdPXcQ3JCynCs6jkII'
 
@@ -17,8 +19,6 @@ const options = {
 
  class FilmotekaApi {
     _page = 1;
-
-    infiniteScroll = true;
     width = window.screen.width;
 
     constructor(){
@@ -31,19 +31,20 @@ const options = {
         if (this.width < 768){
             this.perPage = 5;
             localStorage.setItem('perPage', this.perPage);
-            this.infiniteScroll = true;
+            //ioController.createObserver();
 
         } else if (this.width < 1024 && this.width >= 768){
             this.perPage = 8;
             localStorage.setItem('perPage', this.perPage);
-            this.infiniteScroll = false;
+            ioController.destroyObserver()
 
         } else if (this.width >= 1024) {
             this.perPage = 9;
             localStorage.setItem('perPage', this.perPage);
-            this.infiniteScroll = false
+            ioController.destroyObserver()
         }
         //console.log(this.perPage)
+        
     }
 
     ckeckPerPage = (viewPage) =>{ //поиск нужных страниц АПИ, соответствующих странице пагинации 
@@ -62,8 +63,8 @@ const options = {
         this.neededPageStart = 1;
         this.neededPageEnd = 1;
        
-        this.neededPageStart = Math.ceil(this.factStart / 20) || 1;    
-        this.neededPageEnd = Math.ceil(this.factEnd / 20); 
+        this.neededPageStart = Math.floor(this.factStart / 20) + 1;    
+        this.neededPageEnd = Math.floor(this.factEnd / 20) + 1; 
         
         //  console.log('Needed_pageStart: ', this.neededPageStart);
         //  console.log('Needed_pageEnd: ', this.neededPageEnd);
@@ -86,7 +87,7 @@ const options = {
             .then(async res => {
                 //console.log(res)
                 localStorage.setItem('pagesToView', Math.floor(res.total_results / this.perPage))
-                
+                localStorage.setItem('mode', 'trends') //для инифинит скролла
                 let viewRes = [];
             
                 if (this.neededPageStart === this.neededPageEnd) {
@@ -148,6 +149,7 @@ const options = {
             .then(res => res.json())
             .then(res => {
                 localStorage.setItem('pagesToView', Math.floor(res.total_results / this.perPage))
+                localStorage.setItem('mode', 'search') //для инифинит скролла
                 const imgArr = res.results.map( el => (el.poster_path) ? 
                 `${IMG_BASE_URL}w500${el.poster_path}` :
                 `https://lh3.googleusercontent.com/proxy/GWQwVS2YNLcQHCj_-sWb_zjTm0CMUEtpGuuGyIuNW_reCLx6qEsBaKAhQS5nKsoQhWWsba-YY8kRGwsqRI6J430aAp6AyCtcJJKM`
