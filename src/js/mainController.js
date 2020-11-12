@@ -47,12 +47,19 @@ class MainController {
     console.log(typeof objPossibilities.genres);
     localStorage.setItem('currentFilm', JSON.stringify(objPossibilities));
     const itemCard = modalCard(objPossibilities);
-    const instanceBox = basicLightbox.create(itemCard).show();
+    this.instanceBox = basicLightbox.create(itemCard);
+    this.instanceBox.show();
+    const closeBtn = document.querySelector('.close-button');
+    closeBtn.addEventListener('click', this.closeModal);
     const divButton = document.querySelector('#watched');
     divButton.addEventListener('click', toWatchedObj.toWatched);
     const button = document.querySelector('#queue');
     button.addEventListener('click', addToQueue.addToQueueE);
   };
+  closeModal = (e) => {
+    this.instanceBox.close()
+    }
+    
   buttonModalClick = () => {
     //тут событие кнопки модалки - в очередь или просмторено
   };
