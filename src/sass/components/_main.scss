@@ -22,8 +22,16 @@
   }
 }
 .movie__image {
-  width: 100%;
+  width: 280px;
+  height: 402px;
   // height: 400px;
+  @include for-size(tablet) {
+    width: 293px;
+    height: 398px;
+  }
+  @include for-size(desktop) {
+    width: 274px;
+  }
 }
 .movie-description {
   font-size: 12px;
