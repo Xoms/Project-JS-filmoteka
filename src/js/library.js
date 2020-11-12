@@ -6,6 +6,7 @@ import buttonLibrary from '../partials/header.hbs';
 
 const goToLibrary = function (e) {
   e.preventDefault();
+  refs.pagination.innerHTML = '';
   refs.inputContainer.classList.add('hidden');
   refs.headerLibrary.classList.add('header-library');
   refs.homeBtn.classList.remove('is-active-btn');

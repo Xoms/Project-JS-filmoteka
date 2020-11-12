@@ -2,6 +2,7 @@ import refs from "./refs.js"
 import genresMap from "./api/genresDb"
 import api from "./api/apiService"
 import renderCards from "./render"
+import pagination from "./components/pagination"
 
 let query;
 
@@ -44,12 +45,15 @@ refs.userSearchForm.addEventListener("submit", e => {
           })
         })
         // sort by popularity descending
+        //console.log (allMoviesList)
         return allMoviesList.sort((m1, m2) => (m1.voteAverage < m2.voteAverage) ? 1 : -1);
       })
       .then(moviesList => {
-        
+        pagination.searchList = moviesList;
+        pagination.renderPagination();
+        //console.log(moviesList);
         if (moviesList.length > 0) {
-          renderCards(moviesList)
+          pagination.renderSearch(1);
         } else { 
           refs.onNoResult.classList.remove("hidden")
         }

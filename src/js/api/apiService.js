@@ -54,10 +54,10 @@ const options = {
         this.factStart = viewPage * this.perPage - this.perPage; //Фактически отображаемые старт
         this.factEnd = viewPage * this.perPage; //последний из фактически отображаемых фильмов
 
-        console.log("factStart =", this.factStart )
-        console.log("factEnd = ", this.factEnd)
-        console.log('viewPage = ', viewPage);
-        console.log("perPage = ", this.perPage)
+        // console.log("factStart =", this.factStart )
+        // console.log("factEnd = ", this.factEnd)
+        // console.log('viewPage = ', viewPage);
+        // console.log("perPage = ", this.perPage)
 
         this.neededPageStart = 1;
         this.neededPageEnd = 1;
@@ -65,8 +65,8 @@ const options = {
         this.neededPageStart = Math.ceil(this.factStart / 20) || 1;    
         this.neededPageEnd = Math.ceil(this.factEnd / 20); 
         
-         console.log('Needed_pageStart: ', this.neededPageStart);
-         console.log('Needed_pageEnd: ', this.neededPageEnd);
+        //  console.log('Needed_pageStart: ', this.neededPageStart);
+        //  console.log('Needed_pageEnd: ', this.neededPageEnd);
         
     }
 
@@ -84,7 +84,7 @@ const options = {
         let res = await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&page=${this.neededPageStart}&language=en`, options)
             .then( res => res.json() )
             .then(async res => {
-                console.log(res)
+                //console.log(res)
                 localStorage.setItem('pagesToView', Math.floor(res.total_results / this.perPage))
                 
                 let viewRes = [];
@@ -147,6 +147,7 @@ const options = {
         return fetch(`${BASE_URL}search/movie?language=ru&query=${query}&page=${this._page}`, options) //change multi to movie
             .then(res => res.json())
             .then(res => {
+                localStorage.setItem('pagesToView', Math.floor(res.total_results / this.perPage))
                 const imgArr = res.results.map( el => (el.poster_path) ? 
                 `${IMG_BASE_URL}w500${el.poster_path}` :
                 `https://lh3.googleusercontent.com/proxy/GWQwVS2YNLcQHCj_-sWb_zjTm0CMUEtpGuuGyIuNW_reCLx6qEsBaKAhQS5nKsoQhWWsba-YY8kRGwsqRI6J430aAp6AyCtcJJKM`
@@ -162,11 +163,11 @@ const options = {
         let resultsArr = [currentRes];
         for (let i = 1; i < currentRes.movies.total_pages; i++) {
             this._page++;
-            resultsArr.push(await this.getMoviesByQuery(query));
+            resultsArr.push(this.getMoviesByQuery(query));
 
         }
         //console.log(resultsArr);
-        return resultsArr;
+        return Promise.all(resultsArr);
     }
 }
  const api = new FilmotekaApi;
