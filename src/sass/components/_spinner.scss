@@ -1,0 +1,123 @@
+.none {
+    display: none;
+}
+
+
+
+.preloader {
+    /*фиксированное позиционирование*/
+    position: fixed;
+    /* координаты положения */
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* фоновый цвет элемента */
+    background: #e0e0e0;
+    /* размещаем блок над всеми элементами на странице (это значение должно быть больше, чем у любого другого позиционированного элемента на странице) */
+    z-index: 1001;
+  }
+  
+  .preloader__row {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: -35px;
+    margin-left: -35px;
+    text-align: center;
+    animation: preloader-rotate 2s infinite linear;
+  }
+  
+  .preloader__item {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    background-color: #337ab7;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    animation: preloader-bounce 2s infinite ease-in-out;
+  }
+  
+  .wrap-myLoader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #424242;
+    z-index: 51;
+    transition: 1s all;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.myLoader {
+    position: absolute;
+    left: 49%;
+    top: 49%;
+    transform: translate(-49%, -49%);
+    width: 76px;
+    height: 76px;
+    border: 10px solid white;
+    border-top-color: #0ca70c;
+    border-radius: 50%;
+}
+.cansel {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+@keyframes myAnim {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.wrap-myLoader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #424242;
+    z-index: 51;
+    transition: 1s all;
+    opacity: 1;
+    visibility: visible;
+}
+
+.myLoader {
+    position: absolute;
+    left: 49%;
+    top: 49%;
+    transform: translate(-50%, -50%);
+    width: 76px;
+    height: 76px;
+    border: 10px solid white;
+    border-top-color: #0ca70c;
+    border-radius: 50%;
+
+    animation: 1s myAnim linear infinite;
+}
+
+.cansel {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes myAnim {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

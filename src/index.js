@@ -1,4 +1,5 @@
 import debounce from 'lodash.debounce';
+import './js/spinner.js';
 import './js/main.js';
 import './js/library.js';
 import main from './js/mainController';
