@@ -1,5 +1,5 @@
 import api from './api/apiService.js';
-import main from './main.js';
+import main from '../partials/main.hbs';
 import refs from './refs.js';
 import buttonLibrary from '../partials/header.hbs';
 
@@ -10,23 +10,28 @@ const goToLibrary = function (e) {
   refs.headerLibrary.classList.add('header-library');
   refs.homeBtn.classList.remove('is-active-btn');
   refs.libraryBtn.classList.add('is-active-btn');
-  refs.headerContainer.insertAdjacentHTML('beforeend', buttonLibrary());
+  document.querySelector('.queue') ? '' : refs.headerContainer.insertAdjacentHTML('beforeend', buttonLibrary());
   refs.mainSection.textContent = '';
   
   const btnQueue = document.querySelector('.queue');
   const btnWatched = document.querySelector('.watched');
-  console.log(btnQueue);
+  btnWatched.classList.add('is-active');
   
   const showWathed = function () {
-    const arrwatched = JSON.parse(localStorage.getItem('watchedList'));
+    const arrWatched = JSON.parse(localStorage.getItem('watchedList'));
+    arrWatched.map(el => el.dataGenres = JSON.stringify(el.genres));
     btnWatched.classList.add('is-active');
     btnQueue.classList.remove('is-active');
+    refs.mainSection.innerHTML = main(arrWatched);
+    
   }
-  
+  showWathed();
   const showQueue = function () {
-    const arrQueue = JSON.parse(localStorage.getItem('addToQueue')); 
+    const arrQueue = JSON.parse(localStorage.getItem('addToQueue'));
+    arrQueue.map(el => el.dataGenres = JSON.stringify(el.genres));  
     btnQueue.classList.add('is-active');
     btnWatched.classList.remove('is-active');
+    refs.mainSection.innerHTML = main(arrQueue);
   }
   
   btnQueue.addEventListener('click', showQueue);
