@@ -1,8 +1,6 @@
-import debounce from "lodash.debounce"
 import refs from "./refs.js"
 import genresMap from "./api/genresDb"
 import api from "./api/apiService"
-import main from "../partials/main.hbs"
 import renderCards from "./render"
 
 let query;
@@ -46,7 +44,7 @@ refs.userSearchForm.addEventListener("submit", e => {
           })
         })
         // sort by popularity descending
-        return allMoviesList.sort((m1, m2) => (m1.popularity < m2.popularity) ? 1 : -1);
+        return allMoviesList.sort((m1, m2) => (m1.voteAverage < m2.voteAverage) ? 1 : -1);
       })
       .then(moviesList => {
         if (moviesList.length > 0) {
@@ -56,6 +54,7 @@ refs.userSearchForm.addEventListener("submit", e => {
         }
       });
   } else {
-    refs.errorMessage.classList.remove("hidden")
+    refs.onNoResult.classList.add("hidden")
+    refs.onInvalidSearch.classList.remove("hidden")
   }
 })
