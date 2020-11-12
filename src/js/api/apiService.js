@@ -31,43 +31,43 @@ const options = {
 
         if (this.width < 768){
             this.perPage = 5;
-            //localStorage.setItem('perPage', this.perPage);
+            localStorage.setItem('perPage', this.perPage);
             this.infiniteScroll = true;
 
-        } else if (this.width < 1024 && this.width > 768){
+        } else if (this.width < 1024 && this.width >= 768){
             this.perPage = 8;
-            //localStorage.setItem('perPage', this.perPage);
+            localStorage.setItem('perPage', this.perPage);
             this.infiniteScroll = false;
 
         } else if (this.width >= 1024) {
             this.perPage = 9;
-            //localStorage.setItem('perPage', this.perPage);
+            localStorage.setItem('perPage', this.perPage);
             this.infiniteScroll = false
         }
-        //console.log(this.perPage)
+        console.log(this.perPage)
     }
 
     ckeckPerPage = (viewPage) =>{ //поиск нужных страниц АПИ, соответствующих странице пагинации 
         //viewPage - страница пагинации
     
 
-        //this.perPage = localStorage.getItem('perPage');
+        this.perPage = localStorage.getItem('perPage');
         this.factStart = viewPage * this.perPage - this.perPage; //Фактически отображаемые старт
         this.factEnd = viewPage * this.perPage; //последний из фактически отображаемых фильмов
 
-        // console.log("factStart =", this.factStart )
-        // console.log("factEnd = ", this.factEnd)
-        // console.log('viewPage = ', viewPage);
-        // console.log("perPage = ", this.perPage)
+        console.log("factStart =", this.factStart )
+        console.log("factEnd = ", this.factEnd)
+        console.log('viewPage = ', viewPage);
+        console.log("perPage = ", this.perPage)
 
         this.neededPageStart = 1;
         this.neededPageEnd = 1;
        
         this.neededPageStart = Math.ceil(this.factStart / 20) || 1;    
-        this.neededPageEnd = Math.ceil(this.factEnd / 20);
+        this.neededPageEnd = Math.ceil(this.factEnd / 20); 
         
-        // console.log('Needed_pageStart: ', this.neededPageStart);
-        // console.log('Needed_pageEnd: ', this.neededPageEnd);
+         console.log('Needed_pageStart: ', this.neededPageStart);
+         console.log('Needed_pageEnd: ', this.neededPageEnd);
         
     }
 
@@ -80,12 +80,14 @@ const options = {
     }
 
     async getTrends(viewPage) { 
+        this.ckeckPerPage(viewPage);
+
         let res = await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&page=${this.neededPageStart}&language=en`, options)
             .then( res => res.json() )
             .then(async res => {
-                //console.log(res)
+                console.log(res)
                 localStorage.setItem('pagesToView', Math.floor(res.total_results / this.perPage))
-                this.ckeckPerPage(viewPage);
+                
                 let viewRes = [];
             
                 if (this.neededPageStart === this.neededPageEnd) {
@@ -96,10 +98,10 @@ const options = {
                     let resSecondPart = await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&page=${this.neededPageEnd}&language=en`, options)
                         .then(res => res.json())
                         .then(res => res.results.slice(0, this.factEnd % 20 ))
-                    console.log('FirstPart = ', resFirstPart, ' ;SecondPart = ', resSecondPart);
+                    //console.log('FirstPart = ', resFirstPart, ' ;SecondPart = ', resSecondPart);
                     viewRes = [...resFirstPart, ...resSecondPart];
                 }
-                console.log(viewRes)
+                //console.log(viewRes)
                 const imgArr = viewRes.map( (el, i) =>
 
                     (el.poster_path) ? 

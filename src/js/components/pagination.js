@@ -47,7 +47,9 @@ class PaginationController {
 
             case "Last": 
                 this.changePages(this.pagesToView - 2);
+                
                 currentActive = refs.pagination.querySelector(".active");
+                console.log(currentActive.children[0].dataset.content);
                 this.renderDefault(currentActive.children[0].dataset.content)
                 break;
 
@@ -62,6 +64,7 @@ class PaginationController {
     }
 
     renderDefault(vPage){ //Страницы из дефолта
+        console.log(vPage);
         this.pagesToView = localStorage.getItem('pagesToView');
         refs.ul.innerHTML = '';
         render(vPage);

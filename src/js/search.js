@@ -47,6 +47,7 @@ refs.userSearchForm.addEventListener("submit", e => {
         return allMoviesList.sort((m1, m2) => (m1.voteAverage < m2.voteAverage) ? 1 : -1);
       })
       .then(moviesList => {
+        
         if (moviesList.length > 0) {
           renderCards(moviesList)
         } else { 
