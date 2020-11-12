@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/Gal4enock/Project-JS-filmoteka/issues"
   },
-  "homepage": "https://github.com/Gal4enock/Project-JS-filmoteka#readme",
+  "homepage": "https://gal4enock.github.io/Project-JS-filmoteka",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
