@@ -5,5 +5,5 @@ document.body.onload = function() {
         if (!preloader.classList.contains('cansel')) {
             preloader.classList.add('cansel');
         }
-    }, 600)
+    }, 500)
 };

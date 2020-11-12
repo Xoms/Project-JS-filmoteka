@@ -8,12 +8,14 @@ import * as basicLightbox from 'basiclightbox';
 import toWatchedObj from './buttonWatched';
 import addToQueue from './buttonAddToQueue';
 import 'basicLightbox/dist/basicLightbox.min.css'
+import paginationControl from './components/pagination.js';
 
 class MainController {
 
   state = {};
   toWatch = [];
   watched = [];
+
   constructor() {
     window.addEventListener('load', this.onLoad);
     window.addEventListener('beforeunload', this.onClose);
@@ -21,10 +23,10 @@ class MainController {
 
     this.state = JSON.parse(localStorage.getItem('state'));
   }
-  
+
   onModalOpen = e => {
     e.preventDefault();
-    
+    console.log("onModalOpen");
     console.log(e.target.parentNode);
     if (e.target.parentNode.nodeName !== 'A') {
       return;
@@ -40,9 +42,9 @@ class MainController {
         "popularity" : item.dataset.popularity,
         "originalTitle": item.dataset.originaltitle,
         "genres" : JSON.parse(item.dataset.genres),
-        "poster" : item.dataset.poster
-    }
-
+        "poster" : item.dataset.poster,
+    };
+    console.log(typeof objPossibilities.genres);
     localStorage.setItem('currentFilm', JSON.stringify(objPossibilities));
     const itemCard = modalCard(objPossibilities);
     const instanceBox = basicLightbox.create(itemCard).show();
@@ -60,9 +62,10 @@ class MainController {
   }
 
   onLoad = () => {
-    render();
+    paginationControl.renderPagination();
+    api.ckeckPerPage(1);
+    render(1);
   };
-
 
   onClose() {
     this.state.toWatch = this.toWatch;
