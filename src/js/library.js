@@ -45,3 +45,5 @@ const goToLibrary = function (e) {
 
 refs.libraryBtn.addEventListener('click', goToLibrary);
 
+export default goToLibrary;
+
