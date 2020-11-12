@@ -43,16 +43,14 @@
 }
 .movie_card {
   padding-top: 20px;
-  padding-bottom: 140px;
+  padding-bottom: 40px;
   @include for-size(tablet) {
     display: flex;
     justify-content: center;
     padding-top: 60px;
-    padding-bottom: 137px;
+    padding-bottom: 60px;
     padding-left: 0;
     padding-right: 0;
-  }
-  @include for-size(desktop) {
   }
 }
 .basicLightbox {
@@ -257,4 +255,23 @@
   @include for-size(desktop) {
     width: 426px;
   }
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+.overlay {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex: 0 0 auto;
 }
