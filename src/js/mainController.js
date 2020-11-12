@@ -10,6 +10,8 @@ import toWatchedObj from './buttonWatched';
 import addToQueue from './buttonAddToQueue';
 import 'basicLightbox/dist/basicLightbox.min.css'
 import paginationControl from './components/pagination.js';
+import goToLibrary from './library.js';
+
 
 class MainController {
 
@@ -27,6 +29,7 @@ class MainController {
 
   onModalOpen = e => {
     e.preventDefault();
+    console.log("go to", goToLibrary);
     console.log("onModalOpen");
     console.log(e.target.parentNode);
     if (e.target.parentNode.nodeName !== 'A') {
@@ -58,9 +61,16 @@ class MainController {
     button.addEventListener('click', addToQueue.addToQueueE);
     const trailerBtn = document.querySelector('#watched-tailer');
     trailerBtn.addEventListener('click', renderTrailer);
+    const btnToLibrary = document.querySelector('#library-btn');
+    console.log(btnToLibrary);
+    btnToLibrary.addEventListener('click', goToLibrary);
+    btnToLibrary.addEventListener('click', this.closeModal);
+    document.body.classList.toggle('scroll-hidden')
+
   };
   closeModal = (e) => {
     this.instanceBox.close()
+    document.body.classList.toggle('scroll-hidden')
     }
     
   buttonModalClick = () => {
