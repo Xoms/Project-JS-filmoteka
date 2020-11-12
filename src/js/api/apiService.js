@@ -28,7 +28,6 @@ const options = {
     
     onResize = () => { //тут получим ширину экрана при ресайзе вьюпорта
         this.width = window.screen.width;
-
         if (this.width < 768){
             this.perPage = 5;
             localStorage.setItem('perPage', this.perPage);
