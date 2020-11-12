@@ -35,7 +35,7 @@ api.getTrends(viewPage)
 })
 .then(res => {
   refs.ul.insertAdjacentHTML('beforeend', main(res))
-  console.log(api.width);
+  //console.log(res);
   if(api.width < 768) {
     ioController.createObserver(); //если мобилка - создаст инфинит скролл
   }

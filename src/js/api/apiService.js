@@ -63,8 +63,8 @@ const options = {
         this.neededPageStart = 1;
         this.neededPageEnd = 1;
        
-        this.neededPageStart = Math.ceil(this.factStart / 20) || 1;    
-        this.neededPageEnd = Math.ceil(this.factEnd / 20); 
+        this.neededPageStart = Math.floor(this.factStart / 20) + 1;    
+        this.neededPageEnd = Math.floor(this.factEnd / 20) + 1; 
         
         //  console.log('Needed_pageStart: ', this.neededPageStart);
         //  console.log('Needed_pageEnd: ', this.neededPageEnd);

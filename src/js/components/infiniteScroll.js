@@ -1,6 +1,4 @@
 import render from '../main.js'; //этот рисует карточки популярных фильмов
-import renderSearch from '../render'; //этот рисует карточки поиска
-import api from '../api/apiService';
 import refs from '../refs.js';
 import main from '../../partials/main.hbs';
 
@@ -20,7 +18,7 @@ class InfiniteScroll {
         }
 
         this.images = document.querySelectorAll('.movies img');
-
+        
         if (this.mode === 'trends') {
             this.imageObserver = new IntersectionObserver(this.onTrends, this.options);
             this.imageObserver.observe(this.images[this.images.length - 1]);
@@ -35,10 +33,12 @@ class InfiniteScroll {
         entries.forEach( entry => {
             if (entry.isIntersecting) {        
                 render(this.page);
-                this.page++;
+                console.log(this.page)
+                this.page++;                
                 this.images = document.querySelectorAll('.movies img');
                 this.imageObserver.observe(this.images[this.images.length - 1]);
                 this.imageObserver.unobserve(entry.target);
+                console.log(this.images[this.images.length - 1]);
             }
         })
     }

@@ -3,7 +3,6 @@ import refs from '../refs.js';
 import api from '../api/apiService.js';
 import render from '../main.js'; //этот рисует карточки популярных фильмов
 import renderSearch from '../render'; //этот рисует карточки поиска
-import ioController from './infiniteScroll';//IntersectionObserver для мобилки ??
 
 class PaginationController {
     _searchList = [];
