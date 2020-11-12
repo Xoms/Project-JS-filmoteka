@@ -49,6 +49,7 @@ refs.userSearchForm.addEventListener("submit", e => {
         //filtering functions
       })
       .then(moviesList => {
+        
         if (moviesList.length > 0) {
           renderCards(moviesList)
         } else { 
