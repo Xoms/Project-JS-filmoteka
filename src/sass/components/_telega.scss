@@ -1,0 +1,19 @@
+.telega-btn {
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  &:hover {
+    background-color: var(--white-text-color);
+  };
+}
+.telega-svg {
+  margin-left: 6px;
+  margin-top: 6px;
+  fill: var(--white-text-color);
+  &:hover {
+    fill: var(--accent-color);
+  }
+}
+
+
