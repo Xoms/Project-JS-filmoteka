@@ -2,7 +2,8 @@ import refs from "./refs.js"
 import genresMap from "./api/genresDb"
 import api from "./api/apiService"
 import renderCards from "./render"
-import pagination from "./components/pagination"
+import pagination from "./components/pagination";
+import ioController from './components/infiniteScroll';
 
 let query;
 
@@ -54,6 +55,10 @@ refs.userSearchForm.addEventListener("submit", e => {
         //console.log(moviesList);
         if (moviesList.length > 0) {
           pagination.renderSearch(1);
+          if(api.width < 768) {
+            ioController.searchList = moviesList;
+            ioController.createObserver(); //если мобилка - создаст инфинит скролл
+          }
         } else { 
           refs.onNoResult.classList.remove("hidden")
         }
