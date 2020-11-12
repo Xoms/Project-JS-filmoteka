@@ -28,7 +28,7 @@ const options = {
     
     onResize = () => { //тут получим ширину экрана при ресайзе вьюпорта
         this.width = window.screen.width;
-        console.log(this.width)
+        //console.log(this.width)
         if (this.width < 768){
             this.perPage = 5;
             this.infiniteScroll = true;
@@ -41,7 +41,7 @@ const options = {
             this.perPage = 9;
             this.infiniteScroll = false
         }
-        console.log(this.perPage)
+        //console.log(this.perPage)
     }
 
     ckeckPerPage(viewPage){ //viewPage - страница пагинации
@@ -52,14 +52,14 @@ const options = {
         let factStart = viewPage * this.perPage - this.perPage; //Фактически отображаеме старт
         let factEnd = viewPage * this.perPage; //последний из фактически отображаемых фильмов
     
-        console.log("factEnd = ", factEnd)
-        console.log('viewPage: ', viewPage);
+        //console.log("factEnd = ", factEnd)
+        //console.log('viewPage: ', viewPage);
 
         //ниже рассчет нужной страницы запроса - если наши фильмов больше, чем в текущем запросе - 
         //то сделать еще запрос, чтоб достал страницу с нужными фильмами О_о 
         let neededPage = (endDiap <= factEnd) ? this._page : this._page + 1; 
         
-        console.log('Needed_page: ', neededPage);
+        //console.log('Needed_page: ', neededPage);
         return (neededPage === this._page) 
             //true все ок, нужные фильмы есть в запросе
             //false тогда надо сделать еще 1 запрос т.к. нужные фильмы не вместились 
@@ -85,8 +85,8 @@ const options = {
                 return {movies: res, 'posters': imgArr}
             })
 
-        console.log(res)
-        console.log(this.ckeckPerPage(viewPage))
+        //console.log(res)
+        //console.log(this.ckeckPerPage(viewPage))
         return res;
     }
     //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
