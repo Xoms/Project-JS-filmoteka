@@ -1,7 +1,9 @@
 import refs from "./refs.js"
 import genresMap from "./api/genresDb"
 import api from "./api/apiService"
-import renderCards from "./render"
+import renderCards from "./renderCards"
+import renderFilters from "./renderFilters"
+import getAllUniqueMoviesGenres from "./filterByGenre"
 
 let query;
 
@@ -49,9 +51,15 @@ refs.userSearchForm.addEventListener("submit", e => {
         //filtering functions
       })
       .then(moviesList => {
-        
+        localStorage.setItem('searchResults', JSON.stringify(moviesList))
+        localStorage.removeItem('filteredSearchResults')
+
         if (moviesList.length > 0) {
           renderCards(moviesList)
+          // renderPagination(moviesList);
+
+          const allUniqueMoviesGenres = getAllUniqueMoviesGenres(moviesList)
+          renderFilters(allUniqueMoviesGenres)
         } else { 
           refs.onNoResult.classList.remove("hidden")
         }
@@ -60,4 +68,25 @@ refs.userSearchForm.addEventListener("submit", e => {
     refs.onNoResult.classList.add("hidden")
     refs.onInvalidSearch.classList.remove("hidden")
   }
+})
+
+refs.genresSelect.addEventListener("change", e => {
+  const filterValue = refs.genresSelect.value;
+  const moviesList = JSON.parse(localStorage.getItem('searchResults'))
+
+  let moviesToRender
+  if (filterValue === 'Choose main genre') {
+    localStorage.removeItem('filteredSearchResults')
+    moviesToRender = moviesList;
+  } else {
+    moviesToRender = moviesList.filter(movie => {
+      console.log(movie.genres + ' contains ' + filterValue);
+      return movie.genres.includes(filterValue);
+    })
+
+    localStorage.setItem('filteredSearchResults', JSON.stringify(moviesToRender))
+  }
+
+  renderCards(moviesToRender);
+  // renderPagination(moviesToRender);
 })

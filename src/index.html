@@ -45,61 +45,39 @@
         </div>
         <div class="header-bottom">
           <form class="search-form">
-          <input type="text" placeholder="Search a movie" class="input-search"/>
-          <span class="search-icon">
-            <svg width="12" height="12">
-              <use xlink:href="./images/sprite.svg#search-2" />
-            </svg>
-          </span>
-        </form>
-
-          <form class = "Results-filter-form">
-           <p class = filter-lable-text>Need something specific? Try to filter the results!</p>
-          <div class="form-row align-items-center">
-            <div class="col-auto my-1">
-              <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">genre</label>
-              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                <option selected>Choose main genre</option>
-                <option value="1">Action</option>
-                <option value="2">Adventure</option>
-                <option value="3">Animation</option>
-                <option value="4">Comedy</option>
-                <option value="5">Crime</option>
-                <option value="6">Documentary</option>
-                <option value="7">Drama</option>
-                <option value="8">Family</option>
-                <option value="9">Fantasy</option>
-                <option value="4">History</option>
-                <option value="5">Horror</option>
-                <option value="6">Music</option>
-                <option value="7">Mystery</option>
-                <option value="8">Romance</option>
-                <option value="9">Science Fiction</option>
-                <option value="6">TV Movie</option>
-                <option value="7">Thriller</option>
-                <option value="8">War</option>
-                <option value="9">Western</option>
-              </select>
-              <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">year-range</label>
-              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                <option selected>Choose year range</option>
-                <option value="1">2000 - 2020</option>
-                <option value="2">1980 - 2000</option>
-                <option value="3">1960 - 1980</option>
-                <option value="2">1940 - 1960</option>
-                <option value="3">1920 - 1940</option>
-              </select>
-            </div>
-            <div class="col-auto my-1">
-              <div class="custom-control custom-checkbox mr-sm-2">
-                <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                <label class="custom-control-label sort-votes-checkbox__text" for="customControlAutosizing">Sort by votes</label>
-              </div>
-            </div>
-            <div class="col-auto my-1">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+            <input type="text" placeholder="Search a movie" class="input-search"/>
+            <span class="search-icon">
+              <svg width="12" height="12">
+                <use xlink:href="./images/sprite.svg#search-2" />
+              </svg>
+            </span>
           </form>
+          <form class = "results-filter-form"></form>
+          <p class = filter-lable-text>Need something more specific? Try to filter the results!</p>
+          <div class="form-row align-items-center">
+              <div class="col-auto my-1">
+                  <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">genre</label>
+                  <select class="custom-select mr-sm-2" id="genresSelect">
+                    <!-- dynamically rendered -->
+                  </select>
+                  <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">year-range</label>
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                      <option selected>Choose year range</option>
+                      <option value="1">2000 - 2020</option>
+                      <option value="2">1980 - 2000</option>
+                      <option value="3">1960 - 1980</option>
+                      <option value="3">1940 - 1960</option>
+                      <option value="4">1920 - 1940</option>
+                  </select>
+              </div>
+              <div class="col-auto my-1">
+                  <div class="custom-control custom-checkbox mr-sm-2">
+                      <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                      <label class="custom-control-label sort-votes-checkbox__text" for="customControlAutosizing">Sort by votes</label>
+                  </div>
+              </div>
+          </div>
+
           <p class = "error-message hidden" id = "invalid-search">Search result is not successful. Enter the correct movie name. Use only letters or numbers.</p>   
           <p class = "error-message hidden" id = "no-result">Nothing was found. Try a different search term.</p>    
         </div>
