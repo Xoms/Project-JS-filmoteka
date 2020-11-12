@@ -2,7 +2,7 @@ import paginationTpl from '../../partials/pagination.hbs';
 import refs from '../refs.js';
 import api from '../api/apiService.js';
 import render from '../main.js'; //этот рисует карточки популярных фильмов
-import renderSearch from '../render'; //этот рисует карточки поиска
+import renderCards from '../renderCards'; //этот рисует карточки поиска
 
 class PaginationController {
     _searchList = [];
@@ -85,7 +85,7 @@ class PaginationController {
         let end = vPage * this.perPage;
 
         let snapshot = this.searchList.slice(start, end);
-        renderSearch(snapshot);
+        renderCards(snapshot);
     }
 
     checkPagesQnt(){ //Убирает ненужные элементы управления пагинации, если запрос < 3х страницы пагинации

@@ -12,5 +12,5 @@ export default {
   mainSection: document.querySelector('main'),
   pagination: document.querySelector('.pagination'),
   mainSection: document.querySelector('.movies'),
-  
+  genresSelect: document.querySelector('#genresSelect'),
 }
