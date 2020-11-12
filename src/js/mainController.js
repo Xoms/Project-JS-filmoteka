@@ -62,9 +62,9 @@ class MainController {
   }
 
   onLoad = () => {
-    paginationControl.renderPagination();
     api.ckeckPerPage(1);
     render(1);
+    paginationControl.renderPagination();
   };
 
   onClose() {

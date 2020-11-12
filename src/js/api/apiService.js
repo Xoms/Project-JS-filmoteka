@@ -62,11 +62,11 @@ const options = {
         //то сделать еще запрос, чтоб достал страницу с нужными фильмами О_о 
         this.neededPageStart = 1;
         this.neededPageEnd = 1;
-        if (this.factStart < startDiap) {
-            this.neededPageStart = Math.ceil(this.factStart / 20);
-        } else if (this.factEnd >= endDiap) {
-            this.neededPageEnd = Math.ceil(this.factEnd / 20);
-        }
+       
+        this.neededPageStart = Math.ceil(this.factStart / 20) || 1;
+    
+        this.neededPageEnd = Math.ceil(this.factEnd / 20);
+        
         
         
         console.log('Needed_pageStart: ', this.neededPageStart);
@@ -82,21 +82,23 @@ const options = {
         return this._page;
     }
 
+    
     async getTrends(viewPage) { 
         let res = await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&page=${this.neededPageStart}&language=en`, options)
             .then( res => res.json() )
             .then(async res => {
-                localStorage.setItem('pagesToView', Math.ceil(res.total_results / this.perPage))
+                localStorage.setItem('pagesToView', Math.floor(res.total_results / this.perPage))
                 let viewRes = [];
             
                 if (this.neededPageStart === this.neededPageEnd) {
-                    viewRes = res.results.slice(this.factStart, this.factEnd); //получам столько, сколько надо
+                    viewRes = res.results.slice(this.factStart % 20, this.factEnd % 20); //получам столько, сколько надо
                 } else {
-                    let resFirstPart = res.results.slice(this.factStart); //прийдётся делать ещё запрос
-                    
+                    let resFirstPart = res.results.slice(this.factStart % 20); //прийдётся делать ещё запрос
+                   
                     let resSecondPart = await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&page=${this.neededPageEnd}&language=en`, options)
                         .then(res => res.json())
-                        .then(res => res.results.slice(0, this.factEnd))
+                        .then(res => res.results.slice(0, this.factEnd % 20 ))
+                    console.log('FirstPart = ', resFirstPart, ' ;SecondPart = ', resSecondPart);
                     viewRes = [...resFirstPart, ...resSecondPart];
                 }
                 console.log(viewRes)
@@ -166,7 +168,7 @@ const options = {
             resultsArr.push(await this.getMoviesByQuery(query));
 
         }
-        console.log(resultsArr);
+        
         return resultsArr;
     }
 }
