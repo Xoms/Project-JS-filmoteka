@@ -106,7 +106,7 @@ const options = {
 
                     (el.poster_path) ? 
                     `${IMG_BASE_URL}w500${el.poster_path}` :
-                    `https://lh3.googleusercontent.com/proxy/GWQwVS2YNLcQHCj_-sWb_zjTm0CMUEtpGuuGyIuNW_reCLx6qEsBaKAhQS5nKsoQhWWsba-YY8kRGwsqRI6J430aAp6AyCtcJJKM`
+                    `https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg`
                 )
                 const movies = {
                     page: res.page,
@@ -152,7 +152,7 @@ const options = {
                 localStorage.setItem('mode', 'search') //для инифинит скролла
                 const imgArr = res.results.map( el => (el.poster_path) ? 
                 `${IMG_BASE_URL}w500${el.poster_path}` :
-                `https://lh3.googleusercontent.com/proxy/GWQwVS2YNLcQHCj_-sWb_zjTm0CMUEtpGuuGyIuNW_reCLx6qEsBaKAhQS5nKsoQhWWsba-YY8kRGwsqRI6J430aAp6AyCtcJJKM`
+                `https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg`
                 )
                 //console.dir(res, imgArr);
                 return {movies: res, 'posters': imgArr}
