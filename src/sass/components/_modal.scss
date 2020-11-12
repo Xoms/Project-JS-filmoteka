@@ -43,13 +43,18 @@
 }
 .movie_card {
   padding-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 140px;
   @include for-size (tablet) {
 
     display: flex;
     justify-content: center;
     padding-top: 60px;
-    padding-bottom: 60px;
+    padding-bottom: 137px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @include for-size (desktop) {
+    
   }
 }
 .basicLightbox {
@@ -205,16 +210,44 @@ margin-right: 44px;
 }
 .button_items {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+
+  @include for-size (desktop) {
+    justify-content: space-around;
+  }
 }
 .button_items .btn {
-    width: 136px;
-    font-family: "Roboto", sans-serif;
+    width: 132px;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
     line-height: 1.33;
+}
+.btn:nth-last-child(-n + 2) {
+  margin-top: 15px;
+
+  @include for-size (desktop) {
+    margin-top: 0;
+  }
+}
+.btn.btn-dark:not(last-child) {
+  margin-right: 0;
+}
+.button_items .btn:nth-child(2n + 1) {
+  margin-right: 15px;
+  @include for-size (desktop) {
+    margin-right: 0;
+  }
+}
+.button_items .btn:last-child {
+  @include for-size (desktop) {
+    margin-top: 15px;
+  }
+}
+.btn:last-child {
+background-color: lightblue;
 }
 .modal__text {
   @include for-size (tablet) {
