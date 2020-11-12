@@ -30,10 +30,10 @@ class MainController {
 
   onModalOpen = e => {
     e.preventDefault();
-    console.log("go to", goToLibrary);
-    console.log("onModalOpen");
-    console.log(e.target.parentNode);
-    if (e.target.parentNode.nodeName !== 'A') {
+    // console.log("go to", goToLibrary);
+    // console.log("onModalOpen");
+    // console.log(e.target.parentNode);
+    if (e.target.parentNode.nodeName !== 'A' || e.target.className === 'btn delete') {
       return;
     }
 
@@ -49,7 +49,7 @@ class MainController {
         "genres" : JSON.parse(item.dataset.genres),
         "poster" : item.dataset.poster,
     };
-    console.log(typeof objPossibilities.genres);
+    // console.log(typeof objPossibilities.genres);
     localStorage.setItem('currentFilm', JSON.stringify(objPossibilities));
     const itemCard = modalCard(objPossibilities);
     this.instanceBox = basicLightbox.create(itemCard);
@@ -66,7 +66,7 @@ class MainController {
     telegaBtn.addEventListener('click', shareMovie);
   
     const btnToLibrary = document.querySelector('#library-btn');
-    console.log(btnToLibrary);
+    // console.log(btnToLibrary);
     btnToLibrary.addEventListener('click', goToLibrary);
     btnToLibrary.addEventListener('click', this.closeModal);
     document.body.classList.toggle('scroll-hidden')
