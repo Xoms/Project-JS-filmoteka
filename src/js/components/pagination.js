@@ -4,39 +4,57 @@ import api from '../api/apiService.js';
 import render from '../main.js';
 
 class PaginationController {
-    pagesToView = localStorage.getItem('pagesToView');
-    perPage = localStorage.getItem('perPage');
-    width = window.screen.width;
     
     constructor() {
         refs.pagination.addEventListener('click', this.onPaginationClick);
+        api.onResize();
+        this.pagesToView = localStorage.getItem('pagesToView');
+        this.perPage = localStorage.getItem('perPage');
     }
 
     onPaginationClick = (e) =>{
         e.preventDefault();
-        console.log(e.target);
+        
         if (e.target.nodeName !=='A'){
             return;
         }
+
         this.perPage = localStorage.getItem('perPage');
-        const current = e.target
+        const current = e.target;
+        let curentFirst
+        let currentActive
+
         switch (current.dataset.content){
             case "First": 
                 this.changePages(1);
+                currentActive = refs.pagination.querySelector(".active");
+                this.renderDefault(currentActive.children[0].dataset.content)
                 break;
+
             case "Prev":
-                let curentFirst = +this.pageBtns[0].dataset.content - 1
+                curentFirst = +this.pageBtns[0].dataset.content - 1
                 this.changePages(curentFirst);
+                currentActive = refs.pagination.querySelector(".active");
+                this.renderDefault(currentActive.children[0].dataset.content)
                 break; 
+
             case "Next": 
                 curentFirst = +this.pageBtns[0].dataset.content + 1
                 this.changePages(curentFirst);
+                currentActive = refs.pagination.querySelector(".active");
+                this.renderDefault(currentActive.children[0].dataset.content)
                 break;
+
             case "Last": 
                 this.changePages(this.pagesToView - 2);
+                
+                currentActive = refs.pagination.querySelector(".active");
+                console.log(currentActive.children[0].dataset.content);
+                this.renderDefault(currentActive.children[0].dataset.content)
                 break;
+
             default: //значит попали в кнопу со страницей
-                let currentActive = refs.pagination.querySelector(".active");
+                currentActive = refs.pagination.querySelector(".active");
                 currentActive.classList.remove('active');
                 current.parentNode.classList.add('active');
                 
@@ -46,10 +64,10 @@ class PaginationController {
     }
 
     renderDefault(vPage){ //Страницы из дефолта
-        api.ckeckPerPage(vPage);
+        console.log(vPage);
+        this.pagesToView = localStorage.getItem('pagesToView');
+        refs.ul.innerHTML = '';
         render(vPage);
-        
-
     }
 
     renderSearch(){ //Страницы из поиска
@@ -73,7 +91,7 @@ class PaginationController {
     }
 
     changePages(startVal) { //переписывает цифры на страницах и блокирует не нужные эл-ты управления
-        console.log(this.pageBtns[0].dataset.content);
+        // console.log(this.pageBtns[0].dataset.content);
         if (startVal + 2 >= this.pagesToView){
             startVal = this.pagesToView - 2;
             this.lastBtn.parentNode.classList.add('disabled');
@@ -83,7 +101,6 @@ class PaginationController {
             this.prevBtn.parentNode.classList.remove('disabled');       
         }
 
-        
         if (startVal == 1){
             this.firstBtn.parentNode.classList.add('disabled');
             this.prevBtn.parentNode.classList.add('disabled');
@@ -109,6 +126,8 @@ class PaginationController {
         this.firstBtn = refs.pagination.querySelector('[data-content="First"]');
         this.lastBtn = refs.pagination.querySelector('[data-content="Last"]');
 
+        this.pagesToView = localStorage.getItem('pagesToView');
+        this.perPage = localStorage.getItem('perPage');
         this.checkPagesQnt();
         
     }

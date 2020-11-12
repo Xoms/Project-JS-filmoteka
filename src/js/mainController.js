@@ -68,10 +68,9 @@ class MainController {
     this.state = JSON.parse(localStorage.getItem('state'));
   }
 
-  onLoad = () => {
-    paginationControl.renderPagination();
-    api.ckeckPerPage(1);
+  onLoad = () => {   
     render(1);
+    paginationControl.renderPagination();
   };
 
   onClose() {
