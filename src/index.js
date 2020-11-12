@@ -8,4 +8,5 @@ import 'basicLightbox/dist/basicLightbox.min.css';
 import './js/search';
 import './js/footer';
 import './sass/main.scss';
+import './js/trailer.js'
 import './js/upScrollBtn.js';
