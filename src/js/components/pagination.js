@@ -3,6 +3,7 @@ import refs from '../refs.js';
 import api from '../api/apiService.js';
 import render from '../main.js'; //этот рисует карточки популярных фильмов
 import renderSearch from '../render'; //этот рисует карточки поиска
+import ioController from './infiniteScroll';//IntersectionObserver для мобилки ??
 
 class PaginationController {
     _searchList = [];
@@ -62,6 +63,7 @@ class PaginationController {
         let currentActive = refs.pagination.querySelector(".active");
         let page = currentActive.children[0].dataset.content
         console.log(this.searchList);
+        
         if (!this.searchList.length){
             this.renderDefault(page)
         } else {
@@ -75,11 +77,11 @@ class PaginationController {
         render(vPage);
     }
 
-    renderSearch(vPage){ //Страницы из поиска
-        this.perPage = localStorage.getItem('perPage');
-        this.pagesToView = Math.floor(this.searchList.length / this.perPage);
-        localStorage.setItem ('pagesToView', this.pagesToView);
-        this.checkPagesQnt();
+    renderSearch(vPage){ //Страница пагинации из поиска
+        this.perPage = localStorage.getItem('perPage'); //там в зависимотси от ширины экрана кол-во фильмов на странице
+        this.pagesToView = Math.floor(this.searchList.length / this.perPage); //общее кол-во страниц
+        localStorage.setItem ('pagesToView', this.pagesToView); //надо переписать, т.к., оно может браться также из апи)
+        this.checkPagesQnt(); 
         let start = vPage * this.perPage - this.perPage;
         let end = vPage * this.perPage;
 
@@ -132,6 +134,8 @@ class PaginationController {
         } else {
             this.firstBtn.parentNode.classList.remove('disabled');
             this.prevBtn.parentNode.classList.remove('disabled');
+            this.lastBtn.parentNode.classList.remove('disabled');
+            this.nextBtn.parentNode.classList.remove('disabled');
         }
         this.pageBtns.forEach(el => {
             el.dataset.content = startVal;

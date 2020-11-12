@@ -2,6 +2,7 @@ import api from './api/apiService.js';
 import main from '../partials/main.hbs'
 import genres from './api/genresDb.js';
 import refs from './refs.js';
+import ioController from './components/infiniteScroll';
 
 function render(viewPage){
 
@@ -32,7 +33,13 @@ api.getTrends(viewPage)
   }) 
   return res;
 })
-.then(res => refs.ul.insertAdjacentHTML('beforeend', main(res)));
+.then(res => {
+  refs.ul.insertAdjacentHTML('beforeend', main(res))
+  console.log(api.width);
+  if(api.width < 768) {
+    ioController.createObserver(); //если мобилка - создаст инфинит скролл
+  }
+});
 }
 
 export default render
