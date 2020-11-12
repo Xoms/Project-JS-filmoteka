@@ -3,6 +3,7 @@ import api from './api/apiService';
 import render from './main.js';
 import genres from './api/genresDb';
 import refs from './refs.js';
+import renderTrailer from './trailer.js'
 import modalCard from '../partials/modal.hbs';
 import * as basicLightbox from 'basiclightbox';
 import toWatchedObj from './buttonWatched';
@@ -52,7 +53,10 @@ class MainController {
     divButton.addEventListener('click', toWatchedObj.toWatched);
     const button = document.querySelector('#queue');
     button.addEventListener('click', addToQueue.addToQueueE);
+    const trailerBtn = document.querySelector('#watched-tailer');
+    trailerBtn.addEventListener('click', renderTrailer);
   };
+
   buttonModalClick = () => {
     //тут событие кнопки модалки - в очередь или просмторено
   };
