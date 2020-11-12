@@ -1,4 +1,5 @@
 import debounce from 'lodash.debounce';
+import './js/spinner.js';
 import './js/main.js'
 import './js/library.js'
 import main from './js/mainController';
@@ -7,4 +8,6 @@ import 'basicLightbox/dist/basicLightbox.min.css';
 import './js/search';
 import 'basicLightbox/dist/basicLightbox.min.css'
 import './sass/main.scss';
+
+
 
