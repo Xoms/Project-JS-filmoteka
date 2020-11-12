@@ -50,7 +50,7 @@ class PaginationController {
                 currentActive = refs.pagination.querySelector(".active");
                 this.renderDefault(currentActive.children[0].dataset.content)
                 break;
-                
+
             default: //значит попали в кнопу со страницей
                 currentActive = refs.pagination.querySelector(".active");
                 currentActive.classList.remove('active');
@@ -63,9 +63,7 @@ class PaginationController {
 
     renderDefault(vPage){ //Страницы из дефолта
         this.pagesToView = localStorage.getItem('pagesToView');
-        this.perPage = localStorage.getItem('perPage');
         refs.ul.innerHTML = '';
-        api.ckeckPerPage(vPage);
         render(vPage);
     }
 
@@ -90,7 +88,7 @@ class PaginationController {
     }
 
     changePages(startVal) { //переписывает цифры на страницах и блокирует не нужные эл-ты управления
-        console.log(this.pageBtns[0].dataset.content);
+        // console.log(this.pageBtns[0].dataset.content);
         if (startVal + 2 >= this.pagesToView){
             startVal = this.pagesToView - 2;
             this.lastBtn.parentNode.classList.add('disabled');
@@ -100,7 +98,6 @@ class PaginationController {
             this.prevBtn.parentNode.classList.remove('disabled');       
         }
 
-        
         if (startVal == 1){
             this.firstBtn.parentNode.classList.add('disabled');
             this.prevBtn.parentNode.classList.add('disabled');
