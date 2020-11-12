@@ -10,6 +10,8 @@ import toWatchedObj from './buttonWatched';
 import addToQueue from './buttonAddToQueue';
 import 'basicLightbox/dist/basicLightbox.min.css'
 import paginationControl from './components/pagination.js';
+import goToLibrary from './library.js';
+
 
 class MainController {
 
@@ -27,6 +29,7 @@ class MainController {
 
   onModalOpen = e => {
     e.preventDefault();
+    console.log("go to", goToLibrary);
     console.log("onModalOpen");
     console.log(e.target.parentNode);
     if (e.target.parentNode.nodeName !== 'A') {
@@ -48,15 +51,25 @@ class MainController {
     console.log(typeof objPossibilities.genres);
     localStorage.setItem('currentFilm', JSON.stringify(objPossibilities));
     const itemCard = modalCard(objPossibilities);
-    const instanceBox = basicLightbox.create(itemCard).show();
+    this.instanceBox = basicLightbox.create(itemCard);
+    this.instanceBox.show();
+    const closeBtn = document.querySelector('.close-button');
+    closeBtn.addEventListener('click', this.closeModal);
     const divButton = document.querySelector('#watched');
     divButton.addEventListener('click', toWatchedObj.toWatched);
     const button = document.querySelector('#queue');
     button.addEventListener('click', addToQueue.addToQueueE);
     const trailerBtn = document.querySelector('#watched-tailer');
     trailerBtn.addEventListener('click', renderTrailer);
+    const btnToLibrary = document.querySelector('#library-btn');
+    console.log(btnToLibrary);
+    btnToLibrary.addEventListener('click', goToLibrary);
+    btnToLibrary.addEventListener('click', this.closeModal);
   };
-
+  closeModal = (e) => {
+    this.instanceBox.close()
+    }
+    
   buttonModalClick = () => {
     //тут событие кнопки модалки - в очередь или просмторено
   };
