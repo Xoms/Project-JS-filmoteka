@@ -10,6 +10,7 @@ import toWatchedObj from './buttonWatched';
 import addToQueue from './buttonAddToQueue';
 import 'basicLightbox/dist/basicLightbox.min.css'
 import paginationControl from './components/pagination.js';
+import shareMovie from './telega.js'
 import goToLibrary from './library.js';
 
 
@@ -61,6 +62,9 @@ class MainController {
     button.addEventListener('click', addToQueue.addToQueueE);
     const trailerBtn = document.querySelector('#watched-tailer');
     trailerBtn.addEventListener('click', renderTrailer);
+    const telegaBtn = document.querySelector('.telega-btn');
+    telegaBtn.addEventListener('click', shareMovie);
+  
     const btnToLibrary = document.querySelector('#library-btn');
     console.log(btnToLibrary);
     btnToLibrary.addEventListener('click', goToLibrary);
