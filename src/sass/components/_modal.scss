@@ -223,7 +223,7 @@
   font-size: 12px;
   line-height: 1.33;
 }
-.btn:nth-last-child(-n + 2) {
+.btn:last-child {
   margin-top: 15px;
 
   @include for-size(desktop) {
@@ -241,11 +241,8 @@
 }
 .button_items .btn:last-child {
   @include for-size(desktop) {
-    margin-top: 15px;
+    // margin-top: 15px;
   }
-}
-.btn.btn-dark:last-child {
-  background-color: lightblue;
 }
 .modal__text {
   @include for-size(tablet) {
