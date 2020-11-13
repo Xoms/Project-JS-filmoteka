@@ -24,9 +24,10 @@
   position: absolute;
   top: 88%;
   left: 77%;
+  z-index: 2;
   @include for-size(tablet) {
-    top: 85%;
-    left: 75%;
+    top: 87%;
+    left: 76%;
   }
   @include for-size(desktop) {
     top: 88%;
@@ -35,4 +36,10 @@
 }
 .modal_poster {
   position: relative;
+  @include for-size(tablet) {
+    max-height: 416px;
+  }
+  @include for-size(desktop) {
+    max-height: 514px;
+  }
 }
