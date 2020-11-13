@@ -9,7 +9,7 @@ import ioController from './components/infiniteScroll';
 
 let query;
 
-refs.userSearchForm.addEventListener("submit", e => {
+refs.userSearchForm.addEventListener("change", e => {
   // refs.addText.removeAttribute('hidden');
   // refs.addForm.removeAttribute('hidden');
   e.preventDefault();
@@ -90,6 +90,7 @@ refs.userSearchForm.addEventListener("submit", e => {
  let moviesToRender
 
 refs.genresSelect.addEventListener("change", e => {
+  
   const filterValue = refs.genresSelect.value;
   const moviesList = JSON.parse(localStorage.getItem('searchResults'))
 
