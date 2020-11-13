@@ -12,7 +12,7 @@ import 'basicLightbox/dist/basicLightbox.min.css'
 import paginationControl from './components/pagination.js';
 import shareMovie from './telega.js'
 import goToLibrary from './library.js';
-import getSearhArr from './search';
+import getSearсhArr from './search';
  
 
 class MainController {
@@ -36,27 +36,32 @@ class MainController {
     }
     localStorage.setItem('lang', this.lang);
     api.lang = this.lang;
-    this.redrawLangChenge();
-    let mode = localStorage.getItem('mode');
-    if (mode === 'library'){
+    this.mode = localStorage.getItem('mode');
+    this.redrawLangChenge();    
+    console.log(paginationControl.mode);
+    if (this.mode === 'library' || this.api.width < 768){
       return;
     }
-    console.log(paginationControl.mode);
+    
     if (paginationControl.mode === 'default'){
       paginationControl.renderDefault(paginationControl.activePage || 1);
 
     } else {
-      getSearhArr()
-      //paginationControl.renderSearch(paginationControl.activePage || 1);
+      getSearсhArr()
     }
   }
 
   redrawLangChenge(){
-    console.log('switching to ',this.lang)
+    console.log('switching to ',this.lang);
+    console.log('mode = ', this.mode );
     switch(this.lang){
       case 'ru':
         refs.homeBtn.innerHTML = "ГЛАВНАЯ";
         refs.libraryBtn.innerHTML = "БИБЛИОТЕКА";
+        if (this.mode === 'library'){
+          document.querySelector('.header-bottom-library .watched').innerHTML = "Просмотрено";
+          document.querySelector('.header-bottom-library .queue').innerHTML = "К просмотру";
+        }
         if (this.modalIsOpen){
           document.querySelector('.overlay .go-home').innerHTML = "ГЛАВНАЯ";
           document.querySelector('.overlay .go-lab').innerHTML = "БИБЛИОТЕКА";
@@ -73,6 +78,10 @@ class MainController {
       case 'en':
         refs.homeBtn.innerHTML = "HOME";
         refs.libraryBtn.innerHTML = "MY LIBRARY";
+        if (this.mode === 'library'){
+          document.querySelector('.header-bottom-library .watched').innerHTML = "Watched";
+          document.querySelector('.header-bottom-library .queue').innerHTML = "queue";
+        }
         if (this.modalIsOpen){
           document.querySelector('.overlay .go-home').innerHTML = "HOME";
           document.querySelector('.overlay .go-lab').innerHTML = "MY LIBRARY";
@@ -126,7 +135,43 @@ class MainController {
     closeBtn.addEventListener('click', this.closeModal);
     const divButton = document.querySelector('#watched');
     divButton.addEventListener('click', toWatchedObj.toWatched);
+    divButton.addEventListener('click', () => {
+      toWatchedObj.toWatched();
+      divButton.classList.add('green');
+   }
+   );
     const button = document.querySelector('#queue');
+    button.addEventListener('click', () => {
+      addToQueue.addToQueueE();
+      button.classList.add('green');
+   }
+   );
+
+   function chengColorAdd() {
+     let addToQueueArr = JSON.parse(localStorage.getItem('addToQueue')) || [];
+     if (addToQueueArr.length) {
+       addToQueueArr.some(
+         e =>
+           e.title === JSON.parse(localStorage.getItem('currentFilm')).title,
+       )
+         ? button.classList.add('green')
+         : '';
+     }
+   }
+   chengColorAdd();
+
+   function chengColorWatched() {
+     let watchedArr = JSON.parse(localStorage.getItem('watchedList')) || [];
+     if (watchedArr.length) {
+       watchedArr.some(
+         e =>
+           e.title === JSON.parse(localStorage.getItem('currentFilm')).title,
+       )
+         ? divButton.classList.add('green')
+         : '';
+     }
+   }
+   chengColorWatched();
     button.addEventListener('click', addToQueue.addToQueueE);
     const trailerBtn = document.querySelector('#watched-tailer');
     trailerBtn.addEventListener('click', renderTrailer);
