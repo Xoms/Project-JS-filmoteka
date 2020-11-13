@@ -97,7 +97,7 @@ class PaginationController {
             this.nextBtn = refs.pagination.querySelector('[data-content="Next"]');
             this.firstBtn = refs.pagination.querySelector('[data-content="First"]');
             this.lastBtn = refs.pagination.querySelector('[data-content="Last"]');
-            
+
             this.prevBtn && refs.pagination.removeChild(this.prevBtn.parentNode);
             this.nextBtn && refs.pagination.removeChild(this.nextBtn.parentNode);
             this.firstBtn && refs.pagination.removeChild(this.firstBtn.parentNode);
