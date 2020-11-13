@@ -61,7 +61,7 @@ class PaginationController {
     onPaginationBtn(){
         let currentActive = refs.pagination.querySelector(".active");
         let page = currentActive.children[0].dataset.content
-        console.log(this.searchList);
+        //console.log(this.searchList);
         
         if (!this.searchList.length){
             this.renderDefault(page)
@@ -90,13 +90,13 @@ class PaginationController {
 
     checkPagesQnt(){ //Убирает ненужные элементы управления пагинации, если запрос < 3х страницы пагинации
         this.pagesToView = localStorage.getItem('pagesToView');
-        console.log(this.pagesToView);
-        console.log(this.pageBtns.length);
+        //console.log(this.pagesToView);
+        //console.log(this.pageBtns.length);
         if (this.pagesToView < this.pageBtns.length){
             this.prevBtn = refs.pagination.querySelector('[data-content="Prev"]');
-        this.nextBtn = refs.pagination.querySelector('[data-content="Next"]');
-        this.firstBtn = refs.pagination.querySelector('[data-content="First"]');
-        this.lastBtn = refs.pagination.querySelector('[data-content="Last"]');
+            this.nextBtn = refs.pagination.querySelector('[data-content="Next"]');
+            this.firstBtn = refs.pagination.querySelector('[data-content="First"]');
+            this.lastBtn = refs.pagination.querySelector('[data-content="Last"]');
 
             this.prevBtn && refs.pagination.removeChild(this.prevBtn.parentNode);
             this.nextBtn && refs.pagination.removeChild(this.nextBtn.parentNode);

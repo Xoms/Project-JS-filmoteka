@@ -10,6 +10,8 @@ import ioController from './components/infiniteScroll';
 let query;
 
 refs.userSearchForm.addEventListener("submit", e => {
+  // refs.addText.removeAttribute('hidden');
+  // refs.addForm.removeAttribute('hidden');
   e.preventDefault();
   let userInput = refs.userInputField.value;  
 
@@ -68,12 +70,19 @@ refs.userSearchForm.addEventListener("submit", e => {
             ioController.createObserver(); //если мобилка - создаст инфинит скролл
           }
         } else { 
-          refs.onNoResult.classList.remove("hidden")
+          refs.onNoResult.classList.remove("hidden");
+
+          refs.ul.innerHTML = (`<li><img class="nothingFoundImg" 
+          src='https://st2.depositphotos.com/8029582/12255/v/600/depositphotos_122553578-stock-illustration-emoticon-throws-up-his-hands.jpg'>
+          </li>`);
         }
       });
   } else {
     refs.onNoResult.classList.add("hidden")
     refs.onInvalidSearch.classList.remove("hidden")
+    refs.ul.innerHTML = (`<li><img class="nothingFoundImg" 
+          src='https://st2.depositphotos.com/8029582/12255/v/600/depositphotos_122553578-stock-illustration-emoticon-throws-up-his-hands.jpg'>
+          </li>`);
   }
 })
 
@@ -103,10 +112,12 @@ refs.genresSelect.addEventListener("change", e => {
   }
 
   pagination.searchList = moviesToRender;
+  pagination.renderPagination();
+  
   pagination.renderSearch(1);
 
   console.log("this is", moviesToRender);
-  pagination.renderPagination();
+
   // renderPagination(moviesToRender);
 })
 
