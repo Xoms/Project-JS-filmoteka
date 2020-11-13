@@ -93,11 +93,13 @@ refs.genresSelect.addEventListener("change", e => {
 
     localStorage.setItem('filteredSearchResults', JSON.stringify(moviesToRender))
   }
-
+  
   pagination.searchList = moviesToRender;
+  pagination.renderPagination();
+  
   pagination.renderSearch(1);
 
   console.log("this is", moviesToRender);
-  pagination.renderPagination();
+
   // renderPagination(moviesToRender);
 })
