@@ -103,8 +103,8 @@ class MainController {
     // console.log(btnToLibrary);
     btnToLibrary.addEventListener('click', goToLibrary);
     btnToLibrary.addEventListener('click', this.closeModal);
-    document.body.classList.toggle('scroll-hidden')
-
+    document.body.classList.toggle('scroll-hidden');
+  
   };
   closeModal = (e) => {
     this.instanceBox.close()
