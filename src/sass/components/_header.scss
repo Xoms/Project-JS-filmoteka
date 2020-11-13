@@ -201,9 +201,12 @@
   color: var(--white-text-color);
 }
 .filter-lable-text {
-  color: green;
+  color: var(--accent-color);
 }
 .form-row {
   opacity: 0.5;
   justify-content: center;
+}
+.select-opt{
+  width: auto;
 }

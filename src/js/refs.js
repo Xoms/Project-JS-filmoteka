@@ -16,5 +16,6 @@ export default {
   addText: document.querySelector('.filter-lable-text'),
   addForm: document.querySelector('.form-row'),
   yearSelect: document.querySelector('#yearSelect'),
-  langSwitch: document.querySelector('.theme-switch__toggle')
+  langSwitch: document.querySelector('.theme-switch__toggle'),
+  filterWrapper: document.querySelector('.filter-wrapper')
 }
