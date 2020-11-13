@@ -13,4 +13,5 @@ export default {
   pagination: document.querySelector('.pagination'),
   mainSection: document.querySelector('.movies'),
   genresSelect: document.querySelector('#genresSelect'),
+  yearSelect: document.querySelector('#yearSelect')
 }

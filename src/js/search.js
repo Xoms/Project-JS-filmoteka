@@ -77,11 +77,14 @@ refs.userSearchForm.addEventListener("submit", e => {
   }
 })
 
+
+ let moviesToRender
+
 refs.genresSelect.addEventListener("change", e => {
   const filterValue = refs.genresSelect.value;
   const moviesList = JSON.parse(localStorage.getItem('searchResults'))
 
-  let moviesToRender
+ 
   if (filterValue === 'Choose main genre') {
     localStorage.removeItem('filteredSearchResults')
     moviesToRender = moviesList;
@@ -94,6 +97,11 @@ refs.genresSelect.addEventListener("change", e => {
     localStorage.setItem('filteredSearchResults', JSON.stringify(moviesToRender))
   }
 
+  if (refs.yearSelect.value !== "All years range"){
+    secondFilterHandler();
+    return
+  }
+
   pagination.searchList = moviesToRender;
   pagination.renderSearch(1);
 
@@ -101,3 +109,32 @@ refs.genresSelect.addEventListener("change", e => {
   pagination.renderPagination();
   // renderPagination(moviesToRender);
 })
+
+function secondFilterHandler (e) {
+
+  let secondFilterResult
+  const filterValue = refs.yearSelect.value;
+  console.log(filterValue);
+
+  if (!moviesToRender) {
+    moviesToRender = JSON.parse(localStorage.getItem('searchResults'))
+  } 
+
+  if (filterValue === "All years range"){
+    secondFilterResult = moviesToRender;
+  } else {
+    let startYear = filterValue.split(" ")[0];
+    let endYear = filterValue.split(" ")[2];
+    secondFilterResult = moviesToRender.filter(movie =>
+       movie.releaseDate.split('-')[0] >= startYear && movie.releaseDate.split('-')[0] <=endYear)
+ 
+  }
+
+  pagination.searchList = secondFilterResult;
+  pagination.renderSearch(1);
+
+  console.log("this is sec filter", secondFilterResult);
+  pagination.renderPagination();
+}
+
+refs.yearSelect.addEventListener('change', secondFilterHandler)

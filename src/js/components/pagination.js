@@ -93,10 +93,15 @@ class PaginationController {
         console.log(this.pagesToView);
         console.log(this.pageBtns.length);
         if (this.pagesToView < this.pageBtns.length){
-            refs.pagination.removeChild(this.prevBtn.parentNode);
-            refs.pagination.removeChild(this.nextBtn.parentNode);
-            refs.pagination.removeChild(this.firstBtn.parentNode);
-            refs.pagination.removeChild(this.lastBtn.parentNode);
+            this.prevBtn = refs.pagination.querySelector('[data-content="Prev"]');
+        this.nextBtn = refs.pagination.querySelector('[data-content="Next"]');
+        this.firstBtn = refs.pagination.querySelector('[data-content="First"]');
+        this.lastBtn = refs.pagination.querySelector('[data-content="Last"]');
+
+            this.prevBtn && refs.pagination.removeChild(this.prevBtn.parentNode);
+            this.nextBtn && refs.pagination.removeChild(this.nextBtn.parentNode);
+            this.firstBtn && refs.pagination.removeChild(this.firstBtn.parentNode);
+            this.lastBtn && refs.pagination.removeChild(this.lastBtn.parentNode);
             while (this.pagesToView < this.pageBtns.length){
                 let cur = this.pageBtns.pop();
                 refs.pagination.removeChild(cur.parentNode);
