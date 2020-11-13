@@ -15,15 +15,12 @@ import goToLibrary from './library.js';
 
 
 class MainController {
-  state = {};
-  toWatch = [];
-  watched = [];
 
   constructor() {
     window.addEventListener('load', this.onLoad);
-    window.addEventListener('beforeunload', this.onClose);
     refs.ul.addEventListener('click', this.onModalOpen);
-
+    refs.homeBtn.addEventListener('click', this.onLoad);
+    
     this.state = JSON.parse(localStorage.getItem('state'));
   }
 
@@ -106,29 +103,18 @@ class MainController {
     document.body.classList.toggle('scroll-hidden');
   
   };
+
   closeModal = (e) => {
     this.instanceBox.close()
     document.body.classList.toggle('scroll-hidden')
     }
-    
-  buttonModalClick = () => {
-    //тут событие кнопки модалки - в очередь или просмторено
-  };
-
-  getState() {
-    this.state = JSON.parse(localStorage.getItem('state'));
-  }
-
+  
   onLoad = () => {   
     render(1);
     paginationControl.renderPagination();
   };
 
-  onClose() {
-    this.state.toWatch = this.toWatch;
-    this.state.watched = this.watched;
-    localStorage.setItem('state', JSON.stringify(this.state));
-  }
+
 }
 
 const main = new MainController();

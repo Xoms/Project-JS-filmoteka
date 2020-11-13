@@ -68,12 +68,19 @@ refs.userSearchForm.addEventListener("submit", e => {
             ioController.createObserver(); //если мобилка - создаст инфинит скролл
           }
         } else { 
-          refs.onNoResult.classList.remove("hidden")
+          refs.onNoResult.classList.remove("hidden");
+
+          refs.ul.innerHTML = (`<li><img class="nothingFoundImg" 
+          src='https://st2.depositphotos.com/8029582/12255/v/600/depositphotos_122553578-stock-illustration-emoticon-throws-up-his-hands.jpg'>
+          </li>`);
         }
       });
   } else {
     refs.onNoResult.classList.add("hidden")
     refs.onInvalidSearch.classList.remove("hidden")
+    refs.ul.innerHTML = (`<li><img class="nothingFoundImg" 
+          src='https://st2.depositphotos.com/8029582/12255/v/600/depositphotos_122553578-stock-illustration-emoticon-throws-up-his-hands.jpg'>
+          </li>`);
   }
 })
 
