@@ -53,21 +53,21 @@
       <h1 class="modal__title">{{title}}</h1>
       <ul class="modal__list">
         <li class="modal__item">
-          <p class="modal__item_title">Vote / Votes</p>
+          <p class="modal__item_title" id="modalVotes">Vote / Votes</p>
           <span class="item__data vote_averege">{{voteAverage}}</span>
           / <span class="item__data vote_count">{{voteCount}}</span>
         </li>
         <li class="modal__item">
-          <p class="modal__item_title">Popularity</p>
+          <p class="modal__item_title" id="modalPopularity">Popularity</p>
           <span class="item__data popularity">{{popularity}}</span>
         </li>
         <li class="modal__item modal__item_original">
-          <p class="modal__item_title original_text">Original Title </p>
+          <p class="modal__item_title original_text" id="modalOriginalTitle">Original Title </p>
 
           <span class="item__data original">{{originalTitle}}</span>
         </li>
         <li class="modal__item genres__item">
-          <span class="modal__item_title">Genre</span>
+          <span class="modal__item_title" id="modalGenre">Genre</span>
           <ul class="genres_list">
             {{#each genres}}
             <li class="genres">{{this}}</li>
@@ -75,7 +75,7 @@
           </ul>
         </li>
       </ul>
-      <h2 class="about__title">About</h2>
+      <h2 class="about__title" id="modalAbout">About</h2>
       <p class="overview">{{overview}}</p>
 
       <div class="button_items">

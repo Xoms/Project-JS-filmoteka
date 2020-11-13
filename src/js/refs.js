@@ -15,5 +15,6 @@ export default {
   genresSelect: document.querySelector('#genresSelect'),
   addText: document.querySelector('.filter-lable-text'),
   addForm: document.querySelector('.form-row'),
-  yearSelect: document.querySelector('#yearSelect')
+  yearSelect: document.querySelector('#yearSelect'),
+  langSwitch: document.querySelector('.theme-switch__toggle')
 }
