@@ -86,7 +86,7 @@ const goToLibrary = function (e) {
           item.map(el => el.dataGenres = JSON.stringify(el.genres));
        const nameFilm = e.target.parentNode.dataset.title
        
-       const newList = JSON.stringify(item.filter(el => el.title !== nameFilm));
+       const newListA = JSON.stringify(item.filter(el => el.title !== nameFilm));
        localStorage.setItem('addToQueue', newList);
        if (JSON.parse(newList).length === 0 || item.length === 0) {
          console.log(refs.mainSection);
