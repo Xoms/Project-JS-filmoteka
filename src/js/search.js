@@ -9,10 +9,12 @@ import ioController from './components/infiniteScroll';
 
 let query;
 
-refs.userSearchForm.addEventListener("submit", e => {
+const searchFormHandle =  e => {
   // refs.addText.removeAttribute('hidden');
   // refs.addForm.removeAttribute('hidden');
-  e.preventDefault();
+  if (e) {
+    e.preventDefault();
+  } 
   let userInput = refs.userInputField.value;  
 
   const validInputRegex = /^[a-zA-Z0-9а-яА-Я\s]+$/;
@@ -84,7 +86,9 @@ refs.userSearchForm.addEventListener("submit", e => {
           src='https://st2.depositphotos.com/8029582/12255/v/600/depositphotos_122553578-stock-illustration-emoticon-throws-up-his-hands.jpg'>
           </li>`);
   }
-})
+} 
+
+refs.userSearchForm.addEventListener("submit", searchFormHandle);
 
 
  let moviesToRender
@@ -149,3 +153,5 @@ function secondFilterHandler (e) {
 }
 
 refs.yearSelect.addEventListener('change', secondFilterHandler)
+
+export default searchFormHandle;

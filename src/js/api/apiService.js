@@ -20,7 +20,7 @@ const options = {
  class FilmotekaApi {
     _page = 1;
     width = window.screen.width;
-
+    _lang = localStorage.getItem('lang') || 'en';
     constructor(){
         this.onResize();
         window.addEventListener('resize', debounce(this.onResize, 500));
@@ -79,10 +79,18 @@ const options = {
         return this._page;
     }
 
+    set lang(val){
+        this._lang = val; 
+    }
+
+    get lang(){
+        return this._lang
+    }
+
     async getTrends(viewPage) { 
         this.ckeckPerPage(viewPage);
 
-        let res = await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&page=${this.neededPageStart}&language=en`, options)
+        let res = await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&page=${this.neededPageStart}&language=${this._lang}`, options)
             .then( res => res.json() )
             .then(async res => {
                 //console.log(res)
@@ -95,7 +103,7 @@ const options = {
                 } else {
                     let resFirstPart = res.results.slice(this.factStart % 20); //прийдётся делать ещё запрос
                    
-                    let resSecondPart = await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&page=${this.neededPageEnd}&language=en`, options)
+                    let resSecondPart = await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&page=${this.neededPageEnd}&language=${this._lang}`, options)
                         .then(res => res.json())
                         .then(res => res.results.slice(0, this.factEnd % 20 ))
                     //console.log('FirstPart = ', resFirstPart, ' ;SecondPart = ', resSecondPart);
@@ -145,7 +153,8 @@ const options = {
         */
 
     getMoviesByQuery(query){
-        return fetch(`${BASE_URL}search/movie?language=ru&query=${query}&page=${this._page}`, options) //change multi to movie
+        console.log(this._lang);
+        return fetch(`${BASE_URL}search/movie?language=${this._lang}&query=${query}&page=${this._page}`, options) //change multi to movie
             .then(res => res.json())
             .then(res => {
                 localStorage.setItem('pagesToView', Math.floor(res.total_results / this.perPage))

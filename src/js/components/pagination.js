@@ -6,6 +6,8 @@ import renderCards from '../renderCards'; //этот рисует карточк
 
 class PaginationController {
     _searchList = [];
+    mode = 'default';
+    activePage = 1;
     constructor() {
         refs.pagination.addEventListener('click', this.onPaginationClick);
         api.onResize();
@@ -61,6 +63,7 @@ class PaginationController {
     onPaginationBtn(){
         let currentActive = refs.pagination.querySelector(".active");
         let page = currentActive.children[0].dataset.content
+        
         //console.log(this.searchList);
         
         if (!this.searchList.length){
@@ -71,12 +74,18 @@ class PaginationController {
     }
 
     renderDefault(vPage){ //Страницы из дефолта
-        this.pagesToView = localStorage.getItem('pagesToView');
+        
         refs.ul.innerHTML = '';
         render(vPage);
+        this.pagesToView = localStorage.getItem('pagesToView');
+
+        this.mode = 'default';
+        localStorage.setItem('mode', this.mode)
+        this.activePage = vPage;
     }
 
     renderSearch(vPage){ //Страница пагинации из поиска
+        
         this.perPage = localStorage.getItem('perPage'); //там в зависимотси от ширины экрана кол-во фильмов на странице
         this.pagesToView = Math.floor(this.searchList.length / this.perPage); //общее кол-во страниц
         localStorage.setItem ('pagesToView', this.pagesToView); //надо переписать, т.к., оно может браться также из апи)
@@ -86,6 +95,9 @@ class PaginationController {
 
         let snapshot = this.searchList.slice(start, end);
         renderCards(snapshot);
+        this.mode = 'search';
+        localStorage.setItem('mode', this.mode)
+        this.activePage = vPage;
     }
 
     checkPagesQnt(){ //Убирает ненужные элементы управления пагинации, если запрос < 3х страницы пагинации
