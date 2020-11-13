@@ -8,14 +8,13 @@ import modalCard from '../partials/modal.hbs';
 import * as basicLightbox from 'basiclightbox';
 import toWatchedObj from './buttonWatched';
 import addToQueue from './buttonAddToQueue';
-import 'basicLightbox/dist/basicLightbox.min.css'
+import 'basicLightbox/dist/basicLightbox.min.css';
 import paginationControl from './components/pagination.js';
 import shareMovie from './telega.js'
 import goToLibrary from './library.js';
 
 
 class MainController {
-
   state = {};
   toWatch = [];
   watched = [];
@@ -40,14 +39,14 @@ class MainController {
     let item = e.target.parentNode.querySelector('.data');
     // console.dir(item);
     const objPossibilities = {
-        "title" : item.dataset.title,
-        "voteAverage": item.dataset.voteaverage,
-        "voteCount" : item.dataset.votecount,
-        "overview" : item.dataset.overview,
-        "popularity" : item.dataset.popularity,
-        "originalTitle": item.dataset.originaltitle,
-        "genres" : JSON.parse(item.dataset.genres),
-        "poster" : item.dataset.poster,
+      title: item.dataset.title,
+      voteAverage: item.dataset.voteaverage,
+      voteCount: item.dataset.votecount,
+      overview: item.dataset.overview,
+      popularity: item.dataset.popularity,
+      originalTitle: item.dataset.originaltitle,
+      genres: JSON.parse(item.dataset.genres),
+      poster: item.dataset.poster,
     };
     // console.log(typeof objPossibilities.genres);
     localStorage.setItem('currentFilm', JSON.stringify(objPossibilities));
@@ -57,9 +56,44 @@ class MainController {
     const closeBtn = document.querySelector('.close-button');
     closeBtn.addEventListener('click', this.closeModal);
     const divButton = document.querySelector('#watched');
-    divButton.addEventListener('click', toWatchedObj.toWatched);
+    divButton.addEventListener('click', () => {
+       toWatchedObj.toWatched();
+       divButton.classList.add('green');
+    }
+    );
     const button = document.querySelector('#queue');
-    button.addEventListener('click', addToQueue.addToQueueE);
+    button.addEventListener('click', () => {
+       addToQueue.addToQueueE();
+       button.classList.add('green');
+    }
+    );
+
+    function chengColorAdd() {
+      let addToQueueArr = JSON.parse(localStorage.getItem('addToQueue')) || [];
+      if (addToQueueArr.length) {
+        addToQueueArr.some(
+          e =>
+            e.title === JSON.parse(localStorage.getItem('currentFilm')).title,
+        )
+          ? button.classList.add('green')
+          : '';
+      }
+    }
+    chengColorAdd();
+
+    function chengColorWatched() {
+      let watchedArr = JSON.parse(localStorage.getItem('watchedList')) || [];
+      if (watchedArr.length) {
+        watchedArr.some(
+          e =>
+            e.title === JSON.parse(localStorage.getItem('currentFilm')).title,
+        )
+          ? divButton.classList.add('green')
+          : '';
+      }
+    }
+    chengColorWatched();
+
     const trailerBtn = document.querySelector('#watched-tailer');
     trailerBtn.addEventListener('click', renderTrailer);
     const telegaBtn = document.querySelector('.telega-btn');
@@ -69,8 +103,8 @@ class MainController {
     // console.log(btnToLibrary);
     btnToLibrary.addEventListener('click', goToLibrary);
     btnToLibrary.addEventListener('click', this.closeModal);
-    document.body.classList.toggle('scroll-hidden')
-
+    document.body.classList.toggle('scroll-hidden');
+  
   };
   closeModal = (e) => {
     this.instanceBox.close()
