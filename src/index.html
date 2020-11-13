@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Project Filmoteka</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+
   </head>
 
   <body>
@@ -45,34 +45,63 @@
         </div>
         <div class="header-bottom">
           <form class="search-form">
-          <input type="text" placeholder="Search a movie" class="input-search"/>
-          <span class="search-icon">
-            <svg width="12" height="12">
-              <use xlink:href="./images/sprite.svg#search-2" />
-            </svg>
-          </span>
+            <input type="text" placeholder="Search a movie" class="input-search"/>
+            <span class="search-icon">
+              <svg width="12" height="12">
+                <use xlink:href="./images/sprite.svg#search-2" />
+              </svg>
+            </span>
           </form>
+          <form class = "results-filter-form"></form>
+          <p class = filter-lable-text>Need something more specific? Try to filter the results!</p>
+          <div class="form-row align-items-center">
+              <div class="col-auto my-1">
+                  <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">genre</label>
+                  <select class="custom-select mr-sm-2" id="genresSelect">
+                    <!-- dynamically rendered -->
+                  </select>
+                  <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">year-range</label>
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                      <option selected>Choose year range</option>
+                      <option value="1">2000 - 2020</option>
+                      <option value="2">1980 - 2000</option>
+                      <option value="3">1960 - 1980</option>
+                      <option value="3">1940 - 1960</option>
+                      <option value="4">1920 - 1940</option>
+                  </select>
+              </div>
+              <div class="col-auto my-1">
+                  <div class="custom-control custom-checkbox mr-sm-2">
+                      <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                      <label class="custom-control-label sort-votes-checkbox__text" for="customControlAutosizing">Sort by votes</label>
+                  </div>
+              </div>
+          </div>
+
           <p class = "error-message hidden" id = "invalid-search">Search result is not successful. Enter the correct movie name. Use only letters or numbers.</p>   
           <p class = "error-message hidden" id = "no-result">Nothing was found. Try a different search term.</p>    
         </div>
       </div>
     </header>
     <main>
-       <ul class="container movies">
-       </ul>
+       <div class="container">
+        <ul class="movies">
+        </ul>
+       </div>
+
 
       <div class="pagination-container container">
         <ul class="pagination">
         </ul>
       </div>
-       
-      
+
+
     </main>
 
     <footer>     
     </footer>
     <a class="back_to_top" title="Наверх"><span class="arrow-color">↑</span></a>
     
-
+    
   </body>
 </html>

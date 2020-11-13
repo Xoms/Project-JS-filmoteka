@@ -11,6 +11,7 @@ const addToQueueE = function () {
     itemArray.push(obj);
     localStorage.setItem('addToQueue', JSON.stringify(itemArray));
     console.log(itemArray);
+
 };
 
 export default {

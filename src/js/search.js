@@ -1,7 +1,11 @@
 import refs from "./refs.js"
 import genresMap from "./api/genresDb"
 import api from "./api/apiService"
-import renderCards from "./render"
+import renderCards from "./renderCards"
+import renderFilters from "./renderFilters"
+import getAllUniqueMoviesGenres from "./filterByGenre"
+import pagination from "./components/pagination"
+import ioController from './components/infiniteScroll';
 
 let query;
 
@@ -44,11 +48,25 @@ refs.userSearchForm.addEventListener("submit", e => {
           })
         })
         // sort by popularity descending
-        return allMoviesList.sort((m1, m2) => (m1.voteAverage < m2.voteAverage) ? 1 : -1);
+        return allMoviesList.sort((m1, m2) => (m1.popularity < m2.popularity) ? 1 : -1);
       })
       .then(moviesList => {
+        pagination.searchList = moviesList;
+        pagination.renderPagination();
+
+        localStorage.setItem('searchResults', JSON.stringify(moviesList))
+        localStorage.removeItem('filteredSearchResults')
+
         if (moviesList.length > 0) {
-          renderCards(moviesList)
+          // renderCards(moviesList)
+          pagination.renderSearch(1);
+
+          const allUniqueMoviesGenres = getAllUniqueMoviesGenres(moviesList)
+          renderFilters(allUniqueMoviesGenres)
+          if(api.width < 768) {
+            ioController.searchList = moviesList;
+            ioController.createObserver(); //если мобилка - создаст инфинит скролл
+          }
         } else { 
           refs.onNoResult.classList.remove("hidden")
         }
@@ -57,4 +75,29 @@ refs.userSearchForm.addEventListener("submit", e => {
     refs.onNoResult.classList.add("hidden")
     refs.onInvalidSearch.classList.remove("hidden")
   }
+})
+
+refs.genresSelect.addEventListener("change", e => {
+  const filterValue = refs.genresSelect.value;
+  const moviesList = JSON.parse(localStorage.getItem('searchResults'))
+
+  let moviesToRender
+  if (filterValue === 'Choose main genre') {
+    localStorage.removeItem('filteredSearchResults')
+    moviesToRender = moviesList;
+  } else {
+    moviesToRender = moviesList.filter(movie => {
+      console.log(movie.genres + ' contains ' + filterValue);
+      return movie.genres.includes(filterValue);
+    })
+
+    localStorage.setItem('filteredSearchResults', JSON.stringify(moviesToRender))
+  }
+
+  pagination.searchList = moviesToRender;
+  pagination.renderSearch(1);
+
+  console.log("this is", moviesToRender);
+  pagination.renderPagination();
+  // renderPagination(moviesToRender);
 })

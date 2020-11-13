@@ -6,6 +6,7 @@ import buttonLibrary from '../partials/header.hbs';
 
 const goToLibrary = function (e) {
   e.preventDefault();
+  refs.pagination.innerHTML = '';
   refs.inputContainer.classList.add('hidden');
   refs.headerLibrary.classList.add('header-library');
   refs.homeBtn.classList.remove('is-active-btn');
@@ -19,19 +20,54 @@ const goToLibrary = function (e) {
   
   const showWathed = function () {
     const arrWatched = JSON.parse(localStorage.getItem('watchedList'));
-    arrWatched.map(el => el.dataGenres = JSON.stringify(el.genres));
+    if (arrWatched) {
+      arrWatched.map(el => el.dataGenres = JSON.stringify(el.genres));
+    }
     btnWatched.classList.add('is-active');
     btnQueue.classList.remove('is-active');
     refs.mainSection.innerHTML = main(arrWatched);
-    
+      document.querySelectorAll('.delete').forEach(el => {
+        el.removeAttribute('hidden');
+        
+      });
+    refs.mainSection.addEventListener('click', (e) => {
+          const item = JSON.parse(localStorage.getItem('watchedList'));
+          const nameFilm = e.target.parentNode.dataset.title
+          const newList = JSON.stringify(item.filter(el => el.title !== nameFilm));
+          localStorage.setItem('watchedList', newList);
+          refs.mainSection.innerHTML = main(JSON.parse(newList));
+          document.querySelectorAll('.delete').forEach(el => el.removeAttribute('hidden'));
+         
+          console.log(newList);
+          console.log(e);
+          console.log(e.target.parentNode.dataset.title);
+        })
   }
+
   showWathed();
+  
   const showQueue = function () {
     const arrQueue = JSON.parse(localStorage.getItem('addToQueue'));
-    arrQueue.map(el => el.dataGenres = JSON.stringify(el.genres));  
+    if (arrQueue) {
+      arrQueue.map(el => el.dataGenres = JSON.stringify(el.genres));
+    } 
     btnQueue.classList.add('is-active');
     btnWatched.classList.remove('is-active');
     refs.mainSection.innerHTML = main(arrQueue);
+     document.querySelectorAll('.delete').forEach(el =>el.removeAttribute('hidden'))
+    // del.removeAttribute
+     refs.mainSection.addEventListener('click', (e) => {
+          const item = JSON.parse(localStorage.getItem('addToQueue'));
+          const nameFilm = e.target.parentNode.dataset.title
+          const newList = JSON.stringify(item.filter(el => el.title !== nameFilm));
+          localStorage.setItem('addToQueue', newList);
+          refs.mainSection.innerHTML = main(JSON.parse(newList));
+          document.querySelectorAll('.delete').forEach(el => el.removeAttribute('hidden'));
+         
+          console.log(newList);
+          console.log(e);
+          console.log(e.target.parentNode.dataset.title);
+        })
   }
   
   btnQueue.addEventListener('click', showQueue);
@@ -39,4 +75,6 @@ const goToLibrary = function (e) {
 }
 
 refs.libraryBtn.addEventListener('click', goToLibrary);
+
+export default goToLibrary;
 

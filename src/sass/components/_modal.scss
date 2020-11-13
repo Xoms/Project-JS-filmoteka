@@ -2,78 +2,113 @@
   background-color: var(--white-text-color);
   font-weight: var(--main-font-weight);
 
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
 }
+
+.close-button {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 4px;
+  right: 4px;
+
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+
+  background-color: gray;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: var(--black-text-color);
+    border-color: var(--accent-color);
+    color: white;
+    fill: var(--accent-color);
+  }
+  @include for-size(tablet) {
+    top: 8px;
+    right: 8px;
+
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+  }
+}
 .movie_card {
   padding-top: 20px;
   padding-bottom: 40px;
-  @include for-size (tablet) {
-
+  @include for-size(tablet) {
     display: flex;
     justify-content: center;
     padding-top: 60px;
     padding-bottom: 60px;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 .basicLightbox {
   display: block;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .header__modal {
   // margin-bottom: 20px;
-   background-image:
-    linear-gradient(
-       to right,
-       rgba(0, 0, 0, 0.56),
-       rgba(0, 0, 0, 0.56)
-     ),
-     url(../images/images_modal/mobile.png);
-   min-height: 230px;
-   background-repeat: no-repeat;
-   background-position: 50% 50%;
-   background-size: cover;
-   @include for-size(tablet) {
-     background-image: linear-gradient(to right,
-       rgba(0, 0, 0, 0.56),
-       rgba(0, 0, 0, 0.56)),
-     url(../images/images_modal/tablet.png);
-       }
-   @include for-size(desktop) {
-     background-image: linear-gradient(to right,
-       rgba(0, 0, 0, 0.56),
-       rgba(0, 0, 0, 0.56)),
-     url(../images/images_modal/desktop.png);
-       }
- 
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url(../images/images_modal/mobile.png);
+  min-height: 230px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  @include for-size(tablet) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/images_modal/tablet.png);
   }
-  // .modal-svg {
-  //   z-index: 10;
-  // }
-  .modal_poster {
-@include for-size (tablet) {
-  width: 294px;
+  @include for-size(desktop) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/images_modal/desktop.png);
+  }
 }
-
-    @include for-size (desktop) {
-      width: 426px;
-    }
+// .modal-svg {
+//   z-index: 10;
+// }
+.modal_poster {
+  @include for-size(tablet) {
+    width: 294px;
   }
+  @include for-size(desktop) {
+    width: 426px;
+  }
+}
 .modal__img {
   display: block;
   width: 100%;
   margin-bottom: 30px;
   border-radius: 5px;
 
-  @include for-size (tablet) {
+  @include for-size(tablet) {
     max-height: 416px;
-    margin-bottom: 38px;
-  }
-  @include for-size (desktop) {
-    max-height: 514px;
     margin-bottom: 0;
+  }
+  @include for-size(desktop) {
+    max-height: 514px;
   }
 }
 .modal__title {
@@ -94,14 +129,14 @@
   margin-bottom: 20px;
 }
 .modal__item {
-color: var(--color-text-modal-window);
+  color: var(--color-text-modal-window);
 }
 .modal__item:not(:last-child) {
   margin-bottom: 10px;
 }
 .modal__item_title {
   display: inline-block;
-  width: 100px;
+  width: 80px;
   margin-right: 40px;
 }
 .item__data {
@@ -130,7 +165,7 @@ color: var(--color-text-modal-window);
 }
 .vote_averege {
   color: var(--white-text-color);
-  background: var( --accent-color);
+  background: var(--accent-color);
 }
 .vote_count {
   background: var(--background-footer-color);
@@ -141,21 +176,25 @@ color: var(--color-text-modal-window);
 }
 .original {
   display: block;
+  width: 160px;
+  @include for-size(desktop) {
+    width: 260px;
+  }
 }
 .original_text {
-  @include for-size (tablet) {
-    // margin-right: 49px;
-  }
+  margin-right: 44px;
 }
 .genres_list {
   display: block;
-  width: 151px;
+  width: 160px;
+  @include for-size(desktop) {
+    width: 260px;
+  }
 }
 .genres__item {
   display: flex;
-  flex-wrap: wrap;
 }
-.genres{
+.genres {
   display: inline;
   margin-left: 5px;
   color: var(--black-text-color);
@@ -169,28 +208,72 @@ color: var(--color-text-modal-window);
 }
 .button_items {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+
+  @include for-size(desktop) {
+    justify-content: space-around;
+  }
 }
 .button_items .btn {
-    width: 136px;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 1.33;
+  width: 132px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.33;
+}
+.btn:last-child {
+  margin-top: 15px;
+
+  @include for-size(desktop) {
+    margin-top: 0;
+  }
+}
+.btn.btn-dark:not(last-child) {
+  margin-right: 0;
+}
+.button_items .btn:nth-child(2n + 1) {
+  margin-right: 15px;
+  @include for-size(desktop) {
+    margin-right: 0;
+  }
+}
+.button_items .btn:last-child {
+  @include for-size(desktop) {
+    // margin-top: 15px;
+  }
 }
 .modal__text {
-  @include for-size (tablet) {
+  @include for-size(tablet) {
     margin-left: 30px;
     width: 294px;
   }
-  @include for-size (desktop) {
+  @include for-size(desktop) {
     width: 426px;
   }
 }
 
 
 .green.btn {
-  background-color:lightblue;
+  background-color: lightgray;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+.overlay {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex: 0 0 auto;
 }

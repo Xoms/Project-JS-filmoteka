@@ -3,12 +3,16 @@ import api from './api/apiService';
 import render from './main.js';
 import genres from './api/genresDb';
 import refs from './refs.js';
+import renderTrailer from './trailer.js'
 import modalCard from '../partials/modal.hbs';
 import * as basicLightbox from 'basiclightbox';
 import toWatchedObj from './buttonWatched';
 import addToQueue from './buttonAddToQueue';
 import 'basicLightbox/dist/basicLightbox.min.css';
 import paginationControl from './components/pagination.js';
+import shareMovie from './telega.js'
+import goToLibrary from './library.js';
+
 
 class MainController {
   state = {};
@@ -25,9 +29,10 @@ class MainController {
 
   onModalOpen = e => {
     e.preventDefault();
-    console.log('onModalOpen');
-    console.log(e.target.parentNode);
-    if (e.target.parentNode.nodeName !== 'A') {
+    // console.log("go to", goToLibrary);
+    // console.log("onModalOpen");
+    // console.log(e.target.parentNode);
+    if (e.target.parentNode.nodeName !== 'A' || e.target.className === 'btn delete') {
       return;
     }
 
@@ -43,14 +48,25 @@ class MainController {
       genres: JSON.parse(item.dataset.genres),
       poster: item.dataset.poster,
     };
-    console.log(typeof objPossibilities.genres);
+    // console.log(typeof objPossibilities.genres);
     localStorage.setItem('currentFilm', JSON.stringify(objPossibilities));
     const itemCard = modalCard(objPossibilities);
-    const instanceBox = basicLightbox.create(itemCard).show();
+    this.instanceBox = basicLightbox.create(itemCard);
+    this.instanceBox.show();
+    const closeBtn = document.querySelector('.close-button');
+    closeBtn.addEventListener('click', this.closeModal);
     const divButton = document.querySelector('#watched');
-    divButton.addEventListener('click', toWatchedObj.toWatched);
+    divButton.addEventListener('click', () => {
+       toWatchedObj.toWatched();
+       divButton.classList.add('green');
+    }
+    );
     const button = document.querySelector('#queue');
-    button.addEventListener('click', addToQueue.addToQueueE);
+    button.addEventListener('click', () => {
+       addToQueue.addToQueueE();
+       button.classList.add('green');
+    }
+    );
 
     function chengColorAdd() {
       let addToQueueArr = JSON.parse(localStorage.getItem('addToQueue')) || [];
@@ -77,8 +93,24 @@ class MainController {
       }
     }
     chengColorWatched();
-  };
 
+    const trailerBtn = document.querySelector('#watched-tailer');
+    trailerBtn.addEventListener('click', renderTrailer);
+    const telegaBtn = document.querySelector('.telega-btn');
+    telegaBtn.addEventListener('click', shareMovie);
+  
+    const btnToLibrary = document.querySelector('#library-btn');
+    // console.log(btnToLibrary);
+    btnToLibrary.addEventListener('click', goToLibrary);
+    btnToLibrary.addEventListener('click', this.closeModal);
+    document.body.classList.toggle('scroll-hidden')
+
+  };
+  closeModal = (e) => {
+    this.instanceBox.close()
+    document.body.classList.toggle('scroll-hidden')
+    }
+    
   buttonModalClick = () => {
     //тут событие кнопки модалки - в очередь или просмторено
   };
@@ -87,10 +119,9 @@ class MainController {
     this.state = JSON.parse(localStorage.getItem('state'));
   }
 
-  onLoad = () => {
-    paginationControl.renderPagination();
-    api.ckeckPerPage(1);
+  onLoad = () => {   
     render(1);
+    paginationControl.renderPagination();
   };
 
   onClose() {
