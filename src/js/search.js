@@ -10,6 +10,8 @@ import ioController from './components/infiniteScroll';
 let query;
 
 refs.userSearchForm.addEventListener("submit", e => {
+  // refs.addText.removeAttribute('hidden');
+  // refs.addForm.removeAttribute('hidden');
   e.preventDefault();
   let userInput = refs.userInputField.value;  
 
