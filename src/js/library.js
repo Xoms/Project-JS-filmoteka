@@ -31,16 +31,18 @@ const goToLibrary = function (e) {
         
       });
     refs.mainSection.addEventListener('click', (e) => {
-          const item = JSON.parse(localStorage.getItem('watchedList'));
-          const nameFilm = e.target.parentNode.dataset.title
+      let item = JSON.parse(localStorage.getItem('watchedList'));
+      item.map(el => el.dataGenres = JSON.stringify(el.genres));
+      console.log("item", item);
+      const nameFilm = e.target.parentNode.dataset.title;
           const newList = JSON.stringify(item.filter(el => el.title !== nameFilm));
           localStorage.setItem('watchedList', newList);
           refs.mainSection.innerHTML = main(JSON.parse(newList));
           document.querySelectorAll('.delete').forEach(el => el.removeAttribute('hidden'));
          
-          console.log(newList);
+          
           console.log(e);
-          console.log(e.target.parentNode.dataset.title);
+          // console.log(e.target.parentNode.dataset.title);
         })
   }
 
@@ -57,7 +59,8 @@ const goToLibrary = function (e) {
      document.querySelectorAll('.delete').forEach(el =>el.removeAttribute('hidden'))
     // del.removeAttribute
      refs.mainSection.addEventListener('click', (e) => {
-          const item = JSON.parse(localStorage.getItem('addToQueue'));
+          let item = JSON.parse(localStorage.getItem('addToQueue'));
+          item.map(el => el.dataGenres = JSON.stringify(el.genres));
           const nameFilm = e.target.parentNode.dataset.title
           const newList = JSON.stringify(item.filter(el => el.title !== nameFilm));
           localStorage.setItem('addToQueue', newList);

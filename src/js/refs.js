@@ -13,4 +13,6 @@ export default {
   pagination: document.querySelector('.pagination'),
   mainSection: document.querySelector('.movies'),
   genresSelect: document.querySelector('#genresSelect'),
+  addText: document.querySelector('.filter-lable-text'),
+  addForm: document.querySelector('.form-row'),
 }
