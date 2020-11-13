@@ -73,6 +73,7 @@ const searchFormHandle =  e => {
           }
         } else { 
           refs.onNoResult.classList.remove("hidden");
+          refs.filterWrapper.classList.add('hidden');
 
           refs.ul.innerHTML = (`<li><img class="nothingFoundImg" 
           src='https://st2.depositphotos.com/8029582/12255/v/600/depositphotos_122553578-stock-illustration-emoticon-throws-up-his-hands.jpg'>
@@ -80,6 +81,7 @@ const searchFormHandle =  e => {
         }
       });
   } else {
+    refs.filterWrapper.classList.add('hidden');
     refs.onNoResult.classList.add("hidden")
     refs.onInvalidSearch.classList.remove("hidden")
     refs.ul.innerHTML = (`<li><img class="nothingFoundImg" 
@@ -89,16 +91,17 @@ const searchFormHandle =  e => {
 } 
 
 refs.userSearchForm.addEventListener("submit", searchFormHandle);
-
+refs.userInputField.addEventListener("change", searchFormHandle);
 
  let moviesToRender
 
 refs.genresSelect.addEventListener("change", e => {
+  
   const filterValue = refs.genresSelect.value;
   const moviesList = JSON.parse(localStorage.getItem('searchResults'))
 
  
-  if (filterValue === 'Choose main genre') {
+  if (filterValue === 'Any genre') {
     localStorage.removeItem('filteredSearchResults')
     moviesToRender = moviesList;
   } else {
