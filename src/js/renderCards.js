@@ -9,6 +9,7 @@ const renderCards = (res) => {
           </li>`);
     return;
   }
+  refs.filterWrapper.classList.remove('hidden')
     refs.ul.insertAdjacentHTML('beforeend', main(res));
   }
 
