@@ -46,7 +46,7 @@ class MainController {
     if (paginationControl.mode === 'default'){
       paginationControl.renderDefault(paginationControl.activePage || 1);
 
-    } else {
+    } else { //если не дефолт - значит поиск
       getSearсhArr()
     }
   }

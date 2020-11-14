@@ -1,6 +1,6 @@
 import render from '../main.js'; //этот рисует карточки популярных фильмов
 import refs from '../refs.js';
-import main from '../../partials/main.hbs';
+import main from '../../partials/main.hbs'; //Шаблон картотеки
 
 class InfiniteScroll {
     options = {}
