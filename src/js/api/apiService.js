@@ -95,7 +95,7 @@ const options = {
             .then(async res => {
                 //console.log(res)
                 localStorage.setItem('pagesToView', Math.floor(res.total_results / this.perPage))
-                localStorage.setItem('mode', 'trends') //для инифинит скролла
+                localStorage.setItem('mode', 'deault') //для инифинит скролла
                 let viewRes = [];
             
                 if (this.neededPageStart === this.neededPageEnd) {

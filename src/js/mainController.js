@@ -18,7 +18,7 @@ import getSearсhArr from './search';
 class MainController {
 
   lang = localStorage.getItem('lang') || 'en';
-
+  mode = 'default';
   constructor() {
     window.addEventListener('load', this.onLoad);
     refs.ul.addEventListener('click', this.onModalOpen);
@@ -38,8 +38,8 @@ class MainController {
     api.lang = this.lang;
     this.mode = localStorage.getItem('mode');
     this.redrawLangChenge();    
-    console.log(paginationControl.mode);
-    if (this.mode === 'library' || this.api.width < 768){
+    console.log(this.mode);
+    if (this.mode === 'library'){
       return;
     }
     
@@ -199,8 +199,8 @@ class MainController {
     if (this.lang == 'en'){
       refs.langSwitch.checked = true;
     }
-    this.redrawLangChenge()
     render(1);
+    this.redrawLangChenge()    
     paginationControl.renderPagination();
   };
 

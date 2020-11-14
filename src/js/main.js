@@ -34,9 +34,11 @@ api.getTrends(viewPage)
   return res;
 })
 .then(res => {
-  refs.ul.insertAdjacentHTML('beforeend', main(res))
+  refs.ul.insertAdjacentHTML('beforeend', main(res));
+  localStorage.setItem('mode', 'default')
   //console.log(res);
   if(api.width < 768) {
+    // localStorage.setItem('mode', 'scroll')
     ioController.createObserver(); //если мобилка - создаст инфинит скролл
   }
 });

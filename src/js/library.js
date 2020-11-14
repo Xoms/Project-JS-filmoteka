@@ -19,6 +19,7 @@ const goToLibrary = function (e) {
   const btnWatched = document.querySelector('.watched');
   btnWatched.classList.add('is-active');
 
+  /*ПЕРЕВОД*/
   let lang = localStorage.getItem('lang');
   if (lang == 'ru'){
     btnQueue.innerHTML = 'К просмотру';
@@ -27,7 +28,9 @@ const goToLibrary = function (e) {
     btnQueue.innerHTML = 'queue';
     btnWatched.innerHTML = 'Watched';
   }
-  let currentList = 'watchedList'
+
+
+  let currentList = 'watchedList';  //нужно для определения, в каком из списков удалять фильм
   
   const showWathed = function () {
     currentList = 'watchedList'

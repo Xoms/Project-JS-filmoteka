@@ -78,6 +78,7 @@ const searchFormHandle =  e => {
           refs.ul.innerHTML = (`<li><img class="nothingFoundImg" 
           src='https://st2.depositphotos.com/8029582/12255/v/600/depositphotos_122553578-stock-illustration-emoticon-throws-up-his-hands.jpg'>
           </li>`);
+          refs.pagination.innerHTML = '';
         }
       });
   } else {
@@ -87,6 +88,7 @@ const searchFormHandle =  e => {
     refs.ul.innerHTML = (`<li><img class="nothingFoundImg" 
           src='https://st2.depositphotos.com/8029582/12255/v/600/depositphotos_122553578-stock-illustration-emoticon-throws-up-his-hands.jpg'>
           </li>`);
+    refs.pagination.innerHTML = '';
   }
 } 
 

@@ -74,18 +74,16 @@ class PaginationController {
     }
 
     renderDefault(vPage){ //Страницы из дефолта
-        
+        this.mode = 'default';
+        localStorage.setItem('mode', this.mode);
+        this.activePage = vPage;
         refs.ul.innerHTML = '';
         render(vPage);
-        this.pagesToView = localStorage.getItem('pagesToView');
-
-        this.mode = 'default';
-        localStorage.setItem('mode', this.mode)
-        this.activePage = vPage;
+        this.pagesToView = localStorage.getItem('pagesToView');        
     }
 
     renderSearch(vPage){ //Страница пагинации из поиска
-        
+        localStorage.setItem('mode', this.mode)
         this.perPage = localStorage.getItem('perPage'); //там в зависимотси от ширины экрана кол-во фильмов на странице
         this.pagesToView = Math.floor(this.searchList.length / this.perPage); //общее кол-во страниц
         localStorage.setItem ('pagesToView', this.pagesToView); //надо переписать, т.к., оно может браться также из апи)
@@ -96,7 +94,6 @@ class PaginationController {
         let snapshot = this.searchList.slice(start, end);
         renderCards(snapshot);
         this.mode = 'search';
-        localStorage.setItem('mode', this.mode)
         this.activePage = vPage;
     }
 
