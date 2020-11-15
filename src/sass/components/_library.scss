@@ -1,0 +1,33 @@
+.movie-list-item {
+  position: relative;
+}
+.btn:last-child {
+  margin-top: 0px;
+}
+.delete {
+  // display: flex;
+  // justify-content: center;
+  position: absolute;
+  z-index: 5;
+  border-color: black;
+  background-color: white;
+  opacity: 0.5;
+  font-size: 9px;
+  font-weight: 600;
+  // transform: translateX(115%);
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 32px;
+}
+.remove-svg {
+  pointer-events: none;
+}
+
+.btn.watched, .btn.queue {
+  padding: 0 5px;
+  font-size: 12px;
+  @include for-size(tablet) { 
+    font-size: 16px;
+  }
+}

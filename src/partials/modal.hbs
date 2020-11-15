@@ -1,0 +1,118 @@
+<div class="overlay">
+  <header class="header__modal content">
+    <div class="container">
+      <div class="header-top">
+        <a href="./index.html" class="logo coin">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M19.82 2H4.18C2.97602 2 2 2.97602 2 4.18V19.82C2 21.024 2.97602 22 4.18 22H19.82C21.024 22 22 21.024 22 19.82V4.18C22 2.97602 21.024 2 19.82 2Z"
+              stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M7 2V22" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M17 2V22" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2 12H22" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2 7H7" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2 17H7" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M17 17H22" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M17 7H22" stroke="#818181" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="logo-txt">Filmoteka</span>
+        </a>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="./index.html" class="nav-btn is-active-btn go-home">
+                HOME
+              </a>
+            </li>
+            <li class="nav-item">
+              <button type="button" id="library-btn" class="nav-btn go-lab">MY LIBRARY</button>
+
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="movie_card container content">
+    <button type="button" class="close-button">
+       <svg width="18" height="18" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M464,155v201.9L280.5,256L464,155 M240,156v77.7v27.1v95.6L64,256l176-100.2 M256,128L32,256l224,128V260.8L480,384V128  L256,251.2V128L256,128z"/></svg>
+    </button>
+    <div class="modal_poster">
+      <a target="_blank" rel="noopener noreferrer" class="telega-link">
+            <div class="telega-btn">
+              <svg width="24" height="24" class="telega-svg" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M24 0L0 13.5L7.66994 16.3407L19.5 5.25002L10.5017 17.3896L10.509 17.3923L10.5 17.3896V24.0001L14.8013 18.982L20.2501 21.0001L24 0Z" />
+              </svg>
+            </div>
+          </a>
+      <img src="{{poster}}" alt="" class="modal__img">
+    </div>
+    <div class="modal__text">
+      <h1 class="modal__title">{{title}}</h1>
+      <ul class="modal__list">
+        <li class="modal__item">
+          <p class="modal__item_title" id="modalVotes">Vote / Votes</p>
+          <span class="item__data vote_averege">{{voteAverage}}</span>
+          / <span class="item__data vote_count">{{voteCount}}</span>
+        </li>
+        <li class="modal__item">
+          <p class="modal__item_title" id="modalPopularity">Popularity</p>
+          <span class="item__data popularity">{{popularity}}</span>
+        </li>
+        <li class="modal__item modal__item_original">
+          <p class="modal__item_title original_text" id="modalOriginalTitle">Original Title </p>
+
+          <span class="item__data original">{{originalTitle}}</span>
+        </li>
+        <li class="modal__item genres__item">
+          <span class="modal__item_title" id="modalGenre">Genre</span>
+          <ul class="genres_list">
+            {{#each genres}}
+            <li class="genres">{{this}}</li>
+            {{/each}}
+          </ul>
+        </li>
+      </ul>
+      <h2 class="about__title" id="modalAbout">About</h2>
+      <p class="overview">{{overview}}</p>
+
+      <div class="button_items">
+        <button class="btn btn-dark" id="watched">add to Watched</button>
+        <button class="btn btn-dark" id="queue">add to queue</button>
+        <button class="btn btn-dark" id="watched-tailer">WATCH TRAILER</button>
+
+      </div>
+    </div>
+
+  </div>
+  <footer class="footer content">
+    <div class="footer__container">
+      <p class="footer__text">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="copyright">
+            <path
+              d="M13.44 14.48c0.067-0.44 0.213-0.827 0.4-1.16s0.453-0.613 0.787-0.827c0.32-0.2 0.72-0.293 1.213-0.307 0.307 0.013 0.587 0.067 0.84 0.173 0.267 0.12 0.507 0.28 0.693 0.48s0.333 0.44 0.453 0.707 0.173 0.56 0.187 0.853h2.387c-0.027-0.627-0.147-1.2-0.373-1.72s-0.533-0.973-0.933-1.347-0.88-0.667-1.44-0.88-1.173-0.307-1.853-0.307c-0.867 0-1.627 0.147-2.267 0.453s-1.173 0.707-1.6 1.227-0.747 1.12-0.947 1.813-0.32 1.413-0.32 2.187v0.36c0 0.773 0.107 1.493 0.307 2.187s0.52 1.293 0.947 1.8 0.96 0.92 1.6 1.213 1.4 0.453 2.267 0.453c0.627 0 1.213-0.107 1.76-0.307s1.027-0.48 1.44-0.84 0.747-0.773 0.987-1.253 0.387-0.987 0.4-1.533h-2.387c-0.013 0.28-0.080 0.533-0.2 0.773s-0.28 0.44-0.48 0.613-0.427 0.307-0.693 0.4c-0.253 0.093-0.52 0.12-0.8 0.133-0.48-0.013-0.88-0.107-1.187-0.307-0.333-0.213-0.6-0.493-0.787-0.827s-0.333-0.733-0.4-1.173-0.107-0.893-0.107-1.333v-0.36c0-0.467 0.040-0.907 0.107-1.347zM16 2.667c-7.36 0-13.333 5.973-13.333 13.333s5.973 13.333 13.333 13.333 13.333-5.973 13.333-13.333-5.973-13.333-13.333-13.333zM16 26.667c-5.88 0-10.667-4.787-10.667-10.667s4.787-10.667 10.667-10.667 10.667 4.787 10.667 10.667-4.787 10.667-10.667 10.667z">
+            </path>
+          </svg>
+
+          &nbsp;2020 | All Rights Reserved |
+        </span>
+        <span>
+          Developed with&nbsp;
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="vector"
+            viewBox="0 0 34 32" fill="#ff6b08" style="fill: #ff6b08)">
+            <path
+              d="M17.231 31.705l-2.412-2.412c-8.96-7.926-14.818-13.268-14.818-19.815 0-5.342 4.135-9.477 9.477-9.477 2.929 0 5.858 1.378 7.754 3.618 1.895-2.24 4.825-3.618 7.754-3.618 5.342 0 9.477 4.135 9.477 9.477 0 6.548-5.858 11.889-14.818 19.815l-2.412 2.412z">
+            </path>
+          </svg>
+          &nbsp;by&nbsp;
+          <a class="footer__link" href="https://ludmiladev.github.io/footer-link/" target="_blank">GoIT Students</a>
+          
+        </span>
+
+      </p>
+    </div>
+  </footer>
+</div>

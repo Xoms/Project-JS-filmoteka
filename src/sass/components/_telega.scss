@@ -1,0 +1,46 @@
+.telega-btn {
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  @include for-size(tablet) {
+    margin-left: 20px;
+  }
+
+    &:hover {
+      background-color: var(--white-text-color);
+    }
+    &:hover .telega-svg {
+      fill: var(--accent-color);
+    }
+}
+.telega-svg {
+  margin-left: 6px;
+  margin-top: 6px;
+  fill: var(--white-text-color);
+}
+.telega-link {
+  position: absolute;
+  top: 88%;
+  left: 77%;
+  z-index: 2;
+  cursor: pointer;
+  @include for-size(tablet) {
+    top: 87%;
+    left: 76%;
+  }
+  @include for-size(desktop) {
+    top: 88%;
+    left: 80%;
+  }
+}
+.modal_poster {
+  position: relative;
+  @include for-size(tablet) {
+    max-height: 416px;
+  }
+  @include for-size(desktop) {
+    max-height: 514px;
+  }
+}
