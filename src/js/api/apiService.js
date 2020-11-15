@@ -170,6 +170,7 @@ const options = {
 
     async getAllResults(query){
         this._page = 1;
+        localStorage.setItem('mode', 'search');
         let currentRes = await this.getMoviesByQuery(query);
         let resultsArr = [currentRes];
         for (let i = 1; i < currentRes.movies.total_pages; i++) {

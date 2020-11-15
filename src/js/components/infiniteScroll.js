@@ -11,7 +11,7 @@ class InfiniteScroll {
     }
 
     createObserver(){
-        this.mode = localStorage.getItem('mode') //search || trends || library || undefined;
+        this.mode = localStorage.getItem('mode') //search || default || library;
 
         if (!this.mode || this.mode === 'library') {
             return
@@ -33,12 +33,10 @@ class InfiniteScroll {
         entries.forEach( entry => {
             if (entry.isIntersecting) {        
                 render(this.page);
-                console.log(this.page)
                 this.page++;                
                 this.images = document.querySelectorAll('.movies img');
                 this.imageObserver.observe(this.images[this.images.length - 1]);
                 this.imageObserver.unobserve(entry.target);
-                console.log(this.images[this.images.length - 1]);
             }
         })
     }

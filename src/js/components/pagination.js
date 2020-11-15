@@ -83,6 +83,7 @@ class PaginationController {
     }
 
     renderSearch(vPage){ //Страница пагинации из поиска
+        this.mode = 'search';
         localStorage.setItem('mode', this.mode)
         this.perPage = localStorage.getItem('perPage'); //там в зависимотси от ширины экрана кол-во фильмов на странице
         this.pagesToView = Math.floor(this.searchList.length / this.perPage); //общее кол-во страниц
@@ -93,7 +94,7 @@ class PaginationController {
 
         let snapshot = this.searchList.slice(start, end);
         renderCards(snapshot);
-        this.mode = 'search';
+        
         this.activePage = vPage;
     }
 
