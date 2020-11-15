@@ -1,6 +1,7 @@
 import api from './api/apiService.js';
 import main from '../partials/main.hbs'
 import genres from './api/genresDb.js';
+import genresRu from './api/genresDbRu.js';
 import refs from './refs.js';
 import ioController from './components/infiniteScroll';
 
@@ -21,11 +22,20 @@ api.getTrends(viewPage)
     obj.poster = posters[i];
     obj.genres = [];
     el.genre_ids.forEach(el => {
-      genres.forEach(({id, name}) => {
-        if(el === id) {
-          obj.genres.push(name);
-        }
-      })
+      let lang = localStorage.getItem('lang');
+      if (lang === 'ru') {
+        genresRu.forEach(({id, name}) => {
+          if(el === id) {
+            obj.genres.push(name);
+          }
+        })
+      } else {
+        genres.forEach(({id, name}) => {
+          if(el === id) {
+            obj.genres.push(name);
+          }
+        })
+      }
     })
     obj.dataGenres = JSON.stringify(obj.genres);
 

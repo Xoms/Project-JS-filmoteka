@@ -58,8 +58,10 @@ class MainController {
       case 'ru':
         refs.homeBtn.innerHTML = "ГЛАВНАЯ";
         refs.libraryBtn.innerHTML = "БИБЛИОТЕКА";
+        refs.userInputField.placeholder = "Поиск фильма";
         document.querySelector('.filter-lable-text').innerHTML = "Хотите уточнить? Попробуйте отфильтровать результаты!";
         document.querySelectorAll('#yearSelect option')[0].innerHTML = "Все года";
+        
         // document.querySelectorAll('#genresSelect option')[0] && 
         //   (document.querySelectorAll('#genresSelect option')[0].innerHTML = "Все жанры");
         // if (this.mode === 'search'){
@@ -88,6 +90,7 @@ class MainController {
       case 'en':
         refs.homeBtn.innerHTML = "HOME";
         refs.libraryBtn.innerHTML = "MY LIBRARY";
+        refs.userInputField.placeholder = "Search a movie";
         document.querySelector('.filter-lable-text').innerHTML = "Need something more specific? Try to filter the results!";
         document.querySelectorAll('#yearSelect option')[0].innerHTML = "All years range";
         // document.querySelectorAll('#genresSelect option')[0] && 
