@@ -1,6 +1,6 @@
 import render from '../main.js'; //этот рисует карточки популярных фильмов
 import refs from '../refs.js';
-import main from '../../partials/main.hbs';
+import main from '../../partials/main.hbs'; //Шаблон картотеки
 
 class InfiniteScroll {
     options = {}
@@ -11,15 +11,15 @@ class InfiniteScroll {
     }
 
     createObserver(){
-        this.mode = localStorage.getItem('mode') //search || trends || undefined;
+        this.mode = localStorage.getItem('mode') //search || trends || library || undefined;
 
-        if (!this.mode) {
+        if (!this.mode || this.mode === 'library') {
             return
         }
 
         this.images = document.querySelectorAll('.movies img');
         
-        if (this.mode === 'trends') {
+        if (this.mode === 'default') {
             this.imageObserver = new IntersectionObserver(this.onTrends, this.options);
             this.imageObserver.observe(this.images[this.images.length - 1]);
         } else {
