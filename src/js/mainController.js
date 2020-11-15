@@ -59,6 +59,8 @@ class MainController {
         refs.homeBtn.innerHTML = "ГЛАВНАЯ";
         refs.libraryBtn.innerHTML = "БИБЛИОТЕКА";
         refs.userInputField.placeholder = "Поиск фильма";
+        refs.onInvalidSearch.innerHTML = "Поиск невозмозмежн. Используйте только буквы или цифры.";
+        refs.onNoResult.innerHTML = "Ничего не найдено. Попробуйте изменить запрос."
         document.querySelector('.filter-lable-text').innerHTML = "Хотите уточнить? Попробуйте отфильтровать результаты!";
         document.querySelectorAll('#yearSelect option')[0].innerHTML = "Все года";
         
@@ -91,8 +93,12 @@ class MainController {
         refs.homeBtn.innerHTML = "HOME";
         refs.libraryBtn.innerHTML = "MY LIBRARY";
         refs.userInputField.placeholder = "Search a movie";
+        refs.onInvalidSearch.innerHTML = "Search result is not successful. Use only letters or numbers.";
+        refs.onNoResult.innerHTML = "Nothing was found. Try a different search term."
+
         document.querySelector('.filter-lable-text').innerHTML = "Need something more specific? Try to filter the results!";
         document.querySelectorAll('#yearSelect option')[0].innerHTML = "All years range";
+        
         // document.querySelectorAll('#genresSelect option')[0] && 
         //   (document.querySelectorAll('#genresSelect option')[0].innerHTML = "Any genre");
         // if (this.mode === 'search'){
