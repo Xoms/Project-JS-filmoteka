@@ -21,43 +21,57 @@ class MainController {
   mode = 'default';
   constructor() {
     window.addEventListener('load', this.onLoad);
+    window.addEventListener('beforeunload', this.onUnload);
     refs.ul.addEventListener('click', this.onModalOpen);
     refs.homeBtn.addEventListener('click', this.onLoad);
     refs.langSwitch.addEventListener('change', this.onLangSwitch)
   }
 
   onLangSwitch = (e) => {
-    console.log(refs.langSwitch.checked);
     if (refs.langSwitch.checked) {
       this.lang = 'en';
-      console.log('en');
     } else {
       this.lang = 'ru';
     }
     localStorage.setItem('lang', this.lang);
     api.lang = this.lang;
     this.mode = localStorage.getItem('mode');
-    this.redrawLangChenge();    
-    console.log(this.mode);
+    this.redrawLangChenge(); 
+    // console.log(this.mode);   
     if (this.mode === 'library'){
       return;
     }
     
-    if (paginationControl.mode === 'default'){
+    if (this.mode === 'default'){
       paginationControl.renderDefault(paginationControl.activePage || 1);
 
     } else { //если не дефолт - значит поиск
-      getSearсhArr()
+      getSearсhArr();
     }
   }
 
-  redrawLangChenge(){
-    console.log('switching to ',this.lang);
-    console.log('mode = ', this.mode );
+  redrawLangChenge = () => {
+    // console.log('switching to ',this.lang);
+    // console.log('mode = ', this.mode );
+
     switch(this.lang){
       case 'ru':
         refs.homeBtn.innerHTML = "ГЛАВНАЯ";
         refs.libraryBtn.innerHTML = "БИБЛИОТЕКА";
+        refs.userInputField.placeholder = "Поиск фильма";
+        refs.onInvalidSearch.innerHTML = "Поиск невозмозмежн. Используйте только буквы или цифры.";
+        refs.onNoResult.innerHTML = "Ничего не найдено. Попробуйте изменить запрос."
+        document.querySelector('.filter-lable-text').innerHTML = "Хотите уточнить? Попробуйте отфильтровать результаты!";
+        document.querySelectorAll('#yearSelect option')[0].innerHTML = "Все года";
+        
+        // document.querySelectorAll('#genresSelect option')[0] && 
+        //   (document.querySelectorAll('#genresSelect option')[0].innerHTML = "Все жанры");
+        // if (this.mode === 'search'){
+          
+        //   document.querySelectorAll('#yearSelect option')[0].innerHTML = "Все года";
+        //   document.querySelectorAll('#genresSelect option')[0] && 
+        //     (document.querySelectorAll('#genresSelect option')[0].innerHTML = "Все жанры");
+        // }
         if (this.mode === 'library'){
           document.querySelector('.header-bottom-library .watched').innerHTML = "Просмотрено";
           document.querySelector('.header-bottom-library .queue').innerHTML = "К просмотру";
@@ -78,6 +92,21 @@ class MainController {
       case 'en':
         refs.homeBtn.innerHTML = "HOME";
         refs.libraryBtn.innerHTML = "MY LIBRARY";
+        refs.userInputField.placeholder = "Search a movie";
+        refs.onInvalidSearch.innerHTML = "Search result is not successful. Use only letters or numbers.";
+        refs.onNoResult.innerHTML = "Nothing was found. Try a different search term."
+
+        document.querySelector('.filter-lable-text').innerHTML = "Need something more specific? Try to filter the results!";
+        document.querySelectorAll('#yearSelect option')[0].innerHTML = "All years range";
+        
+        // document.querySelectorAll('#genresSelect option')[0] && 
+        //   (document.querySelectorAll('#genresSelect option')[0].innerHTML = "Any genre");
+        // if (this.mode === 'search'){
+          
+        //   document.querySelectorAll('#yearSelect option')[0].innerHTML = "All years range";
+        //   document.querySelectorAll('#genresSelect option')[0] && 
+        //     (document.querySelectorAll('#genresSelect option')[0].innerHTML = "Any genre");
+        // }
         if (this.mode === 'library'){
           document.querySelector('.header-bottom-library .watched').innerHTML = "Watched";
           document.querySelector('.header-bottom-library .queue').innerHTML = "queue";
@@ -130,7 +159,7 @@ class MainController {
     this.instanceBox.show();
 
     this.redrawLangChenge();
-    console.dir(this.instanceBox);
+    //console.dir(this.instanceBox);
     const closeBtn = document.querySelector('.close-button');
     closeBtn.addEventListener('click', this.closeModal);
     const divButton = document.querySelector('#watched');
@@ -192,7 +221,7 @@ class MainController {
     this.instanceBox.close()
     this.modalIsOpen = false;
     document.body.classList.toggle('scroll-hidden')
-    console.dir(this.instanceBox);
+    //console.dir(this.instanceBox);
     }
   
   onLoad = () => {   
@@ -200,9 +229,13 @@ class MainController {
       refs.langSwitch.checked = true;
     }
     render(1);
-    this.redrawLangChenge()    
+    this.redrawLangChenge()  
     paginationControl.renderPagination();
-  };
+  }
+
+  onUnload = () => {
+    localStorage.setItem('mode', 'default');
+  }  
 
 }
 

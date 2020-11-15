@@ -1,5 +1,6 @@
 import refs from "./refs.js"
 import genresMap from "./api/genresDb"
+import genresMapRu from "./api/genresDbRu"
 import api from "./api/apiService"
 import renderCards from "./renderCards"
 import renderFilters from "./renderFilters"
@@ -15,15 +16,17 @@ const searchFormHandle =  e => {
   if (e) {
     e.preventDefault();
   } 
-  let userInput = refs.userInputField.value;  
+  let userInput = refs.userInputField.value;
+  localStorage.setItem('mode', 'search');
 
   const validInputRegex = /^[a-zA-Z0-9а-яА-Я\s]+$/;
   if (userInput.match(validInputRegex)) {
     refs.onInvalidSearch.classList.add("hidden")
     refs.onNoResult.classList.add("hidden")
-    console.log(userInput);
+    //console.log(userInput);
     query = userInput; 
-    
+    let currentLang = api.lang;
+
     const allMoviesList = [];
     api
       .getAllResults(query)
@@ -42,9 +45,15 @@ const searchFormHandle =  e => {
 
             obj.genres = [];
             movie.genre_ids.forEach(id => {
-              let genreSets = genresMap.find(props => props.id === id);
-              let genreName = genreSets ? genreSets.name : "";
-              obj.genres.push(genreName);
+              if (currentLang === 'en') {
+                let genreSets = genresMap.find(props => props.id === id);
+                let genreName = genreSets ? genreSets.name : "";
+                obj.genres.push(genreName);
+              } else {
+                let genreSets = genresMapRu.find(props => props.id === id);
+                let genreName = genreSets ? genreSets.name : "";
+                obj.genres.push(genreName);
+              }
             })
             obj.dataGenres = JSON.stringify(obj.genres);
 
@@ -103,19 +112,19 @@ refs.genresSelect.addEventListener("change", e => {
   const moviesList = JSON.parse(localStorage.getItem('searchResults'))
 
  
-  if (filterValue === 'Any genre') {
+  if (filterValue === 'Any genre' || filterValue === 'Все жанры') {
     localStorage.removeItem('filteredSearchResults')
     moviesToRender = moviesList;
   } else {
     moviesToRender = moviesList.filter(movie => {
-      console.log(movie.genres + ' contains ' + filterValue);
+      //console.log(movie.genres + ' contains ' + filterValue);
       return movie.genres.includes(filterValue);
     })
 
     localStorage.setItem('filteredSearchResults', JSON.stringify(moviesToRender))
   }
 
-  if (refs.yearSelect.value !== "All years range"){
+  if (refs.yearSelect.value !== "All years range" || refs.yearSelect.value !== "Все года"){
     secondFilterHandler();
     return
   }
@@ -125,7 +134,7 @@ refs.genresSelect.addEventListener("change", e => {
   
   pagination.renderSearch(1);
 
-  console.log("this is", moviesToRender);
+  //console.log("this is", moviesToRender);
 
   // renderPagination(moviesToRender);
 })
@@ -134,13 +143,13 @@ function secondFilterHandler (e) {
 
   let secondFilterResult
   const filterValue = refs.yearSelect.value;
-  console.log(filterValue);
+  //console.log(filterValue);
 
   if (!moviesToRender) {
     moviesToRender = JSON.parse(localStorage.getItem('searchResults'))
   } 
 
-  if (filterValue === "All years range"){
+  if (filterValue === "All years range" || filterValue === "Все года"){
     secondFilterResult = moviesToRender;
   } else {
     let startYear = filterValue.split(" ")[0];
@@ -153,7 +162,7 @@ function secondFilterHandler (e) {
   pagination.searchList = secondFilterResult;
   pagination.renderSearch(1);
 
-  console.log("this is sec filter", secondFilterResult);
+  //console.log("this is sec filter", secondFilterResult);
   pagination.renderPagination();
 }
 

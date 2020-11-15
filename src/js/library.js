@@ -34,7 +34,7 @@ const goToLibrary = function (e) {
   
   const showWathed = function () {
     currentList = 'watchedList'
-    const arrWatched = JSON.parse(localStorage.getItem('watchedList'));
+    const arrWatched = JSON.parse(localStorage.getItem('watchedList')) || [];
     if (arrWatched.length === 0 || !arrWatched) {
       refs.mainSection.innerHTML = `<li><img class="nothingFoundImg" 
           src='https://st2.depositphotos.com/8029582/12255/v/600/depositphotos_122553578-stock-illustration-emoticon-throws-up-his-hands.jpg'>
@@ -56,10 +56,10 @@ const goToLibrary = function (e) {
   
   const showQueue = function () {
     currentList = 'addToQueue';
-    const arrQueue = JSON.parse(localStorage.getItem('addToQueue'));
-    console.log("arrQueuearrQueue", Boolean (arrQueue.length === 0));
+    const arrQueue = JSON.parse(localStorage.getItem('addToQueue')) || [];
+    //console.log("arrQueuearrQueue", Boolean (arrQueue.length === 0));
     if (arrQueue.length === 0 || !arrQueue) {
-      console.log(refs.mainSection);
+      //console.log(refs.mainSection);
       refs.mainSection.innerHTML = `<li><img class="nothingFoundImg" 
           src='https://st2.depositphotos.com/8029582/12255/v/600/depositphotos_122553578-stock-illustration-emoticon-throws-up-his-hands.jpg'>
           </li>`;
@@ -83,7 +83,7 @@ const goToLibrary = function (e) {
     const newList = JSON.stringify(item.filter(el => el.title !== nameFilm));
     localStorage.setItem(currentList, newList);
     if (JSON.parse(newList).length === 0 || item.length === 0) {
-      console.log(refs.mainSection);
+      //console.log(refs.mainSection);
       refs.mainSection.innerHTML = `<li><img class="nothingFoundImg" 
             src='https://st2.depositphotos.com/8029582/12255/v/600/depositphotos_122553578-stock-illustration-emoticon-throws-up-his-hands.jpg'>
             </li>`;
@@ -92,9 +92,9 @@ const goToLibrary = function (e) {
     }
         document.querySelectorAll('.delete').forEach(el => el.removeAttribute('hidden'));
       
-        console.log(newList);
-        console.log(e);
-        console.log(e.target.parentNode.dataset.title);
+        // console.log(newList);
+        // console.log(e);
+        // console.log(e.target.parentNode.dataset.title);
   })
   
   btnQueue.addEventListener('click', showQueue);
