@@ -147,6 +147,7 @@ class MainController {
         "originalTitle": item.dataset.originaltitle,
         "genres" : JSON.parse(item.dataset.genres),
         "poster" : item.dataset.poster,
+        "releaseDate": item.dataset.release
     };
     // console.log(typeof objPossibilities.genres);
     localStorage.setItem('currentFilm', JSON.stringify(objPossibilities));
