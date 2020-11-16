@@ -43,7 +43,7 @@ const options = {
             localStorage.setItem('perPage', this.perPage);
             ioController.destroyObserver()
         }
-        //console.log(this.perPage)
+    
         
     }
 
@@ -55,19 +55,11 @@ const options = {
         this.factStart = viewPage * this.perPage - this.perPage; //Фактически отображаемые старт
         this.factEnd = viewPage * this.perPage; //последний из фактически отображаемых фильмов
 
-        // console.log("factStart =", this.factStart )
-        // console.log("factEnd = ", this.factEnd)
-        // console.log('viewPage = ', viewPage);
-        // console.log("perPage = ", this.perPage)
-
         this.neededPageStart = 1;
         this.neededPageEnd = 1;
        
         this.neededPageStart = Math.floor(this.factStart / 20) + 1;    
         this.neededPageEnd = Math.floor(this.factEnd / 20) + 1; 
-        
-        //  console.log('Needed_pageStart: ', this.neededPageStart);
-        //  console.log('Needed_pageEnd: ', this.neededPageEnd);
         
     }
 
@@ -123,9 +115,7 @@ const options = {
                     results: viewRes
                 }
                 return {movies, 'posters': imgArr}
-            })
-
-        //console.log(res)    
+            }) 
         
         return res;
     }
@@ -178,7 +168,6 @@ const options = {
             resultsArr.push(this.getMoviesByQuery(query));
 
         }
-        //console.log(resultsArr);
         return Promise.all(resultsArr);
     }
 }

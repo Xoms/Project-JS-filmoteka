@@ -130,9 +130,6 @@ class MainController {
  
   onModalOpen = e => {
     e.preventDefault();
-    // console.log("go to", goToLibrary);
-    // console.log("onModalOpen");
-    // console.log(e.target.parentNode);
     
     if (e.target.parentNode.nodeName !== 'A' || e.target.className === 'btn delete') {
       return;
@@ -141,7 +138,6 @@ class MainController {
     this.modalIsOpen = true;
     
     let item = e.target.parentNode.querySelector('.data');
-    // console.dir(item);
     const objPossibilities = {
         "title" : item.dataset.title,
         "voteAverage": item.dataset.voteaverage,
