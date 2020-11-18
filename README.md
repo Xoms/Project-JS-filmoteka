@@ -22,6 +22,10 @@
   - Webpack
   - Babel
   - Git
+  - API: 
+    - tmdb API https://www.themoviedb.org/ 
+    - telegram API https://core.telegram.org/
+    - youtube API https://developers.google.com/youtube/v3
   - Trello
   - SCRUM
   
