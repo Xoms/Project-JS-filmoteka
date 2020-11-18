@@ -13,7 +13,7 @@
 
 ## Стек
   - HTML5
-  - Scss
+  - Scss (sass)
   - JS (классы, fetch api, Intersection Observer,  вопщем более-менее современненько)
   - Шаблонизатор Handlebars
   - Стили Bootstrap (пагинация, кнопки)
