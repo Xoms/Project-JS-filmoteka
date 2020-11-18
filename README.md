@@ -21,7 +21,7 @@
   - NPM
   - Webpack
   - Babel
-  - Git
+  - Git (github https://github.com/Gal4enock/Project-JS-filmoteka)
   - API: 
     - tmdb API https://www.themoviedb.org/ 
     - telegram API https://core.telegram.org/
